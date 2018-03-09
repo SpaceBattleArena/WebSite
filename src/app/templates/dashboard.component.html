@@ -1,0 +1,114 @@
+<admin></admin>
+
+<main>
+    <div class="container-fluid" id="content-dashboard" style="width:90%">
+
+        <main id="main_dashboard" style="width: 100%;padding-top: 20px;">
+            <div class="container-fluid">
+                <section class="card card-cascade narrower mb-5">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-5">
+                            <div class="view py-3 gradient-card-header info-color-dark">
+                                <h5 class="mb-0">Players</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div style="width: 100%;">
+                                            <canvas baseChart id="rank_chart" [data]="RankData" [labels]="RankLabels" [chartType]="RankType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div style="width: 100%;">
+                                            <canvas baseChart id="arena_chart" [data]="ArenaData" [labels]="ArenaLabels" [chartType]="ArenaType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-7">
+                            <div class="view py-3 gradient-card-header info-color-dark mb-4">
+                                <div style="display: block; width:100%;">
+                                    <canvas baseChart [datasets]="CreatedData" [labels]="CreatedLabels" [chartType]="CreatedType" [options]="CreatedOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9">
+                                    <p class="number_total">Total : {{ count_user }}</p>
+                                </div>
+                                <div class="col"><span class="badge badge-pill green">+20%<i class="fa fa-sort-up"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="container-fluid">
+                <section class="card card-cascade narrower mb-5">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-5">
+                            <div class="view py-3 gradient-card-header info-color-dark">
+                                <h5 class="mb-0">News</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="number_total">Total : {{ count_news }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-7">
+                            <div class="view py-3 gradient-card-header info-color-dark mb-4">
+                                <div style="display: block; width:100%;">
+                                    <canvas baseChart [datasets]="NewsData" [labels]="NewsLabels" [chartType]="NewsType" [options]="CreatedOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="container-fluid">
+                <section class="card card-cascade narrower mb-5">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-5">
+                            <div class="view py-3 gradient-card-header info-color-dark">
+                                <h5 class="mb-0">Forum</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div style="width: 100%;">
+                                            <canvas baseChart id="rank_chart" [data]="MessagesData" [labels]="MessagesLabels" [chartType]="MessagesType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Total Messages : {{ count_messages }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-7">
+                            <div class="view py-3 gradient-card-header info-color-dark mb-4">
+                                <div style="display: block; width:100%;">
+                                    <canvas baseChart [datasets]="DiscussionsData" [labels]="DiscussionsLabels" [chartType]="DiscussionsType" [options]="CreatedOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9">
+                                    <p class="number_total">Total Discussions : {{ count_discussions }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+    </div>
+</main>
+
+<logister></logister>

@@ -1,0 +1,198 @@
+.black-skin .side-nav .collapsible li .collapsible-header.active,
+.black-skin .side-nav .collapsible li .collapsible-header.text {
+    font-size: 1.5rem;
+}
+
+.black-skin .side-nav .collapsible li .collapsible-header.active,
+.black-skin .side-nav .collapsible li .collapsible-header:hover {
+    background-color: #ef480e;
+}
+
+div#admin {
+    margin-top: 35px;
+}
+
+div ul.sidebar.open {
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    border-bottom-right-radius: 10px;
+}
+
+div ul.sidebar.open p.admin-menu {
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+div ul.sidebar.open li {
+    margin-left: 20px;
+    padding: 10px 0px;
+}
+
+div ul.sidebar.open li span {
+    display: flex;
+}
+
+div ul.sidebar.open li span p {
+    margin-left: 15px;
+    font-size: 19px;
+}
+
+div ul.sidebar {
+    background-color: #111111;
+    color: white;
+    position: fixed;
+    width: 300px;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    top: 100px;
+}
+
+div ul.sidebar .list {
+    cursor: pointer;
+}
+
+div ul.sidebar .list span.glyphicon-chevron-down {
+    transform: rotate(0turn);
+    -webkit-transform: rotate(0turn);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    float: right;
+    margin-right: 20px;
+    margin-top: -18px;
+}
+
+div ul.sidebar .list span.glyphicon-chevron-down.up {
+    transform: rotate(0.5turn);
+    -webkit-transform: rotate(0.5turn);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+}
+
+div ul.items {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    background-color: #202020;
+}
+
+div ul.items li {
+    display: none;
+}
+
+div ul.items.expanded {
+    max-height: 200%;
+    transition: max-height 0.5s ease-in;
+}
+
+div ul.items.expanded li {
+    display: block;
+}
+
+div .chevron.open {
+    transform: translateX(300px);
+    -webkit-transform: translateX(300px);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+}
+
+div .chevron.open span {
+    transform: rotate(0.5turn);
+    -webkit-transform: rotate(0.5turn);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+}
+
+div .chevron {
+    position: fixed;
+    top: 100px;
+    color: white;
+    background-color: #111111;
+    padding: 10px 3px;
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+
+div .chevron span {
+    transform: rotate(0turn);
+    -webkit-transform: rotate(0turn);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+}
+
+.datas .text {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+#content-admin {
+    /*width: 70%;
+    float: right;
+    margin: 0 5%;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+    overflow: scroll;
+    background-color: #666666;
+    border-radius: 10px;
+    margin-bottom: 20px;*/
+}
+
+#content-admin::-webkit-scrollbar {
+    width: 1em;
+}
+
+#content-admin::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+#content-admin::-webkit-scrollbar-thumb {
+    background-color: red;
+    outline: 1px solid slategrey;
+    border-radius: 10px;
+}
+
+#content-admin.large {
+    width: 90%;
+    float: none;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+}
+
+players-list,
+news-list {
+    /*background-color: #666666;
+    padding-bottom: 2%;*/
+}
+
+.number_total {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.side-nav .logo-sn img {
+    height: 38px;
+}
+
+.pl-0 {
+    text-align: center;
+}
+
+.ship-section {
+    display: none;
+}
+
+.small-nav-bttom {
+    background-color: black;
+    color: white;
+}

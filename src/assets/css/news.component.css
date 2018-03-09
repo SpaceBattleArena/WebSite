@@ -1,0 +1,39 @@
+.article {
+    width: 100%;
+    background-color: #d6d6d6;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.article .article__content {
+    width: 80%;
+    margin: 80px auto 40px auto;
+    background-color: white;
+}
+
+.article .article__content .article__content__title {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+}
+
+.article .article__content .article__content__image {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.article .article__content .article__content__description {
+    width: 95%;
+    margin: 20px auto;
+    padding-bottom: 20px;
+}
+
+.image-article {
+    position: absolute;
+    top: 180px;
+    right: 5%;
+    z-index: 3;
+    width: 30%;
+    -webkit-box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.85);
+}
