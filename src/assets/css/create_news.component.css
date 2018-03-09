@@ -1,0 +1,31 @@
+.create-news {
+  background-color: #666666;
+  padding-bottom: 2%; }
+  .create-news .news-text {
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+    font-variant: small-caps;
+    border-bottom: 1px solid #848484;
+    margin-bottom: 15px; }
+  .create-news .news-add {
+    width: 80%;
+    display: grid;
+    margin: 0 auto; }
+    .create-news .news-add input {
+      margin: 20px 0;
+      height: 35px; }
+    .create-news .news-add textarea#add-description {
+      min-height: 200px;
+      max-height: 200px;
+      min-width: 100%;
+      max-width: 100%; }
+    .create-news .news-add i.fa.fa-plus {
+      float: right;
+      color: white;
+      background: green;
+      width: 10%;
+      padding: 10px 0;
+      cursor: pointer; }
+      .create-news .news-add i.fa.fa-plus:before {
+        padding: 0 44%; }

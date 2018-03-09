@@ -1,0 +1,543 @@
+section.profil {
+    display: grid;
+    margin-top: 80px;
+}
+
+section.profil .user-information {
+    padding: 70px 0;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid grey;
+    background-image: url("../../assets/img/example-news.png");
+}
+
+section.profil .user-information .user-image {
+    margin: 0 auto;
+    display: flex;
+    width: 30%;
+    background-color: #ffffff59;
+    padding: 30px 0;
+}
+
+section.profil .user-information .user-image img {
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+section.profil .user-information .user-image .information {
+    width: 50%;
+}
+
+section.profil .user-information .user-image .information p.username {
+    text-align: center;
+    margin-top: 20%;
+    color: black;
+    font-size: 20px;
+}
+
+section.profil .user-information .user-image .information p.rank {
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+    font-size: 20px;
+}
+
+section.profil .links {
+    padding: 40px 0;
+    text-align: center;
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+}
+
+section.profil .links .ring {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    background-color: #d3d3d378;
+    cursor: pointer;
+}
+
+section.profil .links .ring:hover {
+    background-color: red;
+}
+
+section.profil .links .ring:hover p {
+    color: white;
+}
+
+section.profil .links .ring p {
+    text-align: center;
+    margin: 45% auto 0 auto;
+}
+
+.profil-content {
+    border: 1px solid grey;
+    padding-top: 50px;
+}
+
+.profil-content h2 {
+    margin-bottom: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.profil-content .game {
+    padding: 10px 0;
+}
+
+.profil-content .win {
+    background-color: palegreen;
+}
+
+.profil-content .loose {
+    background: palevioletred;
+}
+
+.profil-content ul.list {
+    display: flex;
+}
+
+.profil-content ul.list li.card {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.profil-content ul.list li.card img.card-img {
+    width: 100%;
+}
+
+.profil-content ul.list li.card p.name {
+    text-align: center;
+}
+
+.profil-content ul.list li.deck {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.profil-content ul.list li.deck img.deck-img {
+    width: 100%;
+}
+
+.profil-content ul.list li.deck p.name {
+    text-align: center;
+}
+
+#games-hystory {
+    display: none;
+}
+
+#games-hystory .game {
+    display: flex;
+}
+
+#games-hystory .game p.result {
+    margin: 0 auto;
+}
+
+#games-hystory .game .game-info {
+    display: flex;
+    margin: 0 auto;
+}
+
+#games-hystory .game .reward {
+    display: flex;
+    margin: 0 auto;
+}
+
+#cards-list {
+    display: none;
+}
+
+#skins-list {
+    display: none;
+}
+
+#decks-list {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.history,
+.cards,
+.decks,
+.skins {
+    background-color: #1c2e46;
+    width: 98%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.cards p.no-cards,
+.decks p.no-cards,
+.skins p.no-cards {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+    color: white;
+}
+
+.history p {
+    color: white;
+}
+
+.container_information {
+    padding: 0 20px;
+}
+
+.line-vertical {
+    width: 2px;
+    height: 500px;
+    background: white;
+    background: linear-gradient(#1c2e46, white);
+    display: block;
+    margin: 0 auto;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: translateY(11px);
+}
+
+.content-point {
+    transform: translateX(-9px);
+}
+
+.point {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    display: block;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.point:hover {
+    transform: scale(1.2);
+}
+
+.point-small {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    display: block;
+    margin: 2px auto;
+    border-radius: 50%;
+}
+
+.status {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid white;
+    color: white;
+    margin-top: 225px;
+    transform: translateX(-24px);
+    text-align: center;
+    background-color: #1c2e46;
+}
+
+.status-text {
+    font-size: 12px;
+    margin-top: 14px;
+}
+
+.line-vertical.win {
+    background: green;
+    background: linear-gradient(#1c2e46, green);
+}
+
+.line-vertical.win .status {
+    border: 2px solid green;
+}
+
+.point.win {
+    border: 2px solid green;
+}
+
+.line-vertical.loose {
+    background: red;
+    background: linear-gradient(#1c2e46, red);
+}
+
+.line-vertical.loose .status {
+    border: 2px solid red;
+}
+
+.point.loose {
+    border: 2px solid red;
+}
+
+.username {
+    color: white;
+    font-family: Anton, sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.score {
+    color: white;
+    font-family: Anton, sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.gold {}
+
+.arena_point {}
+
+.user .score {
+    text-align: right;
+}
+
+.opponent .username {
+    text-align: right;
+}
+
+.row.deck {
+    height: 450px;
+    overflow-y: scroll;
+    background-color: #1c2e46;
+    width: 96%;
+    margin: 0 2%;
+}
+
+#deck::-webkit-scrollbar {
+    width: 6px;
+}
+
+#deck::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #1c2e46;
+}
+
+#deck::-webkit-scrollbar-thumb {
+    background-color: #ef480e;
+}
+
+.card {
+    margin: 10px;
+}
+
+.profile__head {}
+
+.profile__avatar {
+    display: block;
+    width: 30vh;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.profile__avatar_container {
+    width: 35vh;
+    height: 35vh;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile__head_container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.profile__username {
+    text-align: center;
+    color: white;
+    font-family: Anton, sans-serif;
+    font-weight: 400;
+}
+
+.col.game_history {
+    overflow-y: scroll;
+}
+
+.game_history {
+    /*overflow-y:scroll;*/
+    display: -webkit-box;
+}
+
+.history__line {
+    width: 100%;
+    height: 6px;
+    background-color: #ef480e;
+    margin-top: 20px;
+}
+
+.history__point {
+    width: 50px;
+    padding: 0;
+    height: 50px;
+    background-color: #ef480e;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    transform: translateY(-28px);
+}
+
+.game_history_container {
+    overflow-x: scroll;
+}
+
+.col-lg-2.history__rod {
+    padding: 25px 0 0 0;
+}
+
+.history__point:hover {
+    transform: translateY(-28px) scale(1.1);
+}
+
+.profile__container_informations {
+    background-color: white;
+}
+
+.game {
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.game_status {
+    background-color: grey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.game_status_text {
+    font-family: Anton, sans-serif;
+    color: blue;
+    font-size: 29px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.game_status_text.win {
+    color: green;
+}
+
+.game_status_text.defeat {
+    color: red;
+}
+
+.row.nav-profil {
+    margin-top: 65px;
+    border-top: 1px solid #ef480e;
+}
+
+.nav-profil a.nav-profil-link {
+    padding: 0 10px;
+    font-size: 15px;
+    font-family: Anton, sans-serif;
+    letter-spacing: 1px;
+}
+
+.nav-profil a.nav-profil-link:hover {
+    color: white;
+    background-color: #ef480e;
+}
+
+.nav-profil a.nav-profil-link.select {
+    color: white;
+    background-color: #ef480e;
+}
+
+.col.nav-link-container {}
+
+.nav-profil a.nav-profil-link:hover {}
+
+h3.massive-heading {
+    font-size: 70px;
+    margin-left: -40px;
+}
+
+h4.heading-3 {
+    font-size: 30px;
+}
+
+.row.player-informations {
+    margin-top: -130px;
+    width: 50%;
+    margin-left: 50%;
+}
+
+.player-informations .border-right {
+    border-right: 1px solid #1c2e46 !important;
+}
+
+.rank img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+.player-informations p {
+    text-align: center;
+    margin: 0;
+}
+
+.player-informations p.large {
+    font-weight: bold;
+    font-family: Anton, sa, sans-serif;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.player-informations p.small {
+    font-size: 12px;
+}
+
+.content-date {
+    width: 10%;
+    margin-top: 5px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.content-date p {
+    font-size: 10px;
+}
+
+.row.arena-point-bar {
+    margin-top: 50px;
+    width: 98%;
+    height: 20px;
+    background-color: #c7c7c7;
+}
+
+.arena-point-user {
+    height: 100%;
+    text-align: right;
+    font-size: 15px;
+    color: white;
+    background-color: #ef480e;
+    padding-right: 20px;
+}
+
+.arena {
+    width: 98%;
+}
+
+.arena .col {
+    padding: 0;
+    font-family: Anton, sans-serif;
+}
+
+.arena .current {
+    text-align: left;
+}
+
+.arena .next {
+    text-align: right;
+}

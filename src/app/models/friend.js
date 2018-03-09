@@ -1,0 +1,1 @@
+//# sourceMappingURL=friend.js.map

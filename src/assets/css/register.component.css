@@ -1,0 +1,75 @@
+section {
+  background-image: url("../../assets/img/example-news.png");
+  height: 70%;
+  margin-top: 80px;
+  width: 100%; }
+  @media screen and (max-width: 500px) {
+    section {
+      height: 100%; } }
+
+.register {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0; }
+  .register h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    padding-top: 3%;
+    color: white; }
+  .register form {
+    margin-top: 50px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%; }
+    .register form .form-group {
+      text-align: center;
+      margin: 10px 0;
+      float: right;
+      width: 100%; }
+      .register form .form-group label {
+        line-height: 30px;
+        font-size: 20px; }
+        @media screen and (max-width: 500px) {
+          .register form .form-group label {
+            width: 100%; } }
+      .register form .form-group .form-control {
+        float: right;
+        width: 70%; }
+        @media screen and (max-width: 500px) {
+          .register form .form-group .form-control {
+            width: 100%; } }
+      .register form .form-group .btn {
+        border: 0px;
+        /* cursor: pointer; */
+        display: inline-block;
+        vertical-align: middle;
+        padding: 6px 1em;
+        border-radius: 2px;
+        text-align: center;
+        text-shadow: none;
+        text-decoration: none;
+        cursor: pointer;
+        -moz-appearance: none;
+        color: black;
+        font-size: 1.3em;
+        background-color: red; }
+        .register form .form-group .btn:hover {
+          box-shadow: 3px 3px 5px #888888; }
+      .register form .form-group p {
+        margin-top: 10px; }
+        .register form .form-group p .link-register {
+          cursor: pointer;
+          color: black;
+          text-decoration: none; }
+          .register form .form-group p .link-register:hover {
+            color: red; }
+        .register form .form-group p .forgot-password {
+          color: black;
+          text-decoration: none; }
+          .register form .form-group p .forgot-password:hover {
+            color: red; }
+    @media screen and (max-width: 800px) {
+      .register form {
+        width: 80%; } }

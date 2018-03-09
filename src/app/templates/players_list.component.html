@@ -1,0 +1,144 @@
+<p _ngcontent-c1 class="table-name">players list</p>
+
+<div _ngcontent-c1 id='table-player' ng-model="table_player_html">
+
+    <table _ngcontent-c1 class="list">
+        <thead _ngcontent-c1 class="fields">
+            <tr _ngcontent-c1>
+                <th _ngcontent-c1>
+                    <div _ngcontent-c1>actions</div>
+                </th>
+                <th _ngcontent-c1 *ngFor="let head_value of head_values">
+                    <div _ngcontent-c1>{{ head_value }}</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody _ngcontent-c1 class="players-list">
+            <tr _ngcontent-c1>
+                <td _ngcontent-c1 class="actions add">
+                    <div _ngcontent-c1><i _ngcontent-c1 class="fa fa-plus" aria-hidden="true" (click)="add()"></i></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="number" [(ngModel)]="new_user.ID" name="id" placeholder="id" id="add-id"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="text" [(ngModel)]="new_user.Name" name="username" placeholder="username" id="add-username"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="text" [(ngModel)]="new_user.Email" name="email" placeholder="email" id="add-email"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="text" [(ngModel)]="new_user.Password" name="password" placeholder="password" id="add-password"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="number" [(ngModel)]="new_user.Rank_id" name="rank_id" placeholder="rank_id" id="add-rank_id"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="number" [(ngModel)]="new_user.Arena_id" name="arena_id" placeholder="arena_id" id="add-arena_id"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="number" [(ngModel)]="new_user.Avatar_id" name="avatar_id" placeholder="avatar_id" id="add-avatar_id"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="number" [(ngModel)]="new_user.Player_id" name="player_id" placeholder="player_id" id="add-player_id"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="checkbox" [(ngModel)]="new_user.Is_staff" name="is_staff" placeholder="is_staff" id="add-is_staff" (click)="inverse('is_staff')"></div>
+                </td>
+                <td _ngcontent-c1>
+                    <div _ngcontent-c1><input _ngcontent-c1 type="checkbox" [(ngModel)]="new_user.Is_activate" name="is_activate" placeholder="is_activate" id="add-is_activate" (click)="inverse('is_activate')"></div>
+                </td>
+            </tr>
+            <tr _ngcontent-c1 *ngFor="let body_value of body_values; let i = index" [attr.data-index]="i">
+                <td _ngcontent-c1 class="actions">
+                    <p _ngcontent-c1 id="modify_{{i}}" class="btn-table modify" (click)="modify(body_values[i], i)"><i _ngcontent-c1 class="fa fa-pencil" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="delete_{{i}}" class="btn-table delete" (click)="delete(body_value[0], i)"><i _ngcontent-c1 class="fa fa-trash" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="valid_{{i}}" class="btn-table valid" (click)="valid_modifications([i])" style="display:none;"><i _ngcontent-c1 class="fa fa-check" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="cancel_{{i}}" class="btn-table cancel" (click)="cancel_modifications(i)" style="display:none;"><i _ngcontent-c1 class="fa fa-close" aria-hidden="true"></i></p>
+                </td>
+                <td _ngcontent-c1 *ngFor="let val of body_value; let j = index" [attr.data-index]="j">
+                    <div _ngcontent-c1 id="player_display_{{i}}_{{j}}" class="player_display">{{ val }}</div>
+                    <div _ngcontent-c1 id="player_modification_{{i}}_{{j}}" class="player_modification" style="display:none;"><input _ngcontent-c1 type="text" [(ngModel)]="modify_user[j]"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<table class="list">
+    <thead class="fields">
+        <tr>
+            <th>
+                <div>Action</div>
+            </th>
+            <th>
+                <div>id</div>
+            </th>
+            <th>
+                <div>username</div>
+            </th>
+            <th>
+                <div>email</div>
+            </th>
+            <th>
+                <div>password</div>
+            </th>
+            <th>
+                <div>rank_id</div>
+            </th>
+            <th>
+                <div>arena_id</div>
+            </th>
+            <th>
+                <div>avatar_id</div>
+            </th>
+            <th>
+                <div>player_id</div>
+            </th>
+            <th>
+                <div>is_staff</div>
+            </th>
+            <th>
+                <div>is_activate</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody class="players-list">
+        <tr *ngFor="let player of allUsers">
+            <td>
+                <a href="#">M</a>
+                <a href="#">D</a>
+            </td>
+            <td>
+                <div>{{ player.id }}</div>
+            </td>
+            <td>
+                <div>{{ player.username }}</div>
+            </td>
+            <td>
+                <div>{{ player.email }}</div>
+            </td>
+            <td>
+                <div>{{ player.password }}</div>
+            </td>
+            <td>
+                <div>{{ player.rank_id }}</div>
+            </td>
+            <td>
+                <div>{{ player.arena_id }}</div>
+            </td>
+            <td>
+                <div>{{ player.avatar_id }}</div>
+            </td>
+            <td>
+                <div>{{ player.player_id }}</div>
+            </td>
+            <td>
+                <div>{{ player.is_staff }}</div>
+            </td>
+            <td>
+                <div>{{ player.is_activate }}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>-->

@@ -1,0 +1,89 @@
+section {
+    background-image: url("../../assets/img/example-news.png");
+    height: 70%;
+    margin-top: 80px;
+    width: 100%;
+    @media screen and (max-width: 500px) {
+        height: 100%;
+    }
+}
+
+.register {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 40px;
+        padding-top: 3%;
+        color: white;
+    }
+    form {
+        margin-top: 50px;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        .form-group {
+            text-align: center;
+            margin: 10px 0;
+            float: right;
+            width: 100%;
+            label {
+                line-height: 30px;
+                font-size: 20px;
+                @media screen and (max-width: 500px) {
+                    width: 100%;
+                }
+            }
+            .form-control {
+                float: right;
+                width: 70%;
+                @media screen and (max-width: 500px) {
+                    width: 100%;
+                }
+            }
+            .btn {
+                border: 0px;
+                /* cursor: pointer; */
+                display: inline-block;
+                vertical-align: middle;
+                padding: 6px 1em;
+                border-radius: 2px;
+                text-align: center;
+                text-shadow: none;
+                text-decoration: none;
+                cursor: pointer;
+                -moz-appearance: none;
+                color: black;
+                font-size: 1.3em;
+                background-color: red;
+                &:hover {
+                    box-shadow: 3px 3px 5px #888888;
+                }
+            }
+            p {
+                margin-top: 10px;
+                .link-register {
+                    cursor: pointer;
+                    color: black;
+                    text-decoration: none;
+                    &:hover {
+                        color: red;
+                    }
+                }
+                .forgot-password {
+                    color: black;
+                    text-decoration: none;
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 800px) {
+            width: 80%;
+        }
+    }
+}

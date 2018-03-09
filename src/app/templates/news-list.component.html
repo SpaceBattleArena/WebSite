@@ -1,0 +1,145 @@
+<div class="card card-cascade narrower">
+    <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+        <div>
+            <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"><i class="fa fa-th-large mt-0"></i></button>
+            <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"><i class="fa fa-columns mt-0"></i></button>
+        </div>
+        <a class="white-text mx-3" href="">Table name</a>
+        <div>
+            <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"><i class="fa fa-pencil mt-0"></i></button>
+            <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"><i class="fa fa-remove mt-0"></i></button>
+            <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button"><i class="fa fa-info-circle mt-0"></i></button>
+        </div>
+    </div>
+    <div class="px-4">
+        <div class="table-wrapper">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>
+                            <input id="checkbox" type="checkbox">
+                            <label class="mr-2 label-table" for="checkbox"></label>
+                        </th>
+                        <th class="th-lg" *ngFor="let head_value of headValues"><a>{{ head_value }}</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" id="checkbox0">
+                            <label class="label-table" for="checkbox0"></label>
+                        </th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>markotto@gmail.com</td>
+                        <td>USA</td>
+                        <td>San Francisco</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" id="checkbox1">
+                            <label class="label-table" for="checkbox1"></label>
+                        </th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>jacobt@gmail.com</td>
+                        <td>France</td>
+                        <td>Paris</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" id="checkbox2">
+                            <label class="label-table" for="checkbox2"></label>
+                        </th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>larrybird@gmail.com</td>
+                        <td>Germany</td>
+                        <td>Berlin</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" id="checkbox3">
+                            <label class="label-table" for="checkbox3"></label>
+                        </th>
+                        <td>Paul</td>
+                        <td>Topolski</td>
+                        <td>@P_Topolski</td>
+                        <td>ptopolski@gmail.com</td>
+                        <td>Poland</td>
+                        <td>Warsaw</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" id="checkbox4">
+                            <label class="label-table" for="checkbox4"></label>
+                        </th>
+                        <td>Anna</td>
+                        <td>Doe</td>
+                        <td>@andy</td>
+                        <td>annadoe@gmail.com</td>
+                        <td>Spain</td>
+                        <td>Madrid</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--<p _ngcontent-c1 class="table-name">news list</p>
+
+<div class="add-news-button" (click)="toggle_add_news()">
+    <p>Add News</p>
+</div>
+
+<div _ngcontent-c1 id='table-player' ng-model="table_player_html">
+
+    <table _ngcontent-c1 class="list">
+        <thead _ngcontent-c1 class="fields">
+            <tr _ngcontent-c1>
+                <th _ngcontent-c1>
+                    <div _ngcontent-c1>actions</div>
+                </th>
+                <th _ngcontent-c1 *ngFor="let head_value of head_values">
+                    <div _ngcontent-c1>{{ head_value }}</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody _ngcontent-c1 class="players-list">
+            <tr _ngcontent-c1 *ngFor="let body_value of body_values; let i = index" [attr.data-index]="i">
+                <td _ngcontent-c1 class="actions">
+                    <p _ngcontent-c1 id="news_modify_{{i}}" class="btn-table modify" (click)="modify(body_values[i], i)"><i _ngcontent-c1 class="fa fa-pencil" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="news_delete_{{i}}" class="btn-table delete" (click)="delete(body_value[0])"><i _ngcontent-c1 class="fa fa-trash" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="news_valid_{{i}}" class="btn-table valid" (click)="valid_modifications([i])" style="display:none;"><i _ngcontent-c1 class="fa fa-check" aria-hidden="true"></i></p>
+                    <p _ngcontent-c1 id="news_cancel_{{i}}" class="btn-table cancel" (click)="cancel_modifications(i)" style="display:none;"><i _ngcontent-c1 class="fa fa-close" aria-hidden="true"></i></p>
+                </td>
+                <td _ngcontent-c1 *ngFor="let val of body_value; let j = index" [attr.data-index]="j">
+                    <div _ngcontent-c1 id="news_display_{{i}}_{{j}}" class="player_display">{{ val }}</div>
+                    <div _ngcontent-c1 id="news_modification_{{i}}_{{j}}" class="player_modification" style="display:none;"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="create-news" id="create-news_id" style="display:none;">
+    <div class="create-news__content">
+        <p _ngcontent-c1 class="news-text">Add News</p>
+        <div class="news-add" _ngcontent-c1>
+            <input type="number" [(ngModel)]="new_article.ID" name="id" placeholder="id" style="display:none;">
+            <input _ngcontent-c1 type="text" [(ngModel)]="new_article.Title" name="title" placeholder="title" id="add-title">
+            <textarea _ngcontent-c1 [(ngModel)]="new_article.Description" name="description" placeholder="description" id="add-description"></textarea>
+            <input _ngcontent-c1 type="text" [(ngModel)]="new_article.Image" name="image" placeholder="image" id="add-image">
+            <input _ngcontent-c1 type="text" [(ngModel)]="new_article.slug" name="slug" placeholder="slug" id="add-slug">
+            <div class="create-news__content__buttons">
+                <p class="create-news__content__buttons__cancel" (click)="toggle_add_news()">Cancel</p>
+                <p class="create-news__content__buttons__valid" (click)="add_article()">Validate</p>
+            </div>
+        </div>
+    </div>
+</div>-->

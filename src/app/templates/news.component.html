@@ -1,0 +1,28 @@
+<headerClient>
+</headerClient>
+
+<section class="planet-section" style="margin-bottom: 120px;">
+    <div class="container with-light-line-and-glow w-container ">
+        <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+
+            <div class="tabs-content w-tab-content">
+                <div data-w-tab="The Moon" class="tab-pane w-tab-pane w--tab-active news_block" style="opacity: 1; transition: opacity 300ms;padding-left: 288px;">
+                    <div class="destination-heading">
+                        <div data-w-id="08584a36-58d3-66f1-4cb5-adbf018e1c99" class="orange-divider reversed" style="will-change: transform;transform: translateX(-30px) translateY(0px) translateZ(0px) scaleX(1.3) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                            <div class="third upper">
+                                <div class="tiny-orange-call-out"></div>
+                            </div>
+                        </div>
+                        <h4 class="heading-3" *ngIf="article.Title != undefined">{{article.Title}}</h4>
+                    </div>
+                    <div class="destination__description news_text" style="max-width: 92%;" *ngIf="article.Description != undefined" [innerHTML]="article.Description">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left-side-white left-side-white--news" style="margin-top: 70px;max-height:unset;"></div>
+    </div>
+</section>
+<img src="http://localhost:3000/{{article.Slug}}" alt="image article" class="image-article" id="image-article" />
+
+<logister></logister>

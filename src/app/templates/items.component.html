@@ -1,0 +1,180 @@
+<admin></admin>
+
+<main>
+    <div class="container-fluid" style="width:90%;">
+        <div class="card card-cascade narrower" style="margin-bottom: 20px;">
+            <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                <div></div>
+                <a class="white-text mx-3" style="text-transform: uppercase;">{{ slug }}</a>
+                <div>
+                    <button class="btn btn-outline-white btn-rounded btn-sm px-2" type="button" (click)="toggleAdding()"><i class="fa fa-plus mt-0"></i></button>
+                </div>
+            </div>
+            <div class="px-4">
+                <div class="table-wrapper">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a>Actions</a>
+                                </th>
+                                <th class="th-lg" *ngFor="let head_value of headValues"><a>{{ head_value }}</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let body_value of bodyValues; let i = index" [attr.data-index]="i">
+                                <th scope="row">
+                                    <a class="btn-table modify" (click)="modify(i)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a class="btn-table delete" (click)="alert_delete(body_value[0])"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                </th>
+                                <td *ngFor="let val of body_value; let j = index" [attr.data-index]="j" style="max-width: 200px; max-height: 200px;overflow-x:hidden;font-size: 12px;">
+                                    <img *ngIf="j === 4; else noImage" src="{{val}}" alt="{{val}}" class="admin-image" />
+                                    <ng-template #noImage>
+                                        {{ val }}
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="add-form__screen--black" id="add-new-item-screen"></div>
+<div class="add-form" id="add-new-item" *ngIf="slug == 'news'; else playersBlock">
+    <div class="card card-cascade narrower">
+        <div class="view gradient-card-header blue-gradient">
+            <h4 class="h4-responsive">Adding News</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col" id="form_add_item">
+                    <div class="md-form">
+                        <input id="title" type="text" [(ngModel)]="new_article.Title" onclick="moveLabel('title_label')" />
+                        <label for="title" id="title_label">Title</label>
+                    </div>
+                    <div class="md-form">
+                        <!--<textarea id="description" type="text" [(ngModel)]="new_article.Description" onclick="moveLabel('description_label')"></textarea>
+                        <label for="description" id="description_label">Description</label>-->
+                        <editor [(ngModel)]="new_article.Description"></editor>
+                    </div>
+                    <div class="file-field" style="margin-bottom: 30px;">
+                        <h4 class="h4-responsive">Image</h4>
+                        <div class="btn btn-primary btn-sm waves-light waves-effect">
+                            <span>Choose an image</span>
+                            <input type="file" (change)="fileChange($event)" />
+                        </div>
+                        <div class="file-path-wrapper" style="width:67%;display:inline-block;">
+                            <input *ngIf="new_article.Slug != null; else noLoadImage" type="text" placeholder="Upload your image" [(ngModel)]="new_article.Slug.name" />
+                            <ng-template #noLoadImage>
+                                <input type="text" placeholder="Upload your image" />
+                            </ng-template>
+                            <div class="preloader-wrapper" style="margin-left:15px;">
+                                <img src="" style="width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="text-center"><button class="btn btn-danger" type="button" (click)="cancelAdding()">Cancel</button><button class="btn btn-primary" type="button" (click)="addItem()">submit</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #playersBlock>
+    <div class="add-form" id="add-new-item">
+        <div class="card card-cascade narrower">
+            <div class="view gradient-card-header blue-gradient">
+                <h4 class="h4-responsive">Adding Player</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col" id="form_add_item">
+                        <div class="md-form">
+                            <input id="username" type="text" [(ngModel)]="new_user.Username" onclick="moveLabel('username_label')" />
+                            <label for="username" id="username_label">Username</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="email" type="email" [(ngModel)]="new_user.Email" onclick="moveLabel('email_label')" />
+                            <label for="email" id="email_label">Email</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="password" type="password" [(ngModel)]="new_user.Password" onclick="moveLabel('password_label')" />
+                            <label for="password" id="password_label">Password</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="arena_id" for="power">Arena</label>
+                            <select id="arena_id" class="form-control select-form" name="arena" [(ngModel)]="new_user.Arena_id">
+                                <option value=0>Arena 1</option>
+                                <option value=1>Arena 2</option>
+                                <option value=2>Arena 3</option>
+                                <option value=3>Arena 4</option>
+                                <option value=4>Arena 5</option>
+                                <option value=5>Arena 6</option>
+                                <option value=6>Arena 7</option>
+                                <option value=7>Arena 8</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar_id" for="power">Avatar</label>
+                            <select id="avatar_id" class="form-control select-form" name="arena" [(ngModel)]="new_user.Avatar_id">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                                <option value=6>6</option>
+                                <option value=7>7</option>
+                                <option value=8>8</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mr-3">
+                            <input id="is_staff" type="checkbox" [(ngModel)]="new_user.Is_staff">
+                            <label for="is_staff">Is Staff</label>
+                        </div>
+                        <div class="form-group mr-3">
+                            <input id="is_activate" type="checkbox" [(ngModel)]="new_user.Is_activate">
+                            <label for="is_activate">Is Activate</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center"><button class="btn btn-danger" type="button" (click)="cancelAdding()">Cancel</button><button class="btn btn-primary" type="button" (click)="addItem()">submit</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class="modal fade show" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">{{ alertModalTitle }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+            </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                {{ alertModalDescription }}
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" data-dismiss="modal" (click)="cancel()">No</button>
+                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" (click)="delete(idToDelete)">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<logister></logister>

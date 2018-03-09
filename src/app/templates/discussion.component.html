@@ -1,0 +1,31 @@
+<headerClient></headerClient>
+
+<section class="forum">
+    <p>{{ discussion.title }}</p>
+
+    <div class="col-md-3">
+        <h1>User</h1>
+    </div>
+    <div class="col-md-7">
+        <h1>Message</h1>
+    </div>
+    <div class="col-md-2">
+        <h1>Date</h1>
+    </div>
+    <div *ngFor="let message of messages">
+        <div class="col-md-3">
+            <p class="forum-list">{{message.author_id}}</p>
+        </div>
+        <div class="col-md-7">
+            <p class="forum-list">{{message.text}}</p>
+        </div>
+        <div class="col-md-2">
+            <p class="forum-list">{{message.post_date}}</p>
+        </div>
+    </div>
+
+    <div class="col-md-10"><input class="forum-answer" style="width: 100%" [(ngModel)]="new_message.text"></div>
+    <div class="col-md-2"><button class="btn btn-default forum-answer" (click)="post_message()">Answers</button></div>
+</section>
+
+<logister></logister>
