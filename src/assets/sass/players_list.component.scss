@@ -1,0 +1,94 @@
+.table-name {
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+    font-variant: small-caps;
+    border-bottom: 1px solid #848484;
+    margin-bottom: 15px;
+    position: absolute;
+    width: 69%;
+    background-color: #666666;
+    border-top-left-radius: 10px;
+}
+
+.table-name.large {
+    width: 89%;
+}
+
+div#table-player {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 50px;
+}
+
+table.list {
+    background-color: #F44336;
+    color: white;
+    th {
+        padding: 10px 10px;
+        font-family: Exo, sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.25;
+        font-variant: small-caps;
+        border: 1px solid black;
+    }
+    td {
+        padding: 10px 10px;
+        border: 1px solid black;
+        .btn-table {
+            display: inline;
+        }
+        .btn-table.modify {
+            border-radius: 0;
+            border-right: 1px solid black;
+        }
+        i.fa {
+            width: 46%;
+            padding-left: 12%;
+        }
+        i.fa-pencil {
+            &:hover {
+                color: #4CAF50;
+            }
+        }
+        i.fa-trash {
+            &:hover {
+                color: #2196F3;
+            }
+        }
+        i.fa-plus {
+            width: fit-content;
+            padding: 0;
+            padding-left: 38%;
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+        input {
+            color: black;
+        }
+    }
+    tbody {
+        tr.dark {
+            background-color: #B71C1C;
+        }
+        tr {
+            background-color: #D32F2F;
+            &:hover {
+                background-color: #F44336;
+            }
+        }
+    }
+    .actions {
+        padding: 0;
+    }
+    .actions.add div {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #00C853;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}

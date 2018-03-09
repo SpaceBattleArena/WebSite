@@ -1,0 +1,41 @@
+<header>
+    <div class="nav-header" id="nav-header">
+        <a id="hamburger-icon" title="Menu" onclick="displayNavAdmin()">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+        </a>
+        <p class="nav-header-text">Space Conflict Admin Panel</p>
+        <div class="small-nav__right-side" *ngIf="currentUser !== null && currentUser !== undefined; else connectBlock">
+            <i class="fa fa-user text" style="margin-right: 15px;"></i>
+            <a class="small-nav__link" [routerLink]="['/profil']" style="color: white">{{currentUser.Name}}</a>
+            <a class="small-nav__link" [routerLink]="['/logout']" href="#login" style="color: white">Log out</a>
+        </div>
+        <ng-template #connectBlock>
+            <div class="small-nav__right-side">
+                <i class="fa fa-user text" style="margin-right: 15px;"></i>
+                <a class="small-nav__link" onclick="display_logister()" href="#login" style="color: white">Account</a>
+            </div>
+        </ng-template>
+    </div>
+    <div id="slide-out" class="side-nav fixed sn-bg-4" style="">
+        <ul class="custom-scrollbar list-unstyled">
+            <li class="logo-sn waves-effect">
+                <a href="/" class="pl-0"><img src="assets/img/logo_sc.png"></a>
+            </li>
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin"><i class="fa fa-line-chart text"></i>Dashboard</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin/players"><i class="fa fa-user text"></i>Players</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin/news"><i class="fa fa-newspaper-o text"></i>News</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin"><i class="fa fa-wpforms text"></i>Forum<i class="fa fa-angle-down rotate-icon text"></i></a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin"><i class="fa fa-shopping-basket text"></i>Shop<i class="fa fa-angle-down rotate-icon text"></i></a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin/smithy"><i class="icon ion-hammer text"></i>Smithy<br></a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin/cards"><i class="fa fa-address-card-o text"></i>Cards</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r text" href="/admin/decks"><i class="fa fa-list-ol text"></i>Decks</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="sidenav-overlay" style="display: none; opacity: 0;" onclick="hiddeNavAdmin()"></div>
+</header>

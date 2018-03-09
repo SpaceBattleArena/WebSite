@@ -1,0 +1,52 @@
+<div class="small-nav">
+    <div class="container w-container">
+        <div class="small-nav__left-side">
+            <img src="assets/img/rocket.png" class="nav-icon">
+            <a href="#" class="small-nav__link">About</a>
+        </div>
+        <div class="small-nav__right-side" *ngIf="currentUser !== null && currentUser !== undefined; else connectBlock">
+            <img src="assets/img/profile-icon.svg" class="nav-icon-profile">
+            <a class="small-nav__link" [routerLink]="['/profil']">{{currentUser.Name}}</a>
+            <a class="small-nav__link" [routerLink]="['/logout']" href="#login">Log out</a>
+        </div>
+        <ng-template #connectBlock>
+            <div class="small-nav__right-side">
+                <img src="assets/img/profile-icon.svg" class="nav-icon-profile">
+                <a class="small-nav__link" onclick="display_logister()" style="color: #5b769b;">Account</a>
+            </div>
+        </ng-template>
+    </div>
+</div>
+<div class="container with-line-above-astro w-container" id="nav">
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-w-id="b44ef363-88d7-8d9d-eee5-8f5959dbbbe4" class="main-nav w-nav">
+        <a [routerLink]="['/']" class="main-nav__logo w-nav-brand">
+            <img src="assets/img/logo_sc.png" width="250">
+        </a>
+        <a href="" data-w-id="42db8c63-ade2-1301-a3de-e16165f5a41f" class="main-nav__cta w-hidden-tiny w-inline-block">
+            <div>Download</div>
+            <div class="corner-upper-left"></div>
+            <div class="corner-upper-right"></div>
+            <div class="corner-bottom-right"></div>
+            <div class="corner-bottom-left"></div>
+        </a>
+        <nav role="navigation" class="nav-menu w-nav-menu">
+            <a [routerLink]="['/news']" class="main-nav__link w-nav-link">News</a>
+            <a [routerLink]="['/shop']" class="main-nav__link w-nav-link">Shop</a>
+            <a [routerLink]="['/smithy']" class="main-nav__link w-nav-link">Smithy</a>
+            <a [routerLink]="['/forum']" class="main-nav__link w-nav-link">Forum</a>
+            <div class="corner-upper-right w-hidden-main"></div>
+            <div class="corner-bottom-right w-hidden-main"></div>
+            <div class="corner-bottom-left w-hidden-main"></div>
+            <div class="corner-upper-left w-hidden-main"></div>
+        </nav>
+        <div class="main-nav__menu-button w-nav-button">
+            <div class="corner-upper-left"></div>
+            <div class="corner-upper-right"></div>
+            <div class="corner-bottom-right"></div>
+            <div class="corner-bottom-left"></div>
+            <div data-w-id="04d1347d-d036-b32e-985c-25a11a43abf0" class="line-1"></div>
+            <div data-w-id="b4dd2ab0-0b56-54cf-bcba-3ad19452249b" class="line-2"></div>
+            <div data-w-id="ce7788a7-05e8-d2d5-6508-f5b846f0486d" class="line-3"></div>
+        </div>
+    </div>
+</div>

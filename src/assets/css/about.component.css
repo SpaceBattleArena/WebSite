@@ -1,0 +1,23 @@
+/*styles for home content only*/
+div#about {
+  margin-top: 100px; }
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px; }
+
+.persons {
+  margin-bottom: 30px; }
+
+.hexagon {
+  width: 160px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 99%, 0 75%, 0 25%);
+  margin: 0 auto; }
+
+.row {
+  display: flex; }
+
+.second {
+  width: 77%;
+  margin: 0 auto; }

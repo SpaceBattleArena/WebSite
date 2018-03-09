@@ -1,0 +1,25 @@
+.article {
+    width: 100%;
+    background-color: rgb(214, 214, 214);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .article__content {
+        width: 80%;
+        margin: 80px auto 40px auto;
+        background-color: white;
+        .article__content__title {
+            text-align: center;
+            font-size: 30px;
+            padding: 20px 0;
+        }
+        .article__content__image {
+            width: 50%;
+            margin-left: 25%;
+        }
+        .article__content__description {
+            width: 95%;
+            margin: 20px auto;
+            padding-bottom: 20px;
+        }
+    }
+}

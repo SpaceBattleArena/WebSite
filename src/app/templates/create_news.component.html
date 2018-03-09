@@ -1,0 +1,9 @@
+<div class="create-news">
+    <p _ngcontent-c1 class="news-text">Add News</p>
+    <div class="news-add" _ngcontent-c1>
+        <input _ngcontent-c1 type="text" [(ngModel)]="new_article.title" name="title" placeholder="title" id="add-title">
+        <textarea _ngcontent-c1 [(ngModel)]="new_article.description" name="description" placeholder="description" id="add-description"></textarea>
+        <input _ngcontent-c1 type="file" [(ngModel)]="new_article.image" name="image" placeholder="image" id="add-image">
+        <i _ngcontent-c1 class="fa fa-plus" aria-hidden="true" (click)="add_article()"></i>
+    </div>
+</div>

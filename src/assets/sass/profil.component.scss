@@ -1,0 +1,139 @@
+section.profil {
+    display: grid;
+    margin-top: 80px;
+    .user-information {
+        padding: 70px 0;
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid grey;
+        background-image: url("../../assets/img/example-news.png");
+        .user-image {
+            margin: 0 auto;
+            display: flex;
+            width: 30%;
+            background-color: #ffffff59;
+            padding: 30px 0;
+            img {
+                border-radius: 50%;
+                margin-left: 30px;
+            }
+            .information {
+                width: 50%;
+                p.username {
+                    text-align: center;
+                    margin-top: 20%;
+                    color: black;
+                    font-size: 20px;
+                }
+                p.rank {
+                    text-align: center;
+                    margin-top: 20px;
+                    color: black;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .links {
+        padding: 40px 0;
+        text-align: center;
+        display: flex;
+        width: 70%;
+        margin: 0 auto;
+        .ring {
+            margin: 0 auto;
+            border: 1px solid black;
+            border-radius: 50%;
+            height: 120px;
+            width: 120px;
+            background-color: #d3d3d378;
+            cursor: pointer;
+            &:hover {
+                background-color: red;
+                p {
+                    color: white;
+                }
+            }
+            p {
+                text-align: center;
+                margin: 45% auto 0 auto;
+            }
+        }
+    }
+}
+
+.profil-content {
+    border: 1px solid grey;
+    padding-top: 50px;
+    h2 {
+        margin-bottom: 50px;
+        font-size: 25px;
+        text-align: center;
+    }
+    .game {
+        padding: 10px 0;
+    }
+    .win {
+        background-color: palegreen;
+    }
+    .loose {
+        background: palevioletred;
+    }
+    ul.list {
+        display: flex;
+        li.card {
+            width: 200px;
+            margin: 10px auto;
+            img.card-img {
+                width: 100%;
+            }
+            p.name {
+                text-align: center;
+            }
+        }
+        li.deck {
+            width: 200px;
+            margin: 10px auto;
+            img.deck-img {
+                width: 100%;
+            }
+            p.name {
+                text-align: center;
+            }
+        }
+    }
+}
+
+#games-hystory {
+    display: none;
+    .game {
+        display: flex;
+        p.result {
+            margin: 0 auto;
+        }
+        .game-info {
+            display: flex;
+            margin: 0 auto;
+        }
+        .reward {
+            display: flex;
+            margin: 0 auto;
+        }
+    }
+}
+
+#cards-list {
+    display: none;
+}
+
+#skins-list {
+    display: none;
+}
+
+#decks-list {
+    display: none;
+}
+
+.show {
+    display: block;
+}

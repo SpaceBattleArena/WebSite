@@ -1,0 +1,58 @@
+<headerClient></headerClient>
+
+<div class="container" style="margin-top: 80px">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>FORUMS</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>BLABLA</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                General
+            </div>
+            <div class="col-md-6">
+                Last Description blablablablablabla
+            </div>
+            <div class="col-md-2">
+                Last Message slkdjaksldjasdl at 32:45
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Nb Responses</th>
+                <th>Last Message</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let discussion of allDiscussions" [routerLink]="['/forum', discussion.id]">
+                <td>{{discussion.title}}</td>
+                <td>{{discussion.author_id}}</td>
+                <td>{{discussion.nb_response}}</td>
+                <td>{{discussion.last_message}}</td>
+                <td>{{discussion.created}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="add-discussion">
+    <div class="add-discussion__content">
+        <input class="add-discussion__content__discussion-title" type="text" [(ngModel)]="new_discussion.title" name="title" placeholder="title" id="add-title">
+        <textarea class="add-discussion__content__discussion-text" [(ngModel)]="new_message.text" name="text" placeholder="text" id="add-text"></textarea>
+        <p (click)="add_discussion()">create</p>
+    </div>
+</div>
+
+<logister></logister>

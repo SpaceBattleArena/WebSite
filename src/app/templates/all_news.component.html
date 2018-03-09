@@ -1,0 +1,160 @@
+<headerClient></headerClient>
+
+<div class="container container--news_list">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-6 news_item news_item--large" *ngIf="displayTab[0] != undefined">
+            <a href="/news/{{ displayTab[0].ID }}">
+                <div class="row news_item__image large">
+                    <div class="col">
+                        <!--Ajouter l'image-->
+                        <div class="news_item__img" id="news_item__img_0" style="{{fillImage('0')}}"></div>
+                    </div>
+                </div>
+                <div class="row news_item__informations large">
+                    <div class="col">
+                        <div class="news_item__informations__container">
+                            <h3 class="h3_news_list">{{ displayTab[0].Title }}</h3>
+                            <p class="news_list_desc" [innerHTML]="displayTab[0].Description"></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <div class="row" *ngIf="displayTab[1] != undefined">
+                <div class="col news_item top">
+                    <a href="/news/{{ displayTab[1].ID }}">
+                        <div class="row news_item__image">
+                            <div class="col">
+                                <div class="news_item__img" id="news_item__img_1" style="{{fillImage('1')}}"></div>
+                            </div>
+                        </div>
+                        <div class="row news_item__informations">
+                            <div class="col">
+                                <div class="news_item__informations__container">
+                                    <h5 class="h5_news_list">{{ displayTab[1].Title }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayTab[2] != undefined">
+                <div class="col news_item bottom">
+                    <a href="/news/{{ displayTab[2].ID }}">
+                        <div class="row news_item__image">
+                            <div class="col">
+                                <div class="news_item__img" id="news_item__img_2" style="{{fillImage('2')}}"></div>
+                            </div>
+                        </div>
+                        <div class="row news_item__informations">
+                            <div class="col">
+                                <div class="news_item__informations__container">
+                                    <h5 class="h5_news_list">{{ displayTab[2].Title }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <div class="row" *ngIf="displayTab[3] != undefined">
+                <div class="col news_item top">
+                    <a href="/news/{{ displayTab[3].ID }}">
+                        <div class="row news_item__image">
+                            <div class="col">
+                                <div class="news_item__img" id="news_item__img_3" style="{{fillImage('3')}}"></div>
+                            </div>
+                        </div>
+                        <div class="row news_item__informations">
+                            <div class="col">
+                                <div class="news_item__informations__container">
+                                    <h5 class="h5_news_list">{{ displayTab[3].Title }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayTab[4] != undefined">
+                <div class="col news_item bottom">
+                    <a href="/news/{{ displayTab[4].ID }}">
+                        <div class="row news_item__image">
+                            <div class="col">
+                                <div class="news_item__img " id="news_item__img_4" style="{{fillImage('4')}}"></div>
+                            </div>
+                        </div>
+                        <div class="row news_item__informations ">
+                            <div class="col ">
+                                <div class="news_item__informations__container ">
+                                    <h5 class="h5_news_list ">{{ displayTab[4].Title }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col">
+            <nav aria-label="pagination example">
+                <ul class="pagination pagination-circle pg-blue mb-0">
+
+                    <!--First-->
+                    <li class="page-item disabled" *ngIf="param === 1; else activeFirst"><a class="page-link next-last">First</a></li>
+                    <ng-template #activeFirst>
+                        <li class="page-item"><a class="page-link next-last" href="/news?p=1">First</a></li>
+                    </ng-template>
+
+                    <!--Arrow left-->
+                    <li class="page-item disabled" *ngIf="param === 1; else activePrevious">
+                        <a class="page-link next-last" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <ng-template #activePrevious>
+                        <li class="page-item">
+                            <a class="page-link next-last" aria-label="Previous" href="/news?p={{param-1}}">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    </ng-template>
+
+                    <!--Numbers-->
+                    <li class="page-item" *ngFor="let item of tabNews; let i = index">
+                        <a class="page-link active" *ngIf="param === i+1; else noActive" href="/news?p={{i+1}}">{{i+1}}</a>
+                        <ng-template #noActive><a class="page-link" href="/news?p={{i+1}}">{{i+1}}</a></ng-template>
+                    </li>
+
+                    <!--Arrow right-->
+                    <li class="page-item disabled" *ngIf="param === sizePagination; else activeNext">
+                        <a class="page-link next-last" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                    <ng-template #activeNext>
+                        <li class="page-item">
+                            <a class="page-link next-last" aria-label="Next" href="/news?p={{param+1}}">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ng-template>
+
+                    <!--Last-->
+                    <li class="page-item disabled" *ngIf="param === sizePagination; else activeLast"><a class="page-link next-last">Last</a></li>
+                    <ng-template #activeLast>
+                        <li class="page-item"><a class="page-link next-last" href="/news?p={{sizePagination}}">Last</a></li>
+                    </ng-template>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<logister></logister>

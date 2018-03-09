@@ -1,0 +1,210 @@
+.number_total {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.black-skin .side-nav .collapsible li .collapsible-header.active,
+.black-skin .side-nav .collapsible li .collapsible-header.text,
+.black-skin .side-nav .collapsible li .collapsible-header .text {
+    font-size: 1rem;
+}
+
+.black-skin .side-nav .collapsible li .collapsible-header.active,
+.black-skin .side-nav .collapsible li .collapsible-header:hover {
+    background-color: #ef480e;
+}
+
+.side-nav .collapsible .icon {
+    margin-right: 13px;
+}
+
+.nav-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-color: #212529;
+    display: flex;
+    color: white;
+}
+
+.nav-header-text {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.nav-header.active {
+    right: 0;
+    width: 100%;
+}
+
+#hamburger-icon {
+    width: 100px;
+    height: 20px;
+    position: relative;
+    display: block;
+    margin: 20px;
+}
+
+#hamburger-icon .line {
+    display: block;
+    background: #ecf0f1;
+    width: 30px;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    border-radius: 4px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+
+#hamburger-icon .line.line-1 {
+    top: 0;
+}
+
+#hamburger-icon .line.line-2 {
+    top: 50%;
+}
+
+#hamburger-icon .line.line-3 {
+    top: 100%;
+}
+
+#hamburger-icon:hover .line-1,
+#hamburger-icon:focus .line-1 {
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+}
+
+#hamburger-icon:hover .line-3,
+#hamburger-icon:focus .line-3 {
+    transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    -moz-transform: translateY(4px);
+}
+
+#hamburger-icon.active .line-1 {
+    transform: translateY(10px) translateX(0) rotate(45deg);
+    -webkit-transform: translateY(10px) translateX(0) rotate(45deg);
+    -moz-transform: translateY(10px) translateX(0) rotate(45deg);
+}
+
+#hamburger-icon.active .line-2 {
+    opacity: 0;
+}
+
+#hamburger-icon.active .line-3 {
+    transform: translateY(-10px) translateX(0) rotate(-45deg);
+    -webkit-transform: translateY(-10px) translateX(0) rotate(-45deg);
+    -moz-transform: translateY(-10px) translateX(0) rotate(-45deg);
+}
+
+.side-nav.fixed.active {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+.side-nav.fixed {}
+
+admin .small-nav__right-side {
+    position: absolute;
+    right: 20px;
+    margin-top: 17px;
+}
+
+admin .small-nav__link {
+    color: white;
+}
+
+.add-form__screen--black {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all .15s ease-out;
+    display: none;
+    opacity: 0;
+}
+
+.add-form__screen--black.show {
+    display: block;
+    opacity: 1;
+}
+
+.add-form {
+    width: 50%;
+    position: fixed;
+    top: 10%;
+    left: 25%;
+    transition: all .15s ease-out;
+    display: none;
+    opacity: 0;
+}
+
+.add-form.show {
+    display: block;
+    opacity: 1;
+}
+
+.black-skin .add-form .btn-primary {
+    background-color: #007bff;
+}
+
+.black-skin .add-form .btn-primary:hover {
+    background-color: #0062cc;
+}
+
+.add-form textarea {
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0;
+}
+
+.add-form textarea:focus,
+.black-skin .add-form input:focus {
+    border: none;
+    border-bottom: 1px solid #0062cc;
+    border-radius: 0;
+    outline: none;
+}
+
+
+/*.add-form textarea:focus+label,
+.black-skin .add-form input:focus+label {
+    color: #0062cc;
+    transform: translateY(-33px);
+    font-size: 13px;
+}*/
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.table-wrapper {
+    overflow-y: scroll;
+}
+
+.form-control.select-form {
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0;
+    outline: 0;
+    height: 2.1rem;
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: none;
+    box-sizing: content-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    padding: 0;
+}
+
+.form-control.select-form:focus {
+    border: none;
+    border-bottom: 1px solid #0062cc;
+    border-radius: 0;
+    outline: none;
+}
