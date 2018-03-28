@@ -31,17 +31,17 @@ export class NewsComponent implements OnInit, OnDestroy {
                 error => {
                     console.log(error);
                 }
-            )
+            );
     }
 
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
 
-    @HostListener("window:scroll", [])
+    @HostListener('window:scroll', [])
     on_scroll() {
         console.log('t');
         let scroll = document.documentElement.scrollTop;
-        document.getElementById("image-article").style.transform = "translateY(-" + (scroll/5) + "px)";
+        document.getElementById('image-article').style.transform = 'translateY(-' + (scroll / 5) + 'px)';
     }
 }

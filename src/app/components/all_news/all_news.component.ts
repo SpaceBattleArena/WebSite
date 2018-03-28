@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 
 import { Article } from '../../models/article';
-import { ArticleService } from '../../services/news.service'
+import { ArticleService } from '../../services/news.service';
 
 @Component({
     moduleId: module.id,
@@ -56,7 +56,7 @@ export class AllNewsComponent implements OnInit {
                         // article_image.style.backgroundImage = "url(http://localhost:3000/" + this.displayTab[3].Slug + ")";
                         // article_image = document.getElementById("news_item__img_4");
                         // article_image.style.backgroundImage = "url(http://localhost:3000/" + this.displayTab[4].Slug + ")";
-                        
+
                         // let article_image: HTMLElement;
                         // for (let i = 0; i < this.displayTab.length; i += 1) {
                         //     // article_image = document.getElementById("news_item__img_"+i.toString());

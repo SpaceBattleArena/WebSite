@@ -21,12 +21,12 @@ export class HeaderComponent {
     ngOnInit(): void {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (this.currentUser) {
-            this.userService.getInformation(this.currentUser["token"])
+            this.userService.getInformation(this.currentUser['token'])
                 .subscribe(
                     resultArray => {
-                        this.is_staff = resultArray["results"]["data"][0]["Is_staff"];
+                      this.is_staff = resultArray['results']['data'][0]['Is_staff'];
                     }
-                )
+                );
         }
     }
 }

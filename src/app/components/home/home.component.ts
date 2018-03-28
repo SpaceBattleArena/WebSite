@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit {
                 mask_bottom.style.opacity = '0';
             } else {
                 value++;
-                mask_top.style.transform = "translateX(" + value * 1.1 + "%)";
-                mask_bottom.style.transform = "translateX(" + value * 1.4 + "%)";
+                mask_top.style.transform = 'translateX(' + value * 1.1 + '%)';
+                mask_bottom.style.transform = 'translateX(' + value * 1.4 + '%)';
                 spaceship.style.opacity = (value / 100).toString();
             }
         }
@@ -67,35 +67,35 @@ export class HomeComponent implements OnInit {
         let nav = document.getElementById('nav');
         let moon = document.getElementById('the-moon-below');
         let moon_mobile = document.getElementById('the-moon-below-mobile');
-        let ship = document.getElementById("spaceship");
-        let loading_section = document.getElementById("loading_section");
-        nav.style.opacity = "0";
+        let ship = document.getElementById('spaceship');
+        let loading_section = document.getElementById('loading_section');
+        nav.style.opacity = '0';
 
-        function frame(func:any) {
+        function frame(func: any) {
             if (value == 100) {
                 clearInterval(id);
-                girl.style.opacity = "0";
-                window_elem.style.opacity = "0";
-                loading_section.style.display = "none";
-                loading_bar.style.opacity = "0";
-                main.style.opacity = "1";
-                sc_heading.style.opacity = "1";
-                ship.style.opacity = "1";
+                girl.style.opacity = '0';
+                window_elem.style.opacity = '0';
+                loading_section.style.display = 'none';
+                loading_bar.style.opacity = '0';
+                main.style.opacity = '1';
+                sc_heading.style.opacity = '1';
+                ship.style.opacity = '1';
                 func.display_home();
             } else {
                 value++;
-                girl.style.transform = "translateX(" + value / 3 + "vw)";
-                window_elem.style.transform = "translateX(" + value / 4 + "vw) scaleX(" + value * 0.045 + ") scaleY(" + value * 0.045 + ")";
-                loading_bar.style.transform = "scaleX(" + value / 100 + ")";
-                moon.style.transform = "translateX(" + ((value / 2) - 50) + "vw)";
-                moon_mobile.style.transform = "translateX(" + ((value / 2) - 50) + "vw)";
+                girl.style.transform = 'translateX(' + value / 3 + 'vw)';
+                window_elem.style.transform = 'translateX(' + value / 4 + 'vw) scaleX(' + value * 0.045 + ') scaleY(' + value * 0.045 + ')';
+                loading_bar.style.transform = 'scaleX(' + value / 100 + ')';
+                moon.style.transform = 'translateX(' + ((value / 2) - 50) + 'vw)';
+                moon_mobile.style.transform = 'translateX(' + ((value / 2) - 50) + 'vw)';
                 nav.style.opacity = (value / 100).toString();
             }
         }
     }
 
     move_ship(e: MouseEvent) {
-        let ship = document.getElementById("spaceship");
+        let ship = document.getElementById('spaceship');
         let ship_size_x = ship.offsetWidth;
         let ship_size_y = ship.offsetHeight;
         let x = e.clientX;
@@ -133,9 +133,9 @@ export class HomeComponent implements OnInit {
                 this.translateYShip += 0.1;
             }
         }
-        ship.style.transform = "translateX(" + this.translateXShip + "px) translateY(" + this.translateYShip + "px) rotateZ(" + this.rotateShip + "deg)";
-        document.getElementById('the-moon-below').style.transform = "rotateZ(" + (this.rotateShip * (-1)) + "deg)";
-        document.getElementById('the-moon-below-mobile').style.transform = "rotateZ(" + (this.rotateShip * (-1)) + "deg)";
+        ship.style.transform = 'translateX(' + this.translateXShip + 'px) translateY(' + this.translateYShip + 'px) rotateZ(' + this.rotateShip + 'deg)';
+        document.getElementById('the-moon-below').style.transform = 'rotateZ(' + (this.rotateShip * (-1)) + 'deg)';
+        document.getElementById('the-moon-below-mobile').style.transform = 'rotateZ(' + (this.rotateShip * (-1)) + 'deg)';
     }
 
     // @HostListener("window:scroll", [])
@@ -157,65 +157,63 @@ export class HomeComponent implements OnInit {
     //     }
     // }
 
-    @HostListener("window:scroll", [])
+    @HostListener('window:scroll', [])
     on_scroll() {
         let scroll = document.documentElement.scrollTop;
-        document.getElementById("vr_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
-        document.getElementById("card_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
-        document.getElementById("esport_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
-        document.getElementById("war_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
+        document.getElementById('vr_heading').style.transform = 'translateX(' + (scroll / 100) + 'vw)';
+        document.getElementById('card_heading').style.transform = 'translateX(' + (scroll / 100) + 'vw)';
+        document.getElementById('esport_heading').style.transform = 'translateX(' + (scroll / 100) + 'vw)';
+        document.getElementById('war_heading').style.transform = 'translateX(' + (scroll / 100) + 'vw)';
     }
 
     vr_click() {
         console.log('click vr');
-        $('#vr').addClass("w--tab-active");
-        $('#card').removeClass("w--tab-active");
-        $('#e-sport').removeClass("w--tab-active");
-        $('#war').removeClass("w--tab-active");
+        $('#vr').addClass('w--tab-active');
+        $('#card').removeClass('w--tab-active');
+        $('#e-sport').removeClass('w--tab-active');
+        $('#war').removeClass('w--tab-active');
     }
 
     card_click() {
         console.log('click card');
-        $('#vr').addClass("w--tab-active");
-        $('#card').removeClass("w--tab-active");
-        $('#e-sport').removeClass("w--tab-active");
-        $('#war').removeClass("w--tab-active");
+        $('#vr').addClass('w--tab-active');
+        $('#card').removeClass('w--tab-active');
+        $('#e-sport').removeClass('w--tab-active');
+        $('#war').removeClass('w--tab-active');
     }
 
     war_click() {
         console.log('click war');
-        $('#vr').addClass("w--tab-active");
-        $('#card').removeClass("w--tab-active");
-        $('#e-sport').removeClass("w--tab-active");
-        $('#war').removeClass("w--tab-active");
+        $('#vr').addClass('w--tab-active');
+        $('#card').removeClass('w--tab-active');
+        $('#e-sport').removeClass('w--tab-active');
+        $('#war').removeClass('w--tab-active');
     }
 
     esport_click() {
         console.log('click esport');
-        $('#vr').addClass("w--tab-active");
-        $('#card').removeClass("w--tab-active");
-        $('#e-sport').removeClass("w--tab-active");
-        $('#war').removeClass("w--tab-active");
+        $('#vr').addClass('w--tab-active');
+        $('#card').removeClass('w--tab-active');
+        $('#e-sport').removeClass('w--tab-active');
+        $('#war').removeClass('w--tab-active');
     }
 
     ngOnInit() {
-        $('body').removeClass("fixed-sn black-skin");
-        $('body').css('background-image', "url('../../assets/img/SPACE.jpg')");
+        $('body').removeClass('fixed-sn black-skin');
+        $('body').css('background-image', 'url(\'../../assets/img/SPACE.jpg\')');
         $('body').css('background-color', 'none');
-        this.sleep(1500);
-        this.when_loading();
         this.articleService.getAll()
             .subscribe(
                 resultArray => {
-                    if (resultArray["results"]["status"] === 200) {
-                        this.allArticles = resultArray["results"]["data"];
+                    if (resultArray['results']['status'] === 200) {
+                        this.allArticles = resultArray['results']['data'];
                         let count = this.allArticles.length;
                         if (count >= 4) {
-                            this.ArticlesLimit = [this.allArticles[count-1], this.allArticles[count-2], this.allArticles[count-3], this.allArticles[count-4]]
+                            this.ArticlesLimit = [this.allArticles[count - 1], this.allArticles[count - 2], this.allArticles[count - 3], this.allArticles[count - 4]];
                         } else {
                             this.ArticlesLimit = this.allArticles;
                         }
-                        for(let i = 0; this.ArticlesLimit.length > i; i += 1) {
+                        for (let i = 0; this.ArticlesLimit.length > i; i += 1) {
                             this.ArticlesLimit[i].slug = this.ArticlesLimit[i].Title.toString().toLowerCase()
                                 .replace(/\s+/g, '-')
                                 .replace(/[^\w\-]+/g, '')
@@ -223,18 +221,20 @@ export class HomeComponent implements OnInit {
                                 .replace(/^-+/, '')
                                 .replace(/-+$/, '');
                         }
-                        let article_image = document.getElementById("article_image_0");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[0].Slug + ")";
-                        article_image = document.getElementById("article_image_1");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[1].Slug + ")";
-                        article_image = document.getElementById("article_image_2");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[2].Slug + ")";
-                        article_image = document.getElementById("article_image_3");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[3].Slug + ")";
+                        let article_image = document.getElementById('article_image_0');
+                        article_image.style.backgroundImage = 'url(http://localhost:3000/' + this.ArticlesLimit[0].Slug + ')';
+                        article_image = document.getElementById('article_image_1');
+                        article_image.style.backgroundImage = 'url(http://localhost:3000/' + this.ArticlesLimit[1].Slug + ')';
+                        article_image = document.getElementById('article_image_2');
+                        article_image.style.backgroundImage = 'url(http://localhost:3000/' + this.ArticlesLimit[2].Slug + ')';
+                        article_image = document.getElementById('article_image_3');
+                        article_image.style.backgroundImage = 'url(http://localhost:3000/' + this.ArticlesLimit[3].Slug + ')';
                         // this.sleep(1500);
                         // this.when_loading();
                     }
                 }
             );
+      this.sleep(1500);
+      this.when_loading();
     }
 }
