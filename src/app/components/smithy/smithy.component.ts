@@ -14,7 +14,13 @@ export class SmithyComponent {
     user: User[] = [];
 
     constructor(private userService: UserService) {
+    }
+
+    ngOnInit() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        //this.userService.getById(this.currentUser.id).subscribe(user => { this.user = user; });
+    }
+
+    forge() {
+        console.log('ok');
     }
 }
