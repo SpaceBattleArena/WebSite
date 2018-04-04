@@ -23,6 +23,6 @@ export class ShopComponent {
     }
 
     buy() {
-        this.cardService.buyBooster()
+        this.cardService.buyBooster(this.currentUser["token"]).subscribe((data) => console.log(data));
     }
 }

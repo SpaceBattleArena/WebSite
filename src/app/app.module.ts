@@ -34,6 +34,7 @@ import {
   DashboardComponent,
   ItemsComponent
 } from './components/admin/index';
+import {CardService} from './services/card.service';
 
 
 @NgModule({
@@ -66,7 +67,9 @@ import {
   ],
   providers: [
     AuthGuard,
-    AdminGuard],
+    AdminGuard,
+      CardService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
