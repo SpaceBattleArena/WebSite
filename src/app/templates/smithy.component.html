@@ -9,13 +9,18 @@
                     <div class="destination-heading">
                         <div class="col-md-12">
                             <div class="row">
-                                <h4 class="heading-3">First, pick a card :</h4>
+                                <h4 class="heading-3">Pick a card to forge</h4>
                             </div>
                             <div class="row">
                                 CARD LIST
                             </div>
                             <div class="row">
-                                <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="forge()">Dark</button>
+                                <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="forge()">Forge</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="alert alert-message">
+                                    You don't have enough gold to forge this card.
                                 </div>
                             </div>
                         </div>

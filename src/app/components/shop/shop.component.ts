@@ -13,6 +13,7 @@ import {CardService} from '../../services/card.service';
 export class ShopComponent {
     currentUser: User;
     user: User[] = [];
+    notEnoughGold: boolean = false;
 
     constructor(private userService: UserService, private cardService: CardService) {
         //this.userService.getById(this.currentUser.id).subscribe(user => { this.user = user; });
@@ -23,6 +24,12 @@ export class ShopComponent {
     }
 
     buy() {
-        this.cardService.buyBooster(this.currentUser["token"]).subscribe((data) => console.log(data));
+        // 45 is an imaginary booster price
+        if (this.currentUser.gold >= 45) {
+            this.notEnoughGold = false;
+            this.cardService.buyBooster(this.currentUser["token"]).subscribe((data) => console.log(data));
+        } else {
+            this.notEnoughGold = true;
+        }
     }
 }
