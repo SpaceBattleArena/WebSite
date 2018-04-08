@@ -1,6 +1,48 @@
 <headerClient>
 </headerClient>
-<div id="shop">
-    <p>Shop</p>
-</div>
+<section class="planet-section" style="margin-bottom: 120px;">
+    <div class="container with-light-line-and-glow w-container ">
+        <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+
+            <div class="tabs-content w-tab-content">
+                <div data-w-tab="The Moon" class="tab-pane w-tab-pane w--tab-active news_block" style="opacity: 1; transition: opacity 300ms;padding-left: 288px;">
+                    <div class="destination-heading">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <h4 class="heading-3">Pick a booster</h4>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_1.png">
+                                </label>
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_2.png">
+                                </label>
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_3.png">
+                                </label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="buy()">Buy</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="alert alert-danger" *ngIf="errorMessage">
+                                    {{ errorMessage }}
+                                </div>
+                                <div class="alert alert-success" *ngIf="successMessage">
+                                    Booster bought ! You now can find your cards in your collection.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left-side-white left-side-white--news" style="margin-top: 70px;max-height:unset;"></div>
+    </div>
+</section>
 <logister></logister>

@@ -9,4 +9,5 @@ export class User {
     Player_id: number;
     Is_staff: boolean;
     Is_activate: boolean;
+    gold: number;
 }
