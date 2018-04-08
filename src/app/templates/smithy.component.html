@@ -12,15 +12,55 @@
                                 <h4 class="heading-3">Pick a card to forge</h4>
                             </div>
                             <div class="row">
-                                CARD LIST
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownFactionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Select a faction
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownFactionButton">
+                                            <a class="dropdown-item" href="#">Faction A</a>
+                                            <a class="dropdown-item" href="#">Faction B</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                <div class="col-md-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownTypeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Select a type of card
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownTypeButton">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Ship</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCardButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Select a card
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownCardButton">
+                                            <a class="dropdown-item" href="#">Card A</a>
+                                            <a class="dropdown-item" href="#">Card B</a>
+                                            <a class="dropdown-item" href="#">Card C</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- TODO DISPLAY SELECTED CARD HERE-->
+                                    <!--<img src="">-->
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="forge()">Forge</button>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="alert alert-message">
-                                    You don't have enough gold to forge this card.
+                                <div class="alert alert-danger" *ngIf="errorMessage">
+                                    {{ errorMessage }}
+                                </div>
+                                <div class="alert alert-success" *ngIf="successMessage">
+                                    Booster bought ! You now can find your cards in your collection.
                                 </div>
                             </div>
                         </div>
