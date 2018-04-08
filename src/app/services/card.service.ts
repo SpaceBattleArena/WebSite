@@ -19,7 +19,7 @@ export class CardService {
         add_headers.append('Access-Control-Allow-Headers', "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding");
         let options = new RequestOptions({ headers: add_headers });
         return this.http
-            .get(this._postsURL + "cards/cards", options)
+            .get(this._postsURL + "cards", options)
             .map((response: Response) => {
                 return response.json();
             })
@@ -58,9 +58,7 @@ export class CardService {
             .catch(this.handleError);
     }
 
-    // TODO create this function
     buyBooster(token: string) {
-        console.log(token);
         let add_headers = new Headers();
         add_headers.append('Authorization', token);
         add_headers.append('Accept', 'application/json');
@@ -69,7 +67,7 @@ export class CardService {
         add_headers.append('Access-Control-Allow-Headers', "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding");
         let options = new RequestOptions({ headers: add_headers });
         return this.http
-            .get(this._postsURL + "booster/buy", options)
+            .post(this._postsURL + "booster/buy", '', options)
             .map((response: Response) => {
                 return response.json();
             })

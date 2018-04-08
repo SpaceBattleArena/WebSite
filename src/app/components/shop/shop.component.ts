@@ -13,10 +13,10 @@ import {CardService} from '../../services/card.service';
 export class ShopComponent {
     currentUser: User;
     user: User[] = [];
-    notEnoughGold: boolean = false;
+    successMessage: boolean = false;
+    errorMessage: string = '';
 
     constructor(private userService: UserService, private cardService: CardService) {
-        //this.userService.getById(this.currentUser.id).subscribe(user => { this.user = user; });
     }
 
     ngOnInit() {
@@ -24,12 +24,15 @@ export class ShopComponent {
     }
 
     buy() {
-        // 45 is an imaginary booster price
-        if (this.currentUser.gold >= 45) {
-            this.notEnoughGold = false;
-            this.cardService.buyBooster(this.currentUser["token"]).subscribe((data) => console.log(data));
-        } else {
-            this.notEnoughGold = true;
-        }
+        this.successMessage = false;
+        this.cardService.buyBooster(this.currentUser['token']).subscribe((data) => {
+            if (data['results']['status'] == 201) {
+                    this.successMessage = true;
+                } else if (data['results']['status'] == 403) {
+                    this.errorMessage = 'You don\'t have enough part to buy a booster!';
+                } else {
+                    this.errorMessage = 'An error occured, please try again later.';
+                }
+            });
     }
 }

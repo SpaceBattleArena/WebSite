@@ -12,15 +12,29 @@
                                 <h4 class="heading-3">Pick a booster</h4>
                             </div>
                             <div class="row">
-                                Booster List
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_1.png">
+                                </label>
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_2.png">
+                                </label>
+                                <label>
+                                    <input type="radio" name="booster"/>
+                                    <img class="booster" src="../../assets/img/booster_3.png">
+                                </label>
                             </div>
                             <div class="row">
                                 <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="buy()">Buy</button>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="alert alert-message">
-                                    You don't have enough gold to buy a booster.
+                                <div class="alert alert-danger" *ngIf="errorMessage">
+                                    {{ errorMessage }}
+                                </div>
+                                <div class="alert alert-success" *ngIf="successMessage">
+                                    Booster bought ! You now can find your cards in your collection.
                                 </div>
                             </div>
                         </div>
