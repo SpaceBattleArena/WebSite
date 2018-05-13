@@ -70,7 +70,7 @@ img {
     z-index: 4;
     padding-top: 100px;
     padding-bottom: 0px;
-    border-left: 1px solid #1c2e46;
+    /*border-left: 1px solid #1c2e46;*/
     background-color: transparent;
 }
 
@@ -78,7 +78,7 @@ img {
     z-index: 10;
     padding-top: 25px;
     padding-bottom: 25px;
-    border-left: 1px solid #1c2e46;
+    /*border-left: 1px solid #1c2e46;*/
 }
 
 .container.with-line-no-padding {
@@ -86,7 +86,7 @@ img {
     padding-top: 25px;
     padding-bottom: 25px;
     padding-left: 0px;
-    border-left: 1px solid #1c2e46;
+    /*border-left: 1px solid #1c2e46;*/
 }
 
 .small-nav__left-side {
@@ -689,9 +689,9 @@ img {
     height: 70%;
     max-height: 1000px;
     margin-left: -1px;
-    border-left: 1px solid #e0e0e0;
-    background-color: #fff;
-    box-shadow: 25px -25px 55px 0 rgba(160, 117, 158, .47);
+    /*border-left: 1px solid #e0e0e0;*/
+    background-color: transparent;
+    /*box-shadow: 25px -25px 55px 0 rgba(160, 117, 158, .47);*/
 }
 
 .planet-tab {
@@ -2655,7 +2655,7 @@ h4.heading-3 {
     margin-top: 10px;
     margin-bottom: 0px;
     font-family: Anton, sans-serif;
-    color: #000;
+    color: #fff;
     font-size: 78px;
     line-height: 1.2em;
     font-weight: 700;
