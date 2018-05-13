@@ -3,6 +3,10 @@ body {
   margin: 0;
   font-family: Roboto, sans-serif; }
 
+.col-md-4 {
+  padding-top: 10px;
+}
+
 md-card {
   max-width: 80%;
   margin: 2em auto; }
@@ -39,4 +43,118 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 .booster {
   width: 300px;
+  padding-bottom: 25px;
+}
+
+div.extensionName {
+  padding: 7px 0px;
+  background-color: rgba(28, 46, 70, 0.65);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+  opacity: 1;
+  transition: opacity 200ms ease, box-shadow 200ms ease, -webkit-box-shadow 200ms ease;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  font-size: 10px;
+  text-align: center;
+  max-height: 25px;
+}
+div.extensionName div.corner-upper-left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #5b769b;
+  border-left: 1px solid #5b769b;
+}
+div.extensionName div.corner-upper-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #5b769b;
+  border-right: 1px solid #5b769b;
+}
+div.extensionName div.corner-bottom-right {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #5b769b;
+  border-bottom: 1px solid #5b769b;
+}
+div.extensionName div.corner-bottom-left {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 1px solid #5b769b;
+  border-left: 1px solid #5b769b;
+}
+
+div.buyButton {
+  padding: 7px 0px;
+  background-color: rgba(28, 46, 70, 0.65);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+  opacity: 1;
+  transition: opacity 200ms ease, box-shadow 200ms ease, -webkit-box-shadow 200ms ease;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  font-size: 30px;
+  text-align: center;
+}
+div.buyButton div.corner-upper-left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #5b769b;
+  border-left: 1px solid #5b769b;
+}
+div.buyButton div.corner-upper-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #5b769b;
+  border-right: 1px solid #5b769b;
+}
+div.buyButton div.corner-bottom-right {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #5b769b;
+  border-bottom: 1px solid #5b769b;
+}
+div.buyButton div.corner-bottom-left {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 1px solid #5b769b;
+  border-left: 1px solid #5b769b;
 }

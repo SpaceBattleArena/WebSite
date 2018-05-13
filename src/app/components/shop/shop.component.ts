@@ -15,6 +15,15 @@ export class ShopComponent {
     user: User[] = [];
     successMessage: boolean = false;
     errorMessage: string = '';
+    extensions: string[] = [
+        "Terra",
+        "Luna",
+        "Black Hole",
+        "Nova",
+        "Star",
+        "Glass Hole",
+        "Centorius",
+    ];
 
     constructor(private userService: UserService, private cardService: CardService) {
     }

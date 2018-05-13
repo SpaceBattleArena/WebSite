@@ -12,29 +12,37 @@
                                 <h4 class="heading-3">Pick a booster</h4>
                             </div>
                             <div class="row">
-                                <label>
-                                    <input type="radio" name="booster"/>
-                                    <img class="booster" src="../../assets/img/booster_1.png">
-                                </label>
-                                <label>
-                                    <input type="radio" name="booster"/>
-                                    <img class="booster" src="../../assets/img/booster_2.png">
-                                </label>
-                                <label>
-                                    <input type="radio" name="booster"/>
-                                    <img class="booster" src="../../assets/img/booster_3.png">
-                                </label>
+                                <div class="col-md-4" *ngFor="let extension of extensions">
+                                    <label>
+                                        <input type="radio" name="booster"/>
+                                        <img class="booster" src="../../assets/img/booster.png">
+                                        <div class="extensionName">{{extension}}
+                                            <div class="corner-upper-left"></div>
+                                            <div class="corner-upper-right"></div>
+                                            <div class="corner-bottom-right"></div>
+                                            <div class="corner-bottom-left"></div>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+                            <Br>
                             <div class="row">
-                                <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="buy()">Buy</button>
+                                <div class="col-md-2 offset-md-10 buyButton">
+                                    <a (click)="buy()">Buy</a>
+                                    <div class="corner-upper-left"></div>
+                                    <div class="corner-upper-right"></div>
+                                    <div class="corner-bottom-right"></div>
+                                    <div class="corner-bottom-left"></div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="alert alert-danger" *ngIf="errorMessage">
-                                    {{ errorMessage }}
-                                </div>
-                                <div class="alert alert-success" *ngIf="successMessage">
-                                    Booster bought ! You now can find your cards in your collection.
+                                <div class="col-md-6 offset-md-3">
+                                    <div class="alert alert-danger" *ngIf="errorMessage">
+                                        {{ errorMessage }}
+                                    </div>
+                                    <div class="alert alert-success" *ngIf="successMessage">
+                                        Booster bought ! You now can find your cards in your collection.
+                                    </div>
                                 </div>
                             </div>
                         </div>
