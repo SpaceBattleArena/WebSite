@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class CardService {
-    private _postsURL = "http://localhost:3000/";
+    private _postsURL = "http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/";
 
     constructor(private http: Http) { }
 

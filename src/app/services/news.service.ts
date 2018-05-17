@@ -6,7 +6,7 @@ import { Article } from '../models/article';
 
 @Injectable()
 export class ArticleService {
-    private _postsURL = "http://localhost:3000/";
+    private _postsURL = "http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/";
     articles : any[] = JSON.parse(localStorage.getItem('articles')) || [];
 
     constructor(private http: Http) {
