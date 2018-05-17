@@ -7,7 +7,7 @@ import { User } from '../models/user';
 
 @Injectable()
 export class ForumService {
-    private _postsURL = "http://localhost:3000/";
+    private _postsURL = "http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/";
     private discussions : Discussion[] = JSON.parse(localStorage.getItem('discussions')) || [];
     private messages : Message[] = JSON.parse(localStorage.getItem('messages')) || [];
 
