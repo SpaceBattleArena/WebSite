@@ -1,8 +1,8 @@
 <headerClient>
 </headerClient>
 
-<section class="planet-section" style="margin-bottom: 120px;">
-    <div class="container with-light-line-and-glow w-container ">
+<div class="container with-light-line-and-glow w-container ">
+    <div class="row">
         <div data-duration-in="300" data-duration-out="100" class="w-tabs">
 
             <div class="tabs-content w-tab-content">
@@ -15,14 +15,20 @@
                         </div>
                         <h4 class="heading-3" *ngIf="article.Title != undefined">{{article.Title}}</h4>
                     </div>
-                    <div class="destination__description news_text" style="max-width: 92%;" *ngIf="article.Description != undefined" [innerHTML]="article.Description">
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="left-side-white left-side-white--news" style="margin-top: 70px;max-height:unset;"></div>
     </div>
-</section>
-<img src="http://localhost:3000/{{article.Slug}}" alt="image article" class="image-article" id="image-article" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="destination__description news_text" style="max-width: 92%;" *ngIf="article.Description != undefined" [innerHTML]="article.Description">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/{{article.Slug}}" alt="image article" class="image-article" id="image-article" />
+        </div>
+    </div>
+        <div class="left-side-white left-side-white--news" style="margin-top: 70px;max-height:unset;"></div>
+</div>
 
 <logister></logister>
