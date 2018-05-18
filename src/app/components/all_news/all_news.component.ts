@@ -84,6 +84,6 @@ export class AllNewsComponent implements OnInit {
 
     public fillImage(idElement:string) {
         let article_image = document.getElementById("news_item__img_"+idElement);
-        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.displayTab[Number(idElement)].Slug + ")";
+        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.displayTab[Number(idElement)].Slug + ")";
     }
 }

@@ -224,13 +224,13 @@ export class HomeComponent implements OnInit {
                                 .replace(/-+$/, '');
                         }
                         let article_image = document.getElementById("article_image_0");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[0].Slug + ")";
+                        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[0].Slug + ")";
                         article_image = document.getElementById("article_image_1");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[1].Slug + ")";
+                        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[1].Slug + ")";
                         article_image = document.getElementById("article_image_2");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[2].Slug + ")";
+                        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[2].Slug + ")";
                         article_image = document.getElementById("article_image_3");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[3].Slug + ")";
+                        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[3].Slug + ")";
                         // this.sleep(1500);
                         // this.when_loading();
                     }
