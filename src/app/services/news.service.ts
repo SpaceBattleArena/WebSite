@@ -24,7 +24,7 @@ export class ArticleService {
 
     getById(id: number) {
         return this.http
-            .get(this._postsURL + "article/getById/"+id.toString())
+            .get(this._postsURL + "article/"+id.toString())
             .map((response: Response) => {
                 return response.json();
             })

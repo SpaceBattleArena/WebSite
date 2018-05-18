@@ -2637,6 +2637,7 @@ h2.logister__heading {
 .news_text {
     -webkit-column-count: 1;
     column-count: 1;
+    color: white;
 }
 
 .heading-2 {

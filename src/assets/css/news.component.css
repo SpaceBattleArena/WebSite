@@ -29,11 +29,9 @@
 }
 
 .image-article {
-    position: absolute;
-    top: 180px;
     right: 5%;
     z-index: 3;
-    width: 30%;
+    width: 100%;
     -webkit-box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.85);
     box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.85);
 }
