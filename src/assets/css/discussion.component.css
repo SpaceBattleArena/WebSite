@@ -26,3 +26,12 @@ section {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.forum {
+    border: 1px solid white;
+    color: white;
+}
+
+.new-message {
+    background-color: white;
+}
