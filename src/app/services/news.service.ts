@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { Http, Response, URLSearchParams } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import "rxjs/Rx";
+import { Injectable } from '@angular/core';
+import { Http, Response, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 import { Article } from '../models/article';
 
 @Injectable()
 export class ArticleService {
-    private _postsURL = "http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/";
-    articles : any[] = JSON.parse(localStorage.getItem('articles')) || [];
+    private _postsURL = 'http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/';
+    articles: any[] = JSON.parse(localStorage.getItem('articles')) || [];
 
     constructor(private http: Http) {
 
@@ -15,7 +15,7 @@ export class ArticleService {
 
     getAll() {
         return this.http
-            .get(this._postsURL + "article/getAll")
+            .get(this._postsURL + 'article/getAll')
             .map((response: Response) => {
                 return response.json();
             })
@@ -24,7 +24,7 @@ export class ArticleService {
 
     getById(id: number) {
         return this.http
-            .get(this._postsURL + "article/"+id.toString())
+            .get(this._postsURL + 'article/' + id.toString())
             .map((response: Response) => {
                 return response.json();
             })
@@ -32,7 +32,7 @@ export class ArticleService {
     }
 
     getBySlug(slug: any) {
-        return this.articles.filter(article => { return article.slug === slug ;});
+        return this.articles.filter(article => { return article.slug === slug ; });
     }
 
     create(new_article: Article) {
@@ -42,7 +42,7 @@ export class ArticleService {
         formData.append('image', 'test');
         formData.append('articleImage', new_article.Slug);
         return this.http
-            .post(this._postsURL + "article/create", formData)
+            .post(this._postsURL + 'article/create', formData)
             .map((response: Response) => {
                 return response.json();
             })
@@ -51,12 +51,12 @@ export class ArticleService {
 
     update(article: Article) {
         let body = {
-            "id": article.ID,
-            "title": article.Title,
-            "description": article.Description,
-            "image": article.Image
-        }
-        return this.http.put(this._postsURL + "article/update", body)
+            'id': article.ID,
+            'title': article.Title,
+            'description': article.Description,
+            'image': article.Image
+        };
+        return this.http.put(this._postsURL + 'article/update', body)
             .map((response: Response) => {
                 return response.json();
             })
@@ -65,9 +65,9 @@ export class ArticleService {
 
     delete(id: number) {
         let body = {
-            "id": id
-        }
-        return this.http.delete(this._postsURL + "article/delete", {body: body})
+            'id': id
+        };
+        return this.http.delete(this._postsURL + 'article/delete', {body: body})
             .map((response: Response) => {
                 return response.json();
             })

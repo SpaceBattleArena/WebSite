@@ -7,9 +7,9 @@ import { User } from '../models/user';
 
 @Injectable()
 export class ForumService {
-    private _postsURL = "http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/";
-    private discussions : Discussion[] = JSON.parse(localStorage.getItem('discussions')) || [];
-    private messages : Message[] = JSON.parse(localStorage.getItem('messages')) || [];
+    private _postsURL = 'http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/';
+    private discussions: Discussion[] = JSON.parse(localStorage.getItem('discussions')) || [];
+    private messages: Message[] = JSON.parse(localStorage.getItem('messages')) || [];
 
     constructor(private http: Http) { }
 
@@ -33,7 +33,7 @@ export class ForumService {
         //return this.http.get('/api/discussions/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
-    getMessageByDiscussionID(id:number) {
+    getMessageByDiscussionID(id: number) {
         let messages_list: any = [];
         for (let i = 0; i < this.messages.length; i++) {
             if (this.messages[i].discussion_id == id ) {
@@ -65,7 +65,7 @@ export class ForumService {
     }
 
     updateDiscussion(discussion: Discussion) {
-        for (let i: number = 0; i < this.discussions.length; i++) {
+        for (let i = 0; i < this.discussions.length; i++) {
             if (this.discussions[i].id == discussion.id) {
                 this.discussions[i] = discussion;
             }
