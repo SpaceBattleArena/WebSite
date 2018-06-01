@@ -1,9 +1,12 @@
 /*styles for home content only*/
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif; }
 
-.col-md-4 {
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+
+/* .col-md-4 {
   padding-top: 10px;
 }
 
@@ -30,15 +33,25 @@ md-toolbar-row {
 
 
 label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
+
+
+/*  visibility: hidden; /* Makes input not-clickable */
+
+
+/*  position: absolute; /* Remove input from document flow */
+
+
+/*}
 label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
+
+
+/*  cursor:pointer;
   border:2px solid transparent;
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+
+
+/*  border:2px solid #f00;
 }
 
 .booster {
@@ -157,4 +170,386 @@ div.buyButton div.corner-bottom-left {
   height: 10px;
   border-bottom: 1px solid #5b769b;
   border-left: 1px solid #5b769b;
+} */
+
+div.gold-user {
+    color: white;
+    background-color: rgba(239, 72, 14, 0.6);
+    position: fixed;
+    top: 10vh;
+    right: 0;
+    padding: 2px 10px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+button.buy-button {
+    position: absolute;
+    top: 22%;
+    height: 51%;
+    left: 0;
+    width: 49%;
+    margin-left: 28%;
+    background-image: url(../../assets/img/booster.png);
+    background-size: contain;
+    background-color: transparent;
+}
+
+button.buy-button span.button-inner {
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+div.booster-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+}
+
+div.booster-block img.booster-img {
+    position: fixed;
+}
+
+div.booster-block div.line {
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    margin-left: 24%;
+    top: 50%;
+    box-shadow: 0px 1px 1px #f1f1f1, 0px 2px 2px #e1e1e1, 0px 3px 3px #d1d1d1, 0px -1px 1px #f1f1f1, 0px -2px 2px #e1e1e1, 0px -3px 3px #d1d1d1;
+}
+
+div.booster-block.show {
+    display: block;
+}
+
+div.cards-list {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    display: none;
+}
+
+div.cards-list img.cards-booster {
+    width: 48%;
+    margin-left: 26%;
+    height: auto;
+    position: fixed;
+    margin-top: 54%;
+}
+
+div.cards-list.show {
+    display: block;
+}
+
+div.name-block.close-button-animation {
+    position: fixed;
+    width: 100%;
+    max-height: 40px;
+    font-size: 20px;
+    display: none;
+}
+
+button.close-button-animation.show {
+    display: block;
+}
+
+.extension {
+    width: 90%;
+    margin-left: 5%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.item {
+    padding-bottom: 25px;
+    margin-bottom: 10px;
+}
+
+div.name-block {
+    padding: 7px 0px;
+    background-color: rgba(28, 46, 70, 0.65);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+    box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
+    opacity: 1;
+    -webkit-transition: opacity 200ms ease, box-shadow 200ms ease;
+    -webkit-transition: opacity 200ms ease, -webkit-box-shadow 200ms ease;
+    transition: opacity 200ms ease, -webkit-box-shadow 200ms ease;
+    transition: opacity 200ms ease, box-shadow 200ms ease;
+    transition: opacity 200ms ease, box-shadow 200ms ease, -webkit-box-shadow 200ms ease;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: calc(100% - 10px);
+    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    text-align: center;
+    max-height: 25px;
+    left: 0;
+}
+
+div.name-block div.corner-upper-left {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #5b769b;
+    border-left: 1px solid #5b769b;
+}
+
+div.name-block div.corner-upper-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #5b769b;
+    border-right: 1px solid #5b769b;
+}
+
+div.name-block div.corner-bottom-right {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid #5b769b;
+    border-bottom: 1px solid #5b769b;
+}
+
+div.name-block div.corner-bottom-left {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 10px;
+    height: 10px;
+    border-bottom: 1px solid #5b769b;
+    border-left: 1px solid #5b769b;
+}
+
+.confirm-black-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 12;
+}
+
+.confirm-payment {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 13;
+}
+
+.confirm-payment .booster-img {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.confirm-payment .name-block {
+    width: 60%;
+    margin-left: 20%;
+    background-color: #1c2e46;
+}
+
+.confirm-payment .box {
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(28, 46, 70, 0.82);
+    border: 1px solid #ef480e;
+}
+
+.confirm-payment .box div.text {
+    display: table;
+    height: 90%;
+    width: 100%;
+    text-align: center;
+}
+
+.confirm-payment .box div.text span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.confirm-payment .box .name-block {
+    width: 39%;
+}
+
+.confirm-payment .box .name-block.cancel {
+    margin: 0 0 0 10%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255, 67, 67, 0.34);
+    box-shadow: inset 0 0 0 1px rgba(255, 67, 67, 0.34);
+}
+
+.confirm-payment .box .name-block.cancel div.corner-upper-left {
+    border-top: 2px solid red;
+    border-left: 2px solid red;
+}
+
+.confirm-payment .box .name-block.cancel div.corner-upper-right {
+    border-top: 2px solid red;
+    border-right: 2px solid red;
+}
+
+.confirm-payment .box .name-block.cancel div.corner-bottom-right {
+    border-right: 2px solid red;
+    border-bottom: 2px solid red;
+}
+
+.confirm-payment .box .name-block.cancel div.corner-bottom-left {
+    border-bottom: 2px solid red;
+    border-left: 2px solid red;
+}
+
+.confirm-payment .box .name-block.valid {
+    margin-left: 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0, 99, 19, 0.33);
+    box-shadow: inset 0 0 0 1px rgba(0, 99, 19, 0.33);
+}
+
+.confirm-payment .box .name-block.valid div.corner-upper-left {
+    border-top: 2px solid green;
+    border-left: 2px solid green;
+}
+
+.confirm-payment .box .name-block.valid div.corner-upper-right {
+    border-top: 2px solid green;
+    border-right: 2px solid green;
+}
+
+.confirm-payment .box .name-block.valid div.corner-bottom-right {
+    border-right: 2px solid green;
+    border-bottom: 2px solid green;
+}
+
+.confirm-payment .box .name-block.valid div.corner-bottom-left {
+    border-bottom: 2px solid green;
+    border-left: 2px solid green;
+}
+
+div.content-buy-gold {
+    display: none;
+}
+
+div.content-buy-gold.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+div.content-buy-gold.show div.buy-gold {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70%;
+    left: 15%;
+    background-color: #1c2e46;
+    padding-bottom: 20px;
+}
+
+div.content-buy-gold.show div.buy-gold p.title {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+div.content-buy-gold.show div.buy-gold div.cards {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    overflow-x: scroll;
+}
+
+div.content-buy-gold.show div.buy-gold div.cards div.card {
+    min-width: 17vh;
+    border: 1px solid white;
+    margin: 0 1vh;
+}
+
+div.content-buy-gold.show div.buy-gold div.cards div.card img.img {
+    width: 100%;
+}
+
+div.content-buy-gold.show div.buy-gold div.cards div.card p.price {
+    background-color: white;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 21px;
+}
+
+div.error {
+    display: none;
+}
+
+div.error.show {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    width: 80%;
+    left: 10%;
+    display: block;
+}
+
+div.error.show .text {
+    font-size: 20px;
+    text-align: center;
+}
+
+@media (max-width: 730px) {
+    .booster-img {
+        width: 100%;
+    }
+    div.name-block {
+        width: 85%;
+        margin-left: 7.5%;
+    }
+}
+
+@media (min-width: 731px) {
+    .booster-img {
+        width: 40%;
+        margin-left: 30%;
+    }
+    div.name-block {
+        width: 40%;
+        margin-left: 30%;
+    }
+}
+
+.title-text {
+    text-align: center;
+    margin-top: -13px;
+    color: white;
+    font-weight: 400;
 }

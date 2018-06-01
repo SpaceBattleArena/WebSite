@@ -1,56 +1,96 @@
 <headerClient>
 </headerClient>
-<section class="planet-section" style="margin-bottom: 120px;">
-    <div class="container with-light-line-and-glow w-container ">
-        <div data-duration-in="300" data-duration-out="100" class="w-tabs">
-
-            <div class="tabs-content w-tab-content">
-                <div data-w-tab="The Moon" class="tab-pane w-tab-pane w--tab-active news_block" style="opacity: 1; transition: opacity 300ms;padding-left: 288px;">
-                    <div class="destination-heading">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <h4 class="heading-3">Pick a booster</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4" *ngFor="let extension of extensions">
-                                    <label>
-                                        <input type="radio" name="booster"/>
-                                        <img class="booster" src="../../assets/img/booster.png">
-                                        <div class="extensionName">{{extension}}
-                                            <div class="corner-upper-left"></div>
-                                            <div class="corner-upper-right"></div>
-                                            <div class="corner-bottom-right"></div>
-                                            <div class="corner-bottom-left"></div>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <Br>
-                            <div class="row">
-                                <div class="col-md-2 offset-md-10 buyButton">
-                                    <a (click)="buy()">Buy</a>
-                                    <div class="corner-upper-left"></div>
-                                    <div class="corner-upper-right"></div>
-                                    <div class="corner-bottom-right"></div>
-                                    <div class="corner-bottom-left"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 offset-md-3">
-                                    <div class="alert alert-danger" *ngIf="errorMessage">
-                                        {{ errorMessage }}
-                                    </div>
-                                    <div class="alert alert-success" *ngIf="successMessage">
-                                        Booster bought ! You now can find your cards in your collection.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<section class="" style="margin-bottom: 120px;">
+    <div class="title">
+        <div class="orange-divider">
+            <div class="third upper">
+                <div class="tiny-orange-call-out">
                 </div>
             </div>
         </div>
-        <div class="left-side-white left-side-white--news" style="margin-top: 70px;max-height:unset;"></div>
+        <h2 class="title-text">BOUTIQUE</h2>
+    </div>
+    <div class="gold-user" (click)="openBuyGold()">‡ {{user.Gold}}</div>
+    <div class="row extension">
+        <div class="col-4 item" *ngFor="let extension of extensions; let i = index" (click)="isConfirmPayment(i)" id="booster_item_{{i}}">
+            <img src="{{extension.sprite}}" alt="booster" class="booster-img" id="booster_{{i}}" />
+            <div class="name-block">
+                <div class="name">{{extension.name}}</div>
+                <div class="corner-upper-left"></div>
+                <div class="corner-upper-right"></div>
+                <div class="corner-bottom-right"></div>
+                <div class="corner-bottom-left"></div>
+            </div>
+        </div>
+    </div>
+    <div class="confirm-black-screen" id="confirm-black-screen"></div>
+    <div class="confirm-payment" id="confirm_payment">
+        <img src="../../assets/img/booster.png" alt="booster" class="booster-img" id="booster_payment" />
+        <div class="name-block" id="name_block">
+            <div class="name">{{namePayment}}</div>
+            <div class="corner-upper-left"></div>
+            <div class="corner-upper-right"></div>
+            <div class="corner-bottom-right"></div>
+            <div class="corner-bottom-left"></div>
+        </div>
+        <div class="box" id="box">
+            <div class="text">
+                <span>Voulez-vous acheter ce booster pour  ‡ 200?<br/>‡ {{user.Gold}} → ‡ {{user.Gold - 200}}</span>
+            </div>
+            <div class="foot">
+                <div class="name-block cancel" id="cancelPayment" (click)="cancelPayment()">
+                    <div class="name">Annuler</div>
+                    <div class="corner-upper-left"></div>
+                    <div class="corner-upper-right"></div>
+                    <div class="corner-bottom-right"></div>
+                    <div class="corner-bottom-left"></div>
+                </div>
+                <div class="name-block valid" id="validPayment" (click)="boosterAppear()">
+                    <div class="name">Acheter</div>
+                    <div class="corner-upper-left"></div>
+                    <div class="corner-upper-right"></div>
+                    <div class="corner-bottom-right"></div>
+                    <div class="corner-bottom-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="booster" class="booster-block">
+        <img src="../../assets/img/testBooster.png" alt="booster" class="booster-img" id="booster-img" />
+        <div class="line" id="line_open_booster"></div>
+    </div>
+    <div id="cards_list" class="cards-list">
+        <img *ngFor="let card of boosterCards; let i = index" src="../../assets/img/back.png" alt="card-{{i}}" id="card_{{i}}" class="cards-booster" (click)="rotateCard(i)" />
+    </div>
+    <div class="name-block close-button-animation" id="close-button-animation" (click)="closeAnimation()">
+        <div class="name">Fermer</div>
+        <div class="corner-upper-left"></div>
+        <div class="corner-upper-right"></div>
+        <div class="corner-bottom-right"></div>
+        <div class="corner-bottom-left"></div>
+    </div>
+    <div class="content-buy-gold" id="buy_gold" (click)="closeBuyGold()">
+        <div class="buy-gold">
+            <p class="title">Achetez des golds supplémentaire !</p>
+            <div class="cards">
+                <div class="card" (click)="openError()">
+                    <img src="../../assets/img/buy1.png" alt="gold" class="img" />
+                    <p class="price">2€</p>
+                </div>
+                <div class="card" (click)="openError()">
+                    <img src="../../assets/img/buy2.png" alt="gold" class="img" />
+                    <p class="price">5€</p>
+                </div>
+                <div class="card" (click)="openError()">
+                    <img src="../../assets/img/buy3.png" alt="gold" class="img" />
+                    <p class="price">10€</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="error" id="error">
+        <p class="text">Désolé mais les transactions sont momentanément indisponible.</p>
+        <button (click)="closeError()">Fermer</button>
     </div>
 </section>
 <logister></logister>
