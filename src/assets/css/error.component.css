@@ -1,0 +1,14 @@
+div.error-block {
+    position: fixed;
+    bottom: 0;
+    width: 70%;
+    left: 15%;
+    height: 10vh;
+    background-color: red;
+    z-index: 100;
+}
+
+div.error-block h2 {
+    color: white;
+    text-align: center;
+}

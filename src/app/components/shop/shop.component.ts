@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { Card } from '../../models/card';
 import {CardService} from '../../services/card.service';
 
 @Component({
@@ -26,6 +27,8 @@ export class ShopComponent {
       ];
     public boosterPayment: string = "../../assets/img/booster.png";
     public namePayment: string = "Name";
+    private allCards: Card[];
+    public boosterCards: Card[];
 
     constructor(private userService: UserService, private cardService: CardService) {
     }
@@ -38,6 +41,16 @@ export class ShopComponent {
               if(resultArray["results"] != undefined) {
                 this.user = resultArray["results"]["data"][0];
               }
+            }
+          );
+        this.cardService.getAll()
+          .subscribe(
+            res => {
+              this.allCards = res;
+              console.log(this.allCards);
+            },
+            error => {
+              console.log(error);
             }
           );
     }
@@ -133,6 +146,50 @@ export class ShopComponent {
       blackScreen.style.display = "none";
     }
 
+    
+
+    public buyBooster() {
+      this.cardService.buyBooster(this.currentUser["token"])
+        .subscribe(
+          res => {
+            console.log(res);
+            this.openBooster(res);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      this.userService.getInformation(this.currentUser["token"])
+          .subscribe(
+            userInformations => {
+              this.user = userInformations["results"]["data"][0];
+              console.log(this.user);
+            },
+            error => {
+              console.log(error);
+            }
+          );
+    }
+    
+
+    private openBooster(booster: Number[]) {
+      this.boosterCards = [];
+      for (let i = 0; i < booster.length; i += 1) {
+        this.boosterCards.push(this.getCard(booster[i]));
+      }
+      this.boosterAppear();
+    }
+    
+
+    private getCard(card_id: Number) {
+      for (let i = 0; i < this.allCards.length; i += 1) {
+        if (this.allCards[i].ID === card_id) {
+          return this.allCards[i];
+        }
+      }
+      return null;
+    }
+
     public boosterAppear() {
         //to delete
         //if (this.boosterCards.length === 0) {
@@ -149,6 +206,7 @@ export class ShopComponent {
         boosterImg.style.top = paymentBox.style.top;
         boosterImg.style.left = paymentBox.style.left;
         boosterImg.style.width = paymentBox.style.width;
+        boosterImg.style.margin = "0";
         this.cancelPayment();
         this.drawLine();
       }
@@ -159,7 +217,7 @@ export class ShopComponent {
         let idInterval = setInterval(frame, 5, lineOpenBooster, this);
     
         function frame(lineOpenBooster: HTMLElement, func) {
-          if (value < 53) {
+          if (value < 22) {
             value += 1;
             lineOpenBooster.style.width = value.toString() + '%';
           } else {
@@ -192,9 +250,11 @@ export class ShopComponent {
         let cardsBlock = document.getElementById("cards_list");
         cardsBlock.classList.add("show");
         let buttonClose = document.getElementById("close-button-animation");
-        buttonClose.style.display = "block";
+        //buttonClose.style.display = "block";
         let value = 0;
         let idInterval = setInterval(frame, 10, cardsBlock, this);
+        let blackScreenCardsList = document.getElementById("list-card-black-screen");
+        blackScreenCardsList.classList.add("show");
     
         let cards0Block = document.getElementById("card_0");
         let cards1Block = document.getElementById("card_1");
@@ -202,12 +262,12 @@ export class ShopComponent {
         let cards3Block = document.getElementById("card_3");
         let cards4Block = document.getElementById("card_4");
         let cards5Block = document.getElementById("card_5");
-        cards0Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
-        cards1Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
-        cards2Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
-        cards3Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
-        cards4Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
-        cards5Block.style.marginTop = (0.32 * window.innerHeight).toString() + "px";
+        cards0Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
+        cards1Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
+        cards2Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
+        cards3Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
+        cards4Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
+        cards5Block.style.marginTop = (0.10 * window.innerHeight).toString() + "px";
     
         function frame(cardsBlock, func) {
           if (value <= 100) {
@@ -222,12 +282,15 @@ export class ShopComponent {
     
       private splitCards() {
         let screenHeight = window.innerHeight;
-        let header = document.getElementById("main_header");
-        let headerHeight = header.offsetHeight;
+        //let header = document.getElementById("main_header");
+        //let headerHeight = header.offsetHeight;
         let closeButton = document.getElementById("close-button-animation");
         let closeButtonHeight = closeButton.offsetHeight;
-        let cardHeight = (screenHeight - (headerHeight + closeButtonHeight)) / 3;
-        let initPos = (0.32 * window.innerHeight);
+        let cardHeight = (screenHeight - (/*headerHeight + */closeButtonHeight)) / 3;
+        let initPos = (0.1 * window.innerHeight);
+
+        closeButton.style.marginLeft = (window.innerWidth * 0.35).toString() + "px";
+        closeButton.style.marginTop = ((window.innerHeight * 0.5) - closeButton.offsetHeight) + "px";
     
         let cards0Block = document.getElementById("card_0");
         let cards1Block = document.getElementById("card_1");
@@ -237,49 +300,50 @@ export class ShopComponent {
         let cards5Block = document.getElementById("card_5");
     
         let value = 0;
-        let idInterval = setInterval(frame, 10, cards0Block, cards1Block, cards2Block, cards3Block, cards4Block, cards5Block, cardHeight, headerHeight, initPos);
+        let idInterval = setInterval(frame, 10, cards0Block, cards1Block, cards2Block, cards3Block, cards4Block, cards5Block, cardHeight/*, headerHeight*/, initPos, window.innerHeight, closeButton);
     
-        function frame(cards0Block, cards1Block, cards2Block, cards3Block, cards4Block, cards5Block, cardHeight, headerHeight, initPos) {
+        function frame(cards0Block, cards1Block, cards2Block, cards3Block, cards4Block, cards5Block, cardHeight, initPos, windowHeight, closeButton) {
           if (value < 100) {
             value += 1;
-            cards0Block.style.width = (48 - (value * 0.18)).toString() + '%';
-            cards1Block.style.width = (48 - (value * 0.18)).toString() + '%';
-            cards2Block.style.width = (48 - (value * 0.18)).toString() + '%';
-            cards3Block.style.width = (48 - (value * 0.18)).toString() + '%';
-            cards4Block.style.width = (48 - (value * 0.18)).toString() + '%';
-            cards5Block.style.width = (48 - (value * 0.18)).toString() + '%';
-    
+            cards0Block.style.width = (20 - (value * 0.1)).toString() + '%';
+            cards1Block.style.width = (20 - (value * 0.1)).toString() + '%';
+            cards2Block.style.width = (20 - (value * 0.1)).toString() + '%';
+            cards3Block.style.width = (20 - (value * 0.1)).toString() + '%';
+            cards4Block.style.width = (20 - (value * 0.1)).toString() + '%';
+            cards5Block.style.width = (20 - (value * 0.1)).toString() + '%';
+
             //top cards
-            let diff = initPos - headerHeight - 10;
+            let diff = initPos - (0.03 * windowHeight);
             //card 0
-            cards0Block.style.marginLeft = (26 - (value * 0.16)).toString() + '%';
+            cards0Block.style.marginLeft = (40 - (value * 0.12)).toString() + '%';
             cards0Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
-    
+
             //card 1
-            cards1Block.style.marginLeft = (26 + (value * 0.34)).toString() + '%';
+            cards1Block.style.marginLeft = (40 + (value * 0.21)).toString() + '%';
             cards1Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
-    
+
             //middle cards
-            diff = initPos - (headerHeight + cardHeight + 10);
+            diff = (0.35 * windowHeight) - initPos;
             //card 2
-            cards2Block.style.marginLeft = (26 - (value * 0.16)).toString() + '%';
-            cards2Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
-    
+            cards2Block.style.marginLeft = (40 - (value * 0.285)).toString() + '%';
+            cards2Block.style.marginTop = (initPos + (value * (diff / 100))).toString() + "px";
+
             //card 3
-            cards3Block.style.marginLeft = (26 + (value * 0.34)).toString() + '%';
-            cards3Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
-    
+            cards3Block.style.marginLeft = (40 + (value * 0.385)).toString() + '%';
+            cards3Block.style.marginTop = (initPos + (value * (diff / 100))).toString() + "px";
+
             //bottom cards
-            diff = initPos - (headerHeight + (cardHeight * 2) + 10);
+            diff = (0.66 * windowHeight) - initPos;
             //card 4
-            cards4Block.style.marginLeft = (26 - (value * 0.16)).toString() + '%';
-            cards4Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
-    
+            cards4Block.style.marginLeft = (40 - (value * 0.12)).toString() + '%';
+            cards4Block.style.marginTop = (initPos + (value * (diff / 100))).toString() + "px";
+
             //card 5
-            cards5Block.style.marginLeft = (26 + (value * 0.34)).toString() + '%';
-            cards5Block.style.marginTop = (initPos - (value * (diff / 100))).toString() + "px";
+            cards5Block.style.marginLeft = (40 + (value * 0.21)).toString() + '%';
+            cards5Block.style.marginTop = (initPos + (value * (diff / 100))).toString() + "px";
           } else {
             clearInterval(idInterval);
+            closeButton.classList.add("show");
           }
         }
       }
@@ -312,6 +376,8 @@ export class ShopComponent {
         cardsBlock.classList.remove("show");
         let buttonClose = document.getElementById("close-button-animation");
         buttonClose.classList.remove("show");
+        let blackScreenCardsList = document.getElementById("list-card-black-screen");
+        blackScreenCardsList.classList.remove("show");
     
         let cards0Block = document.getElementById("card_0") as HTMLImageElement;
         let cards1Block = document.getElementById("card_1") as HTMLImageElement;
@@ -324,37 +390,37 @@ export class ShopComponent {
         cards0Block.style.marginLeft = null;
         cards0Block.style.marginTop = null;
         cards0Block.style.width = null;
-        cards0Block.src = "assets/imgs/back.png";
+        cards0Block.src = "../../assets/img/back.png";
     
         cards1Block.style.transform = null;
         cards1Block.style.marginLeft = null;
         cards1Block.style.marginTop = null;
         cards1Block.style.width = null;
-        cards1Block.src = "assets/imgs/back.png";
+        cards1Block.src = "../../assets/img/back.png";
     
         cards2Block.style.transform = null;
         cards2Block.style.marginLeft = null;
         cards2Block.style.marginTop = null;
         cards2Block.style.width = null;
-        cards2Block.src = "assets/imgs/back.png";
+        cards2Block.src = "../../assets/img/back.png";
     
         cards3Block.style.transform = null;
         cards3Block.style.marginLeft = null;
         cards3Block.style.marginTop = null;
         cards3Block.style.width = null;
-        cards3Block.src = "assets/imgs/back.png";
+        cards3Block.src = "../../assets/img/back.png";
     
         cards4Block.style.transform = null;
         cards4Block.style.marginLeft = null;
         cards4Block.style.marginTop = null;
         cards4Block.style.width = null;
-        cards4Block.src = "assets/imgs/back.png";
+        cards4Block.src = "../../assets/img/back.png";
     
         cards5Block.style.transform = null;
         cards5Block.style.marginLeft = null;
         cards5Block.style.marginTop = null;
         cards5Block.style.width = null;
-        cards5Block.src = "assets/imgs/back.png";
+        cards5Block.src = "../../assets/img/back.png";
       }
     
       public openBuyGold() {

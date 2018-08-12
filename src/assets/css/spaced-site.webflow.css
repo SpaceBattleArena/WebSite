@@ -156,7 +156,7 @@ img {
 }
 
 .main-nav__link {
-    padding: 20px 35px;
+    padding: 20px 3vh;
     opacity: 0.75;
     -webkit-transition: opacity 200ms ease;
     transition: opacity 200ms ease;
@@ -689,9 +689,9 @@ img {
     height: 70%;
     max-height: 1000px;
     margin-left: -1px;
-    /*border-left: 1px solid #e0e0e0;*/
-    background-color: transparent;
-    /*box-shadow: 25px -25px 55px 0 rgba(160, 117, 158, .47);*/
+    border-left: 1px solid #e0e0e0;
+    background-color: white;
+    box-shadow: 25px -25px 55px 0 rgba(160, 117, 158, .47);
 }
 
 .planet-tab {
@@ -2656,7 +2656,7 @@ h4.heading-3 {
     margin-top: 10px;
     margin-bottom: 0px;
     font-family: Anton, sans-serif;
-    color: #fff;
+    color: black;
     font-size: 78px;
     line-height: 1.2em;
     font-weight: 700;

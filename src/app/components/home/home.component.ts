@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { User } from '../../models/user';
 import { Article } from '../../models/article';
 import { ArticleService } from '../../services/news.service';
 declare var $: any;
@@ -12,6 +14,8 @@ declare var $: any;
 })
 
 export class HomeComponent implements OnInit {
+    private sub: any;
+    private currentUser: User;
     allArticles: Article[];
     ArticlesLimit: any = [];
     translateXShip = 0;
@@ -19,7 +23,10 @@ export class HomeComponent implements OnInit {
     rotateShip = 0;
     pos_screens = 30;
 
-    constructor(private articleService: ArticleService) {
+    constructor(
+        private articleService: ArticleService,
+        private route: ActivatedRoute,
+        private router: Router) {
     }
 
     sleep(milliseconds: Number) {
@@ -164,6 +171,15 @@ export class HomeComponent implements OnInit {
         document.getElementById("card_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
         document.getElementById("esport_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
         document.getElementById("war_heading").style.transform = "translateX(" + (scroll/100) + "vw)";
+        
+        let article_image = document.getElementById("article_image_0");
+        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[0].Slug + ")";
+        article_image = document.getElementById("article_image_1");
+        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[1].Slug + ")";
+        article_image = document.getElementById("article_image_2");
+        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[2].Slug + ")";
+        article_image = document.getElementById("article_image_3");
+        article_image.style.backgroundImage = "url(http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/" + this.ArticlesLimit[3].Slug + ")";
     }
 
     vr_click() {
@@ -223,18 +239,38 @@ export class HomeComponent implements OnInit {
                                 .replace(/^-+/, '')
                                 .replace(/-+$/, '');
                         }
-                        let article_image = document.getElementById("article_image_0");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[0].Slug + ")";
-                        article_image = document.getElementById("article_image_1");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[1].Slug + ")";
-                        article_image = document.getElementById("article_image_2");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[2].Slug + ")";
-                        article_image = document.getElementById("article_image_3");
-                        article_image.style.backgroundImage = "url(http://localhost:3000/" + this.ArticlesLimit[3].Slug + ")";
                         // this.sleep(1500);
                         // this.when_loading();
+                        console.log(this.ArticlesLimit);
                     }
                 }
             );
+        
+        this.sub = this.route
+        .queryParams
+        .subscribe(params => {
+            console.log(params.state);
+            if (params.state != undefined) {
+                console.log('not undefined');
+                if (params.state === "no log") {
+                    console.log('no log');
+                    let loginBlock = document.getElementById("login");
+                    let registerBlock = document.getElementById("signup");
+                    let forgotPasswordBlock = document.getElementById("forgot_password");
+                    let loginLink = document.getElementById("login_link");
+                    let registerLink = document.getElementById("register_link");
+                    let logisterBlock = document.getElementById("logister");
+                    let logisterCloseBlock = document.getElementById("logister_close");
+
+                    loginBlock.style.display = "block";
+                    registerBlock.style.display = "none";
+                    forgotPasswordBlock.style.display = "none";
+                    loginLink.classList.add("active");
+                    registerLink.classList.remove("active");
+                    logisterBlock.classList.add("show");
+                    logisterCloseBlock.classList.add("show");
+                }
+            }
+        });
     }
 }

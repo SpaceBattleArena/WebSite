@@ -1,11 +1,12 @@
 export class Card {
     ID: Number;
-    Rarity_id: Number;
-    Type_card_id: Number;
-    Faction_id: Number;
-    Sprite: string;
-    Name: string;
+    Name: String;
+    Sprite: File;
+    Faction: String;
+    Type: String;
+    ATK: Number;
     Cost: Number;
     HP: Number;
-    ATK: Number;
+    Rarity_id: Number;
+    Number: number;
 }

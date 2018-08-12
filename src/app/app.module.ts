@@ -14,10 +14,14 @@ import { AdminGuard } from './guards/admin.guard';
 
 import { UserService } from './services/user.service';
 import { ArticleService } from './services/news.service';
+import { SurveyService } from './services/survey.service';
+import { CardService } from './services/card.service';
+import { HerosService } from './services/hero.service';
 
 import { AppComponent }  from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ErrorComponent } from './components/error/error.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,12 +33,16 @@ import { NewsComponent } from './components/news/news.component';
 import { AllNewsComponent } from './components/all_news/all_news.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { DiscussionComponent } from './components/discussion/discussion.component';
+import { forgotPasswordComponent } from './components/forgotPassword/forgotPassword.component';
+import { SurveyComponent } from './components/survey/survey.component';
+import { CardsListComponent } from './components/cards-list/cards-list.component';
+import { DecksListComponent } from './components/decks-list/decks-list.component';
+import { CreateModifyDeckComponent } from './components/create-modify-deck/create-modify-deck.component';
 import {
   AdminComponent,
   DashboardComponent,
   ItemsComponent
 } from './components/admin/index';
-import {CardService} from './services/card.service';
 
 
 @NgModule({
@@ -42,6 +50,7 @@ import {CardService} from './services/card.service';
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    ErrorComponent,
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
@@ -52,6 +61,11 @@ import {CardService} from './services/card.service';
     NewsComponent,
     AllNewsComponent,
     ForumComponent,
+    forgotPasswordComponent,
+    SurveyComponent,
+    CardsListComponent,
+    DecksListComponent,
+    CreateModifyDeckComponent,
     DiscussionComponent,
     AdminComponent,
     DashboardComponent,
@@ -68,7 +82,9 @@ import {CardService} from './services/card.service';
   providers: [
     AuthGuard,
     AdminGuard,
-      CardService,
+    CardService,
+    SurveyService,
+    HerosService,
   ],
   bootstrap: [AppComponent]
 })

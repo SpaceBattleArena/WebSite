@@ -1,0 +1,26 @@
+<headerClient>
+</headerClient>
+<div class="content">
+    <div *ngFor="let hero_deck of herosDeck; let h = index" class="row heros-decks">
+        <div class="col-3 hero">
+            <img src="{{hero_deck.hero.Image}}" alt="{{hero_deck.hero.Name}}" class="hero-sprite" />
+            <p class="name">{{hero_deck.hero.Name}}</p>
+        </div>
+        <div class="col decks">
+            <div *ngFor="let deck of hero_deck.decks; let i = index" class="deck" [routerLink]="['/smithy/create_modify_deck']" [queryParams]="{ params: ModifyParams[i] }">
+                <img src="assets/img/testBooster.png" alt="deck" class="deck-sprite" />
+                <p class="name">{{deck.Name}}</p>
+            </div>
+            <div class="add-deck" [routerLink]="['/smithy/create_modify_deck']" [queryParams]="{ params: createParams[h] }">
+                <img src="assets/img/addDeck.png" alt="add_deck" class="add-img" />
+            </div>
+        </div>
+        <div class="orange-divider">
+            <div class="third upper">
+                <div class="tiny-orange-call-out">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<logister></logister>

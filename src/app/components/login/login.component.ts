@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    public newEmail: string = "";
 
     constructor(
         private route: ActivatedRoute,
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
         private userService: UserService) { }
 
     ngOnInit() {
-        
+        this.displayRegister();
     }
 
     login() {
@@ -67,5 +68,56 @@ export class LoginComponent implements OnInit {
                 alert(error);
             }
         );
+    }
+
+    public forgotPassword() {
+        //console.log(this.newEmail);
+        this.userService.forgotPassword(this.newEmail)
+        .subscribe(
+            resultArray => {
+                console.log(resultArray);
+                if (resultArray["results"]["status"] === 200) {
+                    alert("Un mail vous à été envoyé");
+                }
+            }
+        );
+    }
+
+    public displayForgotPassword() {
+        let loginBlock = document.getElementById("login");
+        let registerBlock = document.getElementById("signup");
+        let forgotPasswordBlock = document.getElementById("forgot_password");
+
+        loginBlock.style.display = "none";
+        registerBlock.style.display = "none";
+        forgotPasswordBlock.style.display = "block";
+    }
+
+    public displayLogin() {
+        let loginBlock = document.getElementById("login");
+        let registerBlock = document.getElementById("signup");
+        let forgotPasswordBlock = document.getElementById("forgot_password");
+        let loginLink = document.getElementById("login_link");
+        let registerLink = document.getElementById("register_link");
+
+        loginBlock.style.display = "block";
+        registerBlock.style.display = "none";
+        forgotPasswordBlock.style.display = "none";
+        loginLink.classList.add("active");
+        registerLink.classList.remove("active");
+    }
+
+    public displayRegister() {
+        let loginBlock = document.getElementById("login");
+        let registerBlock = document.getElementById("signup");
+        let forgotPasswordBlock = document.getElementById("forgot_password");
+        let loginLink = document.getElementById("login_link");
+        let registerLink = document.getElementById("register_link");
+
+        loginBlock.style.display = "none";
+        registerBlock.style.display = "block";
+        forgotPasswordBlock.style.display = "none";
+        loginLink.classList.remove("active");
+        registerLink.classList.add("active");
     }
 }

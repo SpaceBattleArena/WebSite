@@ -1,81 +1,55 @@
 /*styles for home content only*/
+
 body {
-  margin: 0;
-  font-family: Roboto, sans-serif; }
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
 
 md-card {
-  max-width: 80%;
-  margin: 2em auto; }
+    max-width: 80%;
+    margin: 2em auto;
+}
 
 md-toolbar-row {
-  justify-content: space-between; }
+    justify-content: space-between;
+}
 
 #home {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row-reverse; }
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
 
 #daphne {
-  margin-top: 5%; }
+    margin-top: 5%;
+}
 
-.done {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  color: white; }
+.content {
+    display: flex;
+}
 
-div.buyButton {
-  padding: 7px 0px;
-  background-color: rgba(28, 46, 70, 0.65);
-  -webkit-box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
-  box-shadow: inset 0 0 0 1px rgba(91, 118, 155, 0.34);
-  opacity: 1;
-  transition: opacity 200ms ease, box-shadow 200ms ease, -webkit-box-shadow 200ms ease;
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 300px;
-  position: absolute;
-  bottom: 0;
-  font-size: 30px;
-  text-align: center;
+button.list-button {
+    width: 70vh;
+    background-size: cover;
+    margin: 0 auto;
+    background-color: transparent;
+    height: 50vh;
+    position: relative;
 }
-div.buyButton div.corner-upper-left {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 10px;
-  height: 10px;
-  border-top: 1px solid #5b769b;
-  border-left: 1px solid #5b769b;
+
+button.list-button span.button-inner {
+    font-family: Anton, sans-serif;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px black;
+    color: white;
+    width: 100%;
 }
-div.buyButton div.corner-upper-right {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 10px;
-  height: 10px;
-  border-top: 1px solid #5b769b;
-  border-right: 1px solid #5b769b;
+
+button.list-button.cards {
+    background-image: url("../../assets/img/spaceShip.jpg");
 }
-div.buyButton div.corner-bottom-right {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: 10px;
-  height: 10px;
-  border-right: 1px solid #5b769b;
-  border-bottom: 1px solid #5b769b;
-}
-div.buyButton div.corner-bottom-left {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 10px;
-  height: 10px;
-  border-bottom: 1px solid #5b769b;
-  border-left: 1px solid #5b769b;
+
+button.list-button.decks {
+    background-image: url("../../assets/img/angar.jpg");
 }

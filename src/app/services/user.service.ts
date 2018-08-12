@@ -103,6 +103,29 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    forgotPassword(email: string) {
+        return this.http
+            .get(/*this._postsURL + */"http://localhost:3000/player/forgotPassword/" + email)
+            .map((response: Response) => {
+                console.log(response.json());
+                return response.json();
+            })
+            .catch(this.handleError);
+    }
+
+    updateForgotPassword(datas: {}) {
+        let data = new URLSearchParams();
+        data.append("email", datas["email"]);
+        data.append("password", datas["password"]);
+        data.append("code", datas["code"]);
+        return this.http
+            .post(this._postsURL + "player/updateNewPassword", data)
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch(this.handleError);
+    }
+
     private handleError(error: Response) {
         return Observable.throw(error.statusText);
     }

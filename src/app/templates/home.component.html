@@ -169,9 +169,9 @@
                         <div class="third-top"></div>
                     </div>
                     <h4 class="white-h4">News</h4>
-                    <div class="w-row">
+                    <div class="w-row" *ngIf="ArticlesLimit != []">
                         <div class="w-col w-col-6">
-                            <a class="activity-pill" [routerLink]="['/news', ArticlesLimit[0].ID]">
+                            <a class="activity-pill" *ngIf="ArticlesLimit[0] != undefined" [routerLink]="['/news', ArticlesLimit[0].ID]">
                                 <div class="news__images" id="article_image_0">
                                 </div>
                                 <div class="pill-description">
@@ -181,7 +181,7 @@
                             </a>
                         </div>
                         <div class="w-col w-col-6">
-                            <a class="activity-pill" [routerLink]="['/news', ArticlesLimit[1].ID]">
+                            <a class="activity-pill" *ngIf="ArticlesLimit[1] != undefined" [routerLink]="['/news', ArticlesLimit[1].ID]">
                                 <div class="news__images" id="article_image_1"></div>
                                 <div class="pill-description">
                                     <div class="activity-sub-heading">{{ArticlesLimit[1].Title}}</div>
@@ -190,9 +190,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="w-row">
+                    <div class="w-row" *ngIf="ArticlesLimit != []">
                         <div class="w-col w-col-6">
-                            <a class="activity-pill" [routerLink]="['/news', ArticlesLimit[2].ID]">
+                            <a class="activity-pill" *ngIf="ArticlesLimit[2] != undefined" [routerLink]="['/news', ArticlesLimit[2].ID]">
                                 <div class="news__images" id="article_image_2"></div>
                                 <div class="pill-description">
                                     <div class="activity-sub-heading">{{ArticlesLimit[2].Title}}</div>
@@ -201,7 +201,7 @@
                             </a>
                         </div>
                         <div class="w-col w-col-6">
-                            <a class="activity-pill" [routerLink]="['/news', ArticlesLimit[3].ID]">
+                            <a class="activity-pill" *ngIf="ArticlesLimit[3] != undefined" [routerLink]="['/news', ArticlesLimit[3].ID]">
                                 <div class="news__images" id="article_image_3"></div>
                                 <div class="pill-description">
                                     <div class="activity-sub-heading">{{ArticlesLimit[3].Title}}</div>
@@ -250,3 +250,4 @@
 </div>
 
 <logister></logister>
+<!--<error type="error" message="toto et tata"></error>-->

@@ -1,0 +1,192 @@
+.survey {
+    width: 60%;
+    margin-left: 20%;
+    border-left: 1px solid #e0e0e0;
+    background-color: white;
+    box-shadow: 25px -25px 55px 0 rgba(160, 117, 158, .47)
+}
+
+label.btn span {
+    font-size: 1em;
+    color: black;
+    text-transform: capitalize;
+}
+
+label input[type="radio"]~i.fa.fa-circle-o {
+    color: #c8c8c8;
+    display: inline-block;
+}
+
+label input[type="radio"]~i.fa.fa-dot-circle-o {
+    display: none;
+}
+
+label input[type="radio"]:checked~i.fa.fa-circle-o {
+    display: none;
+}
+
+label input[type="radio"]:checked~i.fa.fa-dot-circle-o {
+    color: #ef480e;
+    display: inline-block;
+}
+
+label:hover input[type="radio"]~i.fa {
+    color: #ef480e;
+    display: inline-block;
+}
+
+label input[type="checkbox"]~i.fa.fa-square-o {
+    color: #c8c8c8;
+    display: inline;
+}
+
+label input[type="checkbox"]~i.fa.fa-check-square-o {
+    display: none;
+}
+
+label input[type="checkbox"]:checked~i.fa.fa-square-o {
+    display: none;
+}
+
+label input[type="checkbox"]:checked~i.fa.fa-check-square-o {
+    color: #ef480e;
+    display: inline;
+}
+
+label:hover input[type="checkbox"]~i.fa {
+    color: #ef480e;
+}
+
+div[data-toggle="buttons"] label.active {
+    color: #ef480e;
+    display: inline-block;
+}
+
+div[data-toggle="buttons"] label {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 2em;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: none;
+    color: #c8c8c8;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    box-shadow: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+    color: #ef480e;
+}
+
+div[data-toggle="buttons"] label:active,
+div[data-toggle="buttons"] label.active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn.active .not-checked {
+    display: none;
+}
+
+.btn .checked {
+    display: none;
+}
+
+label input[type="radio"]~i.fa.fa-circle-o.checked {
+    display: none;
+}
+
+label:hover input[type="radio"]~i.fa.fa-circle-o.not-checked {
+    display: none;
+}
+
+label:hover input[type="radio"]~i.fa.fa-circle-o.checked {
+    display: inline-block;
+    color: #ef480e;
+}
+
+.btn.active .checked {
+    display: inline-block;
+    color: #ef480e;
+}
+
+.survey-text {
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid #bdbdbd;
+}
+
+div.survey {
+    font-size: 1.5em;
+    padding: 15px;
+}
+
+div.survey h2 {
+    text-align: center;
+}
+
+.title-text {
+    text-align: center;
+    margin-top: -13px;
+    color: white;
+    font-weight: 400;
+}
+
+p.explain {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    line-height: 1.2em;
+    font-size: 0.7em;
+    color: #ef480e;
+}
+
+.question-line {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.row.btn-group.question-line {
+    position: unset;
+    display: flex;
+}
+
+.question-line p {
+    font-size: 0.7em;
+}
+
+.question-line .question-col {
+    border: 1px solid black;
+}
+
+.question-col label.btn {
+    width: 100%;
+    text-align: center;
+}
+
+div.button {
+    padding: 7px 0px;
+    background-color: #ef480e;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 50%;
+    font-size: 1em;
+    text-align: center;
+    margin-left: 25%;
+    position: relative;
+    margin-top: 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,87 @@
+<headerClient>
+</headerClient>
+<div class="content">
+    <button>Supprimer</button>
+    <div id="div1" (drop)="dropInDeck($event)" (dragover)="allowDrop($event)" class="row deck">
+        <div *ngFor="let card of cardsListDeck; let i = index" class="col-2 card-slot">
+            <div class="slot-number" *ngIf="card === null; else CardBlock">
+                <img src="assets/img/back.png" alt="back" style="opacity: 0;" />
+                <div class="number">
+                    <p>{{i+1}}</p>
+                </div>
+            </div>
+            <ng-template #CardBlock>
+                <img src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/articles/sprite2.png" alt="" (click)="displayZoom(card)" />
+            </ng-template>
+        </div>
+    </div>
+    <div class="add-filter">
+        <button (click)="displayFilters()">Ajouter des filtres</button>
+    </div>
+    <div id="div2" (drop)="dropInCardsList($event)" (dragover)="allowDrop($event)" class="row list-cards">
+        <div class="col-2" *ngFor="let card of display_cards; let i = index" (click)="displayZoom(card)" draggable="true" (dragstart)="drag($event, card, i)" id="drag1">
+            <img src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/articles/sprite2.png" alt="" />
+            <div class="badge">{{card.Number}}</div>
+        </div>
+    </div>
+    <div class="add-filter">
+        <button (click)="saveDeck()">Enregistrer</button>
+    </div>
+    <div class="filter-black-screen" id="filter-black-screen" (click)="hideFilters()"></div>
+    <div class="filter-container" id="filters">
+        <h2 class="filters-title">Filtres</h2>
+        <div class="list">
+            <div class="item">
+                <label>Type</label>
+                <select [(ngModel)]="type" (ngModelChange)="onChangeFilter($event)">
+                    <option *ngFor="let value of types_list" value="{{value}}">{{value}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="list">
+            <div class="item">
+                <label>Rareté</label>
+                <select [(ngModel)]="rarity" (ngModelChange)="onChangeFilter($event)">
+                    <option *ngFor="let rar of rarities_list; let i = index" value="{{i}}">{{rar}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="list">
+            <div class="item">
+                <label>Coût</label>
+                <select [(ngModel)]="cost" (ngModelChange)="onChangeFilter($event)">
+                    <option value="-1">Tous</option>
+                    <option *ngFor="let val of [0, 100, 200, 300, 400, 500, 600, 700, 800]" value="{{val}}">{{val}}</option>
+                </select>
+            </div>
+        </div>
+        <button (click)="hideFilters()">Fermer</button>
+    </div>
+    <div class="zoom-card" id="zoom_card">
+        <img src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/articles/sprite2.png" alt="card" class="card" id="card_for_zoom" />
+        <div class="add-remove">
+            <div class="add" id="add_card" *ngIf="isDisplayAdd" (click)="addCard(zoomCard)">
+                <img src="assets/img/arrowUp.png" alt="arrow up" class="arrow up" />
+                <p class="text">Ajouter</p>
+            </div>
+            <div class="remove" id="remove_card" *ngIf="isDisplayRemove" (click)="removeCard(zoomCard)">
+                <img src="assets/img/arrowDown.png" alt="arrow down" class="arrow down" />
+                <p class="text">Retirer</p>
+            </div>
+        </div>
+        <div class="in-deck" id="in_deck">
+            <p>{{countInDeck}}/20</p>
+        </div>
+        <div class="collection">
+            <p>{{collection}}</p>
+        </div>
+        <div class="name-block close-button-animation" id="close-button-animation" (click)="closeZoom()">
+            <div class="name">Fermer</div>
+            <div class="corner-upper-left"></div>
+            <div class="corner-upper-right"></div>
+            <div class="corner-bottom-right"></div>
+            <div class="corner-bottom-left"></div>
+        </div>
+    </div>
+</div>
+<logister></logister>

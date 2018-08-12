@@ -2,17 +2,19 @@
     <div class="container w-container">
         <div class="small-nav__left-side">
             <img src="assets/img/rocket.png" class="nav-icon">
-            <a href="#" class="small-nav__link">About</a>
+            <a href="#" class="small-nav__link">A propos</a>
+            <a class="small-nav__link" style="color: #5b769b;">|</a>
+            <a [routerLink]="['/survey']" class="small-nav__link">Notez nous</a>
         </div>
         <div class="small-nav__right-side" *ngIf="currentUser !== null && currentUser !== undefined; else connectBlock">
             <img src="assets/img/profile-icon.svg" class="nav-icon-profile">
             <a class="small-nav__link" [routerLink]="['/profil']">{{currentUser.Name}}</a>
-            <a class="small-nav__link" [routerLink]="['/logout']" href="#login">Log out</a>
+            <a class="small-nav__link" [routerLink]="['/logout']" href="#login">Déconnexion</a>
         </div>
         <ng-template #connectBlock>
             <div class="small-nav__right-side">
                 <img src="assets/img/profile-icon.svg" class="nav-icon-profile">
-                <a class="small-nav__link" onclick="display_logister()" style="color: #5b769b;">Account</a>
+                <a class="small-nav__link" onclick="display_logister()" style="color: #5b769b;">Compte</a>
             </div>
         </ng-template>
     </div>
@@ -23,16 +25,16 @@
             <img src="assets/img/logo_sc.png" width="250">
         </a>
         <a href="" data-w-id="42db8c63-ade2-1301-a3de-e16165f5a41f" class="main-nav__cta w-hidden-tiny w-inline-block">
-            <div>Download</div>
+            <div>Télécharger</div>
             <div class="corner-upper-left"></div>
             <div class="corner-upper-right"></div>
             <div class="corner-bottom-right"></div>
             <div class="corner-bottom-left"></div>
         </a>
         <nav role="navigation" class="nav-menu w-nav-menu">
-            <a [routerLink]="['/news']" class="main-nav__link w-nav-link">News</a>
-            <a [routerLink]="['/shop']" class="main-nav__link w-nav-link">Shop</a>
-            <a [routerLink]="['/smithy']" class="main-nav__link w-nav-link">Smithy</a>
+            <a [routerLink]="['/news']" class="main-nav__link w-nav-link">Articles</a>
+            <a [routerLink]="['/shop']" class="main-nav__link w-nav-link">Boutique</a>
+            <a [routerLink]="['/smithy']" class="main-nav__link w-nav-link">Forge</a>
             <a [routerLink]="['/forum']" class="main-nav__link w-nav-link">Forum</a>
             <div class="corner-upper-right w-hidden-main"></div>
             <div class="corner-bottom-right w-hidden-main"></div>

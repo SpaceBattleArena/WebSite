@@ -1,0 +1,81 @@
+<headerClient>
+</headerClient>
+<div class="content">
+    <div class="row cards-filter">
+        <div class="col content-button">
+            <button *ngIf="is_possesses; else noPossesses" class="button-filter select">Possédé</button>
+            <ng-template #noPossesses>
+                <button class="button-filter" (click)="changeToPossesses()">Possédé</button>
+            </ng-template>
+        </div>
+        <div class="col content-button">
+            <button *ngIf="is_missing; else noMissing" class="button-filter select">Manquante</button>
+            <ng-template #noMissing>
+                <button class="button-filter" (click)="changeToMissing()">Manquante</button>
+            </ng-template>
+        </div>
+        <div class="col content-button">
+            <button *ngIf="is_all; else noAll" class="button-filter select">Toutes</button>
+            <ng-template #noAll>
+                <button class="button-filter" (click)="changeToAll()">Toutes</button>
+            </ng-template>
+        </div>
+    </div>
+    <div class="add-filter">
+        <button (click)="displayFilters()">Ajouter des filtres</button>
+    </div>
+    <div *ngIf="display_cards.length == 0; else CardsListBlock">
+        <p style="text-align: center;">Vous n'avez pas de cartes correspondant à ces critères</p>
+    </div>
+    <ng-template #CardsListBlock>
+        <div class="row">
+            <div class="col-2 cards-displayed" *ngFor="let card of display_cards; let i = index" (click)="displayCard(i)">
+                <img *ngIf="card.value === 'possessed'; else MissingCardBlock" src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/articles/sprite2.png" alt="{{card.card.Name}}" />
+                <ng-template #MissingCardBlock>
+                    <img src="http://ec2-13-59-89-177.us-east-2.compute.amazonaws.com:3000/articles/sprite2.png" alt="{{card.card.Name}}" style="-webkit-filter: grayscale(100%);filter: grayscale(100%);" />
+                </ng-template>
+            </div>
+        </div>
+    </ng-template>
+    <div class="filter-black-screen" id="filter-black-screen" (click)="hideFilters()"></div>
+    <div class="filter-container" id="filters">
+        <h2 class="filters-title">Filtres</h2>
+        <div class="filter-list">
+            <div class="list">
+                <div class="item">
+                    <label>Faction</label>
+                    <select [(ngModel)]="faction" (ngModelChange)="onChangeFilter($event)">
+                            <option *ngFor="let value of factions_list" value="{{value}}">{{value}}</option>
+                        </select>
+                </div>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <label>Type</label>
+                    <select [(ngModel)]="type" (ngModelChange)="onChangeFilter($event)">
+                            <option *ngFor="let value of types_list" value="{{value}}">{{value}}</option>
+                        </select>
+                </div>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <label>Rareté</label>
+                    <select [(ngModel)]="rarity" (ngModelChange)="onChangeFilter($event)">
+                            <option *ngFor="let rar of rarities_list; let i = index" value="{{i}}">{{rar}}</option>
+                        </select>
+                </div>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <label>Coût</label>
+                    <select [(ngModel)]="cost" (ngModelChange)="onChangeFilter($event)">
+                            <option value="-1">Tous</option>
+                            <option *ngFor="let val of [0, 100, 200, 300, 400, 500, 600, 700, 800]" value="{{val}}">{{val}}</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <button (click)="hideFilters()" class="filter-valid">Valider</button>
+    </div>
+</div>
+<logister></logister>
