@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -13,8 +15,9 @@ export class HeaderComponent {
     currentUser: User;
     user: User[] = [];
     is_staff = false;
+    private error: Error = null;
 
-    constructor(private userService: UserService) {
+    constructor(private router: Router, private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -24,7 +27,16 @@ export class HeaderComponent {
             this.userService.getInformation(this.currentUser["token"])
                 .subscribe(
                     resultArray => {
-                        this.is_staff = resultArray["results"]["data"][0]["Is_staff"];
+                        if (resultArray["results"] != undefined && resultArray["results"]["status"] != undefined && resultArray["results"]["status"] === 200) {
+                            this.is_staff = resultArray["results"]["data"][0]["Is_staff"];
+                        } else {
+                            this.userService.logout();
+                            this.currentUser = null;
+                            this.router.navigate(['']);
+                        }
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
                     }
                 )
         }

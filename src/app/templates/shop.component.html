@@ -10,7 +10,7 @@
         </div>
         <h2 class="title-text">BOUTIQUE</h2>
     </div>
-    <div class="gold-user" (click)="openBuyGold()">‡ {{user.Gold}}</div>
+    <div class="gold-user" (click)="openBuyGold()" *ngIf="user != null">‡ {{user.Gold}}</div>
     <div class="row extension">
         <div class="col-4 item" *ngFor="let extension of extensions; let i = index" (click)="isConfirmPayment(i)" id="booster_item_{{i}}">
             <img src="{{extension.sprite}}" alt="booster" class="booster-img" id="booster_{{i}}" />
@@ -34,7 +34,7 @@
             <div class="corner-bottom-left"></div>
         </div>
         <div class="box" id="box">
-            <div class="text">
+            <div class="text" *ngIf="user != null">
                 <span>Voulez-vous acheter ce booster pour  ‡ 200?<br/>‡ {{user.Gold}} → ‡ {{user.Gold - 200}}</span>
             </div>
             <div class="foot">
@@ -95,3 +95,4 @@
     </div>
 </section>
 <logister></logister>
+<error [error]="error"></error>

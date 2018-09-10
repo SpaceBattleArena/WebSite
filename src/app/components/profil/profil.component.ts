@@ -4,7 +4,10 @@ declare var $: any;
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import { CardService } from '../../services/card.service'
+import { Card } from '../../models/card';
+import { Deck } from '../../models/deck';
+import { CardService } from '../../services/card.service';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -16,18 +19,19 @@ import { CardService } from '../../services/card.service'
 export class ProfilComponent implements OnInit {
     currentUser: User;
     user: User = new User();
-    user_information: any;
+    user_information: any = null;
     is_disabled = true;
-    cards: any = [];
-    decks: any = [];
+    cards: Card[] = [];
+    decks: Deck[] = [];
     rank: any;
-    skins: any = [];
+    skins: any[] = [];
     translateBase = 50;
     translate = 50;
+    private error: Error = null;
+    private avatarList = [0,1,2,3,4];
     
     constructor(private userService: UserService, private cardService: CardService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        //this.userService.getById(this.currentUser.id).subscribe(user => { this.user = user; });
     }
 
     activate_modifications() {
@@ -45,55 +49,53 @@ export class ProfilComponent implements OnInit {
             this.userService.getInformation(this.currentUser["token"])
                 .subscribe(
                     resultArray => {
-                        if(resultArray["results"] != undefined) {
+                        if(resultArray["results"]["data"] != undefined) {
                             this.user = resultArray["results"]["data"][0];
-                            this.userService.getById(this.user.ID)
-                                .subscribe(
-                                    resultArray => {
-                                        this.user_information = resultArray["results"]["data"][0];
-                                        if (this.user_information.Arena_id === null) {
-                                            this.user_information.Arena_id = 0;
-                                        }
-                                        $("#arena-point-user").css("width", this.user_information.Arena_id.toString() + "%")
-                                    }
-                                )
                         }
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
+                    }
+                );
+            this.userService.getById(this.currentUser["ID"])
+                .subscribe(
+                    resultArray => {
+                        this.user_information = resultArray["results"]["data"][0];
+                        console.log(resultArray);
+                        if (this.user_information.Arena_id === null) {
+                            this.user_information.Arena_id = 0;
+                        }
+                        $("#arena-point-user").css("width", this.user_information.Arena_id.toString() + "%")
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
                     }
                 );
             this.cardService.getCards(this.currentUser["token"])
                 .subscribe(
                     resultArray => {
                         this.cards = resultArray["results"]["cards"];
-                        /*to remove*/
-                        // this.cards = [
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        //     {"Cost": 2, "Name": "Ship", "Type": "ShipType", "HP": 20},
-                        // ];
-                        // console.log(this.cards);
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
                     }
                 );
             this.cardService.getDecks(this.currentUser["token"])
                 .subscribe(
                     resultArray => {
                         this.decks = resultArray["decks"];
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
                     }
                 );
             this.cardService.getRank(this.currentUser["token"])
                 .subscribe(
                     resultArray => {
                         this.rank = resultArray["results"]["data"][0];
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
                     }
                 );
         }
@@ -195,5 +197,37 @@ export class ProfilComponent implements OnInit {
     on_scroll() {
         let scroll = document.documentElement.scrollTop;
         document.getElementById("overview").style.transform = "translateX(" + (scroll/100) + "vw)";
+    }
+
+    private displayChangeAvatarBox() {
+        let box = document.getElementById("change_avatar");
+        box.classList.add("show");
+    }
+
+    private hideChangeAvatarBox() {
+        let box = document.getElementById("change_avatar");
+        box.classList.remove("show");
+    }
+
+    private changeAvatar(id: number) {
+        this.user_information.Avatar_id = id;
+        this.userService.update(this.user_information, this.currentUser["token"]).subscribe(
+            result => {
+                //this.error = new Error("Erreur", "Votre ", 3, false);
+                this.userService.getById(this.currentUser["ID"]).subscribe(
+                    result => {
+                        this.user_information = result["results"]["data"][0];
+                        this.error = new Error("Succes", "Votre avatar a été changé", 3, false);
+                    },
+                    error => {
+                        this.error = new Error("Erreur", error, 3, true);
+                    }
+                )
+            },
+            error => {
+                this.error = new Error("Erreur", error, 3, true);
+            }
+        );
+        this.hideChangeAvatarBox();
     }
 }

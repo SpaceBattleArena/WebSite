@@ -9,6 +9,7 @@ import { User } from '../../models/user';
 import { Card } from '../../models/card';
 import { Deck } from '../../models/deck';
 import { Hero } from '../../models/hero';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -23,6 +24,7 @@ export class DecksListComponent {
     public createParams: any [] = [];
     public herosDeck: any[] = [];
     public heros: Hero[] = [];
+    private error: Error = null;
 
     constructor(private userService: UserService, private cardProvider: CardService, private herosProvider: HerosService, private router: Router) {
     }
@@ -67,11 +69,11 @@ export class DecksListComponent {
                 }
               },
               error => {
-                console.log(error);
+                this.error = new Error("Erreur", error, 3, true);
               }
             );
         } else {
-          console.log('no current user');
+          this.error = new Error("Erreur", "Vous n'êtes pas connecté", 3, true);
         }
       }
 }

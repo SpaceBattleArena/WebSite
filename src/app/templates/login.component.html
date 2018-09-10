@@ -10,48 +10,48 @@
             <div id="signup">
                 <h2 class="logister__heading">S'enregistrer gratuitement</h2>
                 <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-                    <div class="top-row">
-                        <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !first_name.valid }">
-                            <input type="text" name="first_name" [(ngModel)]="model.first_name" #first_name="ngModel" required placeholder="First Name*" />
-                            <div *ngIf="f.submitted && !first_name.valid" class="help-block">Prénom requis</div>
-                        </div>
-                        <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !last_name.valid }">
-                            <input type="text" name="last_name" [(ngModel)]="model.last_name" #last_name="ngModel" required placeholder="Last Name*" />
-                            <div *ngIf="f.submitted && !last_name.valid" class="help-block">Nom requis</div>
-                        </div>
-                    </div>
+                    <!--<div class="top-row">-->
                     <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !first_name.valid }">
-                        <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required placeholder="Email Address*" />
+                        <input type="text" name="first_name" [(ngModel)]="model.first_name" #first_name="ngModel" required placeholder="Pseudo*" />
+                        <div *ngIf="f.submitted && !first_name.valid" class="help-block">Pseudo requis</div>
+                    </div>
+                    <!--<div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !last_name.valid }">
+                            <input type="text" name="last_name" [(ngModel)]="model.last_name" #last_name="ngModel" required placeholder="Nom*" />
+                            <div *ngIf="f.submitted && !last_name.valid" class="help-block">Nom requis</div>
+                        </div>-->
+                    <!--</div>-->
+                    <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !first_name.valid }">
+                        <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required placeholder="Email*" />
                         <div *ngIf="f.submitted && !email.valid" class="help-block">Email requis</div>
                     </div>
                     <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Set A Password*" />
+                        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Mot de passe*" />
                         <div *ngIf="f.submitted && !password.valid" class="help-block">Mot de passe requis</div>
                     </div>
-                    <button [disabled]="loading" type="submit" class="button button-block" (click)="register()">Get Started <img src="assets/img/Rolling-1s-200px.gif" style="width: 40px;" *ngIf="loading"/></button>
+                    <button [disabled]="loading" type="submit" class="button button-block" (click)="register()">Commencer <img src="assets/img/Rolling-1s-200px.gif" style="width: 40px;" *ngIf="loading"/></button>
                 </form>
             </div>
             <div id="login">
-                <h2 class="logister__heading">Welcome Back!</h2>
+                <h2 class="logister__heading">Bon retour!</h2>
                 <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
                     <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                        <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email Address*" />
-                        <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                        <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email*" />
+                        <div *ngIf="f.submitted && !email.valid" class="help-block">Email requis</div>
                     </div>
                     <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password*" />
-                        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Mot de passe*" />
+                        <div *ngIf="f.submitted && !password.valid" class="help-block">Mot de passe requis</div>
                     </div>
                     <p class="forgot"><a href="#" (click)="displayForgotPassword()">Mot de passe oublié ?</a></p>
-                    <button [disabled]="loading" class="button button-block" (click)="login()">Log In <img src="assets/img/Rolling-1s-200px.gif" style="width: 40px;" *ngIf="loading"/></button>
+                    <button [disabled]="loading" class="button button-block" (click)="login()">Connexion <img src="assets/img/Rolling-1s-200px.gif" style="width: 40px;" *ngIf="loading"/></button>
                 </form>
             </div>
             <div class="forgot_password" id="forgot_password">
                 <h2 class="logister__heading">Oubli de mot de passe ?</h2>
                 <form name="form" (ngSubmit)="f.form.valid && forgotPassword()" #f="ngForm" novalidate>
                     <div class="field-wrap" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-                        <input type="email" name="email" [(ngModel)]="newEmail" #email="ngModel" required placeholder="Email Address*" />
-                        <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                        <input type="email" name="email" [(ngModel)]="newEmail" #email="ngModel" required placeholder="Email*" />
+                        <div *ngIf="f.submitted && !email.valid" class="help-block">Email requis</div>
                     </div>
                     <button [disabled]="loading" class="button button-block">Soumettre<img src="assets/img/Rolling-1s-200px.gif" style="width: 40px;" *ngIf="loading"/></button>
                 </form>
@@ -60,3 +60,4 @@
     </div>
 </div>
 <div class="logister_close" id="logister_close" onclick="hide_logister()"></div>
+<error [error]="error"></error>

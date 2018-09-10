@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -14,6 +15,7 @@ export class RegisterComponent {
     model: any = {};
     loading = false;
     new_user: any = {};
+    private error: Error = null;
 
     constructor(
         private router: Router,

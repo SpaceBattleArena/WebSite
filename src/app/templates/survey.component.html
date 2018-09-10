@@ -14,313 +14,691 @@
         Pourquoi est t'il important de nous noter ?<br> Grâce à vos retour nous pouvons faire des mises à jour pour améliorer nos services.<br> C'est pourquoi il est important pour nous d'avoir vos retour sur le site, l'application mobile et le jeu via
         ces formumaires.
     </p>
-    <div class="row">
-        <div class="col">
-            <hr> Comment avez-vous connu notre site ?
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn" (click)="changedValue('question1', 'SN')">
-                    <input type="radio" name='find'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Réseaux sociaux</span>
-                </label>
-                <label class="btn" (click)="changedValue('question1', 'friend/familly')">
-                    <input type="radio" name='find'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Amis / Famille</span>
-                </label>
-                <label class="btn" (click)="changedValue('question1', 'Epitech')">
-                    <input type="radio" name='find'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Evenement Epitech</span>
-                </label>
-                <label class="btn" (click)="changedValue('question1', 'Other')">
-                    <input type="radio" name='find'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Autre</span>
-                </label>
-            </div>
+    <div class="devices">
+        <p>Quel application voulez-vous notez ?</p>
+        <div class="buttons row">
+            <div class="col site select" id="button_site" (click)="changeSelectedApp('site')">Site web</div>
+            <div class="col site" id="button_app" (click)="changeSelectedApp('app')">Application mobile</div>
+            <div class="col site" id="button_game" (click)="changeSelectedApp('game')">Jeu</div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <hr> Quel type d'informations sur le jeu recherchez-vous ?
-            <br>
-            <div class="btn-group btn-group" data-toggle="buttons">
-                <label class="btn" (click)="addOrRemoveValue('card')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> Les cartes</span>
-                </label>
-                <label class="btn" (click)="addOrRemoveValue('play')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> Comment jouer</span>
-                </label>
-                <label class="btn" (click)="addOrRemoveValue('VR')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> La réalité virtuelle</span>
-                </label>
-                <label class="btn" (click)="addOrRemoveValue('e-sport')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> L'aspect compétitif</span>
-                </label>
-                <label class="btn" (click)="addOrRemoveValue('history')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> L'histoire</span>
-                </label>
-                <label class="btn" (click)="addOrRemoveValue('other')">
-                    <input type="checkbox" name='info'>
-                    <i class="fa fa-square-o fa-2x"></i>
-                    <i class="fa fa-check-square-o fa-2x"></i>
-                    <span> Autre</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Avez-vous trouvé les informations que vous recherchiez ?
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn" (click)="changedValue('question3', 'oui')">
-                    <input type="radio" name='find_info'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Oui</span>
-                </label>
-                <label class="btn" (click)="changedValue('question3', 'non')">
-                    <input type="radio" name='find_info'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Non</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Les informations sont-elles facilement accessibles ?
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn" (click)="changedValue('question4', 'oui')">
-                    <input type="radio" name='access'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Oui</span>
-                </label>
-                <label class="btn" (click)="changedValue('question4', 'non')">
-                    <input type="radio" name='access'>
-                    <i class="fa fa-circle-o fa-2x not-checked"></i>
-                    <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    <span> Non</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Y a-t-il des éléments inutiles ?
-            <br>
-            <input type="text" class="survey-text" [(ngModel)]="survey.question5">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Y a-t-il des fonctionnalités ou contenu qui manque ?
-            <br>
-            <input type="text" class="survey-text" [(ngModel)]="survey.question6">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> S'il fallait changer une chose sur le site ?
-            <br>
-            <input type="text" class="survey-text" [(ngModel)]="survey.question7">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Qu'est-ce que vous préférez sur le site ?
-            <br>
-            <input type="text" class="survey-text" [(ngModel)]="survey.question8">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Pourriez-vous évaluer les critères suivant ?
-            <br>
-            <div class="row question-line">
-                <div class="col-4 question-col">
-                </div>
-                <div class="col-2 question-col">
-                    <p>Très bien</p>
-                </div>
-                <div class="col-2 question-col">
-                    <p>Bien</p>
-                </div>
-                <div class="col-2 question-col">
-                    <p>Moyen</p>
-                </div>
-                <div class="col-2 question-col">
-                    <p>Mauvais</p>
-                </div>
-            </div>
-            <div class="row btn-group question-line" data-toggle="buttons">
-                <div class="col-4 question-col">
-                    <p>Présentation (design)</p>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(0, 'VG')">
-                        <input type="radio" name='q1'>
+    <div class="app-and-site" *ngIf="selectedApp != 'game'; else GameBlock">
+        <div class="row">
+            <div class="col">
+                <hr> Comment avez-vous connu notre {{appDisplay}} ?
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn" (click)="changedValue('question1', 'SN')">
+                        <input type="radio" name='find'>
                         <i class="fa fa-circle-o fa-2x not-checked"></i>
                         <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Réseaux sociaux</span>
                     </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(0, 'G')">
-                        <input type="radio" name='q1'>
+                    <label class="btn" (click)="changedValue('question1', 'friend/familly')">
+                        <input type="radio" name='find'>
                         <i class="fa fa-circle-o fa-2x not-checked"></i>
                         <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Amis / Famille</span>
                     </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(0, 'M')">
-                        <input type="radio" name='q1'>
+                    <label class="btn" (click)="changedValue('question1', 'Epitech')">
+                        <input type="radio" name='find'>
                         <i class="fa fa-circle-o fa-2x not-checked"></i>
                         <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Evenement Epitech</span>
                     </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(0, 'B')">
-                        <input type="radio" name='q1'>
+                    <label class="btn" (click)="changedValue('question1', 'Other')">
+                        <input type="radio" name='find'>
                         <i class="fa fa-circle-o fa-2x not-checked"></i>
                         <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-            </div>
-            <div class="row btn-group question-line" data-toggle="buttons">
-                <div class="col-4 question-col">
-                    <p>Richesse du contenu</p>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(1, 'VG')">
-                        <input type="radio" name='q2'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(1, 'G')">
-                        <input type="radio" name='q2'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(1, 'M')">
-                        <input type="radio" name='q2'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(1, 'B')">
-                        <input type="radio" name='q2'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-            </div>
-            <div class="row btn-group question-line" data-toggle="buttons">
-                <div class="col-4 question-col">
-                    <p>Services en ligne / intéractivité</p>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(2, 'VG')">
-                        <input type="radio" name='q3'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(2, 'G')">
-                        <input type="radio" name='q3'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(2, 'M')">
-                        <input type="radio" name='q3'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(2, 'B')">
-                        <input type="radio" name='q3'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-            </div>
-            <div class="row btn-group question-line" data-toggle="buttons">
-                <div class="col-4 question-col">
-                    <p>Global</p>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(3, 'VG')">
-                        <input type="radio" name='qg'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(3, 'G')">
-                        <input type="radio" name='qg'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(3, 'M')">
-                        <input type="radio" name='qg'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
-                    </label>
-                </div>
-                <div class="col-2 question-col">
-                    <label class="btn" (click)="changeValueMultiQuestion(3, 'B')">
-                        <input type="radio" name='qg'>
-                        <i class="fa fa-circle-o fa-2x not-checked"></i>
-                        <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Autre</span>
                     </label>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr> Commentaire :
-            <br>
-            <input type="text" class="survey-text" [(ngModel)]="survey.question10">
+        <div class="row">
+            <div class="col">
+                <hr> Quel type d'informations sur le jeu recherchez-vous ?
+                <br>
+                <div class="btn-group btn-group" data-toggle="buttons">
+                    <label class="btn" (click)="addOrRemoveValue('card')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> Les cartes</span>
+                    </label>
+                    <label class="btn" (click)="addOrRemoveValue('play')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> Comment jouer</span>
+                    </label>
+                    <label class="btn" (click)="addOrRemoveValue('VR')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> La réalité virtuelle</span>
+                    </label>
+                    <label class="btn" (click)="addOrRemoveValue('e-sport')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> L'aspect compétitif</span>
+                    </label>
+                    <label class="btn" (click)="addOrRemoveValue('history')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> L'histoire</span>
+                    </label>
+                    <label class="btn" (click)="addOrRemoveValue('other')">
+                        <input type="checkbox" name='info'>
+                        <i class="fa fa-square-o fa-2x"></i>
+                        <i class="fa fa-check-square-o fa-2x"></i>
+                        <span> Autre</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Avez-vous trouvé les informations que vous recherchiez ?
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn" (click)="changedValue('question3', 'oui')">
+                        <input type="radio" name='find_info'>
+                        <i class="fa fa-circle-o fa-2x not-checked"></i>
+                        <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Oui</span>
+                    </label>
+                    <label class="btn" (click)="changedValue('question3', 'non')">
+                        <input type="radio" name='find_info'>
+                        <i class="fa fa-circle-o fa-2x not-checked"></i>
+                        <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Non</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Les informations sont-elles facilement accessibles ?
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn" (click)="changedValue('question4', 'oui')">
+                        <input type="radio" name='access'>
+                        <i class="fa fa-circle-o fa-2x not-checked"></i>
+                        <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Oui</span>
+                    </label>
+                    <label class="btn" (click)="changedValue('question4', 'non')">
+                        <input type="radio" name='access'>
+                        <i class="fa fa-circle-o fa-2x not-checked"></i>
+                        <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        <span> Non</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Y a-t-il des éléments inutiles ?
+                <br>
+                <input type="text" class="survey-text" [(ngModel)]="survey.question5">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Y a-t-il des fonctionnalités ou contenu qui manque ?
+                <br>
+                <input type="text" class="survey-text" [(ngModel)]="survey.question6">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> S'il fallait changer une chose sur notre {{appDisplay}} ?
+                <br>
+                <input type="text" class="survey-text" [(ngModel)]="survey.question7">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Qu'est-ce que vous préférez sur notre {{appDisplay}} ?
+                <br>
+                <input type="text" class="survey-text" [(ngModel)]="survey.question8">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Pourriez-vous évaluer les critères suivant ?
+                <br>
+                <div class="row question-line">
+                    <div class="col-4 question-col">
+                    </div>
+                    <div class="col-2 question-col">
+                        <p>Très bien</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <p>Bien</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <p>Moyen</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <p>Mauvais</p>
+                    </div>
+                </div>
+                <div class="row btn-group question-line" data-toggle="buttons">
+                    <div class="col-4 question-col">
+                        <p>Présentation (design)</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(0, 'VG')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(0, 'G')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(0, 'M')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(0, 'B')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="row btn-group question-line" data-toggle="buttons">
+                    <div class="col-4 question-col">
+                        <p>Richesse du contenu</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(1, 'VG')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(1, 'G')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(1, 'M')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(1, 'B')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="row btn-group question-line" data-toggle="buttons">
+                    <div class="col-4 question-col">
+                        <p>Services en ligne / intéractivité</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(2, 'VG')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(2, 'G')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(2, 'M')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(2, 'B')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="row btn-group question-line" data-toggle="buttons">
+                    <div class="col-4 question-col">
+                        <p>Global</p>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(3, 'VG')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(3, 'G')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(3, 'M')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                    <div class="col-2 question-col">
+                        <label class="btn" (click)="changeValueMultiQuestion(3, 'B')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr> Commentaire :
+                <br>
+                <input type="text" class="survey-text" [(ngModel)]="survey.question10">
+            </div>
         </div>
     </div>
+    <ng-template #GameBlock>
+        <div class="game">
+            <div class="row">
+                <div class="col">
+                    <hr> Comment avez-vous connu notre jeu vidéo ?
+                    <br>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn" (click)="changedValue('question1', 'SN')">
+                            <input type="radio" name='find'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                            <span> Réseaux sociaux</span>
+                        </label>
+                        <label class="btn" (click)="changedValue('question1', 'friend/familly')">
+                            <input type="radio" name='find'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                            <span> Amis / Famille</span>
+                        </label>
+                        <label class="btn" (click)="changedValue('question1', 'Epitech')">
+                            <input type="radio" name='find'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                            <span> Evenement Epitech</span>
+                        </label>
+                        <label class="btn" (click)="changedValue('question1', 'Steam')">
+                            <input type="radio" name='find'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                            <span> Steam</span>
+                        </label>
+                        <label class="btn" (click)="changedValue('question1', 'Other')">
+                            <input type="radio" name='find'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                            <span> Autre</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Qu'est-ce que vous préféré dans le jeu ?
+                    <br>
+                    <div class="btn-group btn-group" data-toggle="buttons">
+                        <label class="btn" (click)="addOrRemoveValue('card')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> Les cartes</span>
+                        </label>
+                        <label class="btn" (click)="addOrRemoveValue('play')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> Comment jouer</span>
+                        </label>
+                        <label class="btn" (click)="addOrRemoveValue('VR')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> La réalité virtuelle</span>
+                        </label>
+                        <label class="btn" (click)="addOrRemoveValue('e-sport')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> L'aspect compétitif</span>
+                        </label>
+                        <label class="btn" (click)="addOrRemoveValue('history')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> L'histoire</span>
+                        </label>
+                        <label class="btn" (click)="addOrRemoveValue('other')">
+                            <input type="checkbox" name='info'>
+                            <i class="fa fa-square-o fa-2x"></i>
+                            <i class="fa fa-check-square-o fa-2x"></i>
+                            <span> Autre</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Y a-t-il quelque chose à changer ?
+                    <br>
+                    <input type="text" class="survey-text" [(ngModel)]="survey.question5">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Y a-t-il des éléments inutiles ?
+                    <br>
+                    <input type="text" class="survey-text" [(ngModel)]="survey.question6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Quelque chose à changer ?
+                    <br>
+                    <input type="text" class="survey-text" [(ngModel)]="survey.question7">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Pourriez-vous évaluer les critères suivant ?
+                    <br>
+                    <div class="row question-line">
+                        <div class="col-4 question-col">
+                        </div>
+                        <div class="col-2 question-col">
+                            <p>Très bien</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <p>Bien</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <p>Moyen</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <p>Mauvais</p>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Présentation (design)</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(0, 'VG')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(0, 'G')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(0, 'M')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(0, 'B')">
+                            <input type="radio" name='q1'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Création de deck</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(1, 'VG')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(1, 'G')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(1, 'M')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(1, 'B')">
+                            <input type="radio" name='q2'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Achat de cartes</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(2, 'VG')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(2, 'G')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(2, 'M')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(2, 'B')">
+                            <input type="radio" name='q3'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Système de duel</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(3, 'VG')">
+                            <input type="radio" name='q4'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(3, 'G')">
+                            <input type="radio" name='q4'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(3, 'M')">
+                            <input type="radio" name='q4'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(3, 'B')">
+                            <input type="radio" name='q4'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Mode solo</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(4, 'VG')">
+                            <input type="radio" name='q5'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(4, 'G')">
+                            <input type="radio" name='q5'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(4, 'M')">
+                            <input type="radio" name='q5'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(4, 'B')">
+                            <input type="radio" name='q5'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Mode multijoueur</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(5, 'VG')">
+                            <input type="radio" name='q6'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(5, 'G')">
+                            <input type="radio" name='q6'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(5, 'M')">
+                            <input type="radio" name='q6'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(5, 'B')">
+                            <input type="radio" name='q6'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="row btn-group question-line" data-toggle="buttons">
+                        <div class="col-4 question-col">
+                            <p>Global</p>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(6, 'VG')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(6, 'G')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(6, 'M')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                        <div class="col-2 question-col">
+                            <label class="btn" (click)="changeValueMultiQuestion(6, 'B')">
+                            <input type="radio" name='qg'>
+                            <i class="fa fa-circle-o fa-2x not-checked"></i>
+                            <i class="fa fa-check-circle-o fa-2x checked"></i>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> Commentaire :
+                    <br>
+                    <input type="text" class="survey-text" [(ngModel)]="survey.question10">
+                </div>
+            </div>
+        </div>
+    </ng-template>
     <div class="row">
         <div class="button" (click)="valid()">ENVOYER</div>
     </div>
 </div>
 <logister></logister>
+<error [error]="error"></error>

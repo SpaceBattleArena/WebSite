@@ -67,7 +67,6 @@ export class CardService {
             .get(this._postsURL + "deck", options)
             .map((response: Response) => {
                 let results = response.json();
-                console.log(results);
                 if (results['decks'] != undefined) {
                     return results['decks'];
                 } else {
@@ -105,7 +104,6 @@ export class CardService {
             .post(this._postsURL + "booster/buy", '', options)
             .map((response: Response) => {
                 response = response.json();
-                console.log(response);
                 if (response["results"] != undefined) {
                     response = response["results"];
                     return response["cards"];
@@ -139,7 +137,6 @@ export class CardService {
             .then(
               res => {
                 res = res.json();
-                console.log(res);
                 if (res['results']['status'] === 201) {
                   observer.next('ok');
                 } else if (res['results']['status'] === 403) {
@@ -173,7 +170,6 @@ export class CardService {
             .then(
               res => {
                 res = res.json();
-                console.log(res);
                 if (res['results']['status'] === 201) {
                   observer.next('ok');
                 } else if (res['results']['status'] === 403) {

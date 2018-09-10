@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import {CardService} from '../../services/card.service';
 import {Card} from '../../models/card';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -43,6 +44,7 @@ export class CardsListComponent {
     'Epic',
     'Mythic'
   ];
+  private error: Error = null;
 
     constructor(private userService: UserService, private cardProvider: CardService) {
     }
@@ -54,7 +56,6 @@ export class CardsListComponent {
           .subscribe(
             cards => {
               this.cards_user = cards;
-              console.log(this.cards_user);
               this.cardProvider.getAll()
                 .subscribe(
                   cards => {
@@ -66,13 +67,13 @@ export class CardsListComponent {
                     }
                   },
                   error => {
-                    console.log(error);
+                    this.error = new Error("Erreur", error, 3, true);
                   }
                 )
               this.only_possessed(this.cards_user);
             },
             error => {
-              console.log(error);
+              this.error = new Error("Erreur", error, 3, true);
             }
           );
     }
@@ -115,7 +116,6 @@ export class CardsListComponent {
         this.filterType();
         this.filterRarity();
         this.filterCost();
-        console.log(this.display_cards);
       }
     
       private only_possessed(cards) {

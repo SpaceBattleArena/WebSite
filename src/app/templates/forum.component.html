@@ -1,72 +1,131 @@
 <headerClient></headerClient>
 
-<div class="container" style="margin-top: 80px">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 style="color: white;">FORUMS</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 forum">
-            Title
-        </div>
-        <div class="col-md-3 forum">
-            Author
-        </div>
-        <div class="col-md-1 forum">
-            Created
-        </div>
-        <div class="col-md-2 forum">
-            Nb Responses
-        </div>
-        <div class="col-md-3 forum">
-            Last Message
-        </div>
-    </div>
-    <div class="row" *ngFor="let discussion of allDiscussions" [routerLink]="['/forum', discussion.id]">
-        <div class="col-md-3 forum">
-            {{discussion.title}}
-        </div>
-        <div class="col-md-3 forum">
-            {{discussion.author_id}}
-        </div>
-        <div class="col-md-1 forum">
-            Created
-        </div>
-        <div class="col-md-2 forum">
-            {{discussion.last_message}}
-        </div>
-        <div class="col-md-3 forum">
-            {{discussion.created}}
-        </div>
-    </div>
-
-    <br>
-
-    <div class="jumbotron new-message">
-        <div class="form-group row">
-            <div class="col-md-5">
-                <input class="form-control" id="title" type="text" placeholder="Title" [(ngModel)]="new_discussion.title">
+<div class="forum">
+    <div class="title">
+        <div class="orange-divider">
+            <div class="third upper">
+                <div class="tiny-orange-call-out">
+                </div>
             </div>
         </div>
-        <div class="form-group row">
+        <h2 class="title-text">FORUM</h2>
+    </div>
+    <div class="content left">
+        <div class="row discussion" *ngFor="let discussion of allDiscussions; let i = index" [routerLink]="['/forum', discussion.ID]">
+            <div class="col-2 profil" *ngIf="discussion.User != null; else anonymousUser">
+                <div class="avatar"><img src="assets/img/avatar{{discussion.User.Avatar_id}}.png" /></div>
+                <div class="name">{{discussion.User.Name}}</div>
+            </div>
+            <ng-template #anonymousUser>
+                <div class="col-2 profil">
+                    <div class="avatar"><img src="assets/img/avatar0.png" /></div>
+                    <div class="name">Anonyme</div>
+                </div>
+            </ng-template>
+            <div class="col-8 preview">
+                <div class="title">{{discussion.Name}}</div>
+                <div class="last-message" *ngIf="allMessage[i] != null">{{allMessage[i][0].Content}}</div>
+            </div>
+            <div class="col-2 info">
+                <div class="n-message" *ngIf="allMessage[i] != null">{{allMessage[i].length}}</div>
+                <div class="created"><i class="icon ion-calendar"></i>{{discussion.Creation_date.getDate()}}/{{discussion.Creation_date.getMonth()}}/{{discussion.Creation_date.getFullYear()}}</div>
+                <div class="last-message" *ngIf="allMessage[i] != null"><i class="icon ion-android-time"></i>{{allMessage[i][allMessage[i].length - 1].Creation_date.getDate()}}/{{allMessage[i][allMessage[i].length - 1].Creation_date.getMonth()}}/{{allMessage[i][allMessage[i].length - 1].Creation_date.getFullYear()}}</div>
+            </div>
+        </div>
+        <!--<div class="row">
             <div class="col-md-12">
-                <input class="form-control" id="message" type="text" placeholder="Message" [(ngModel)]="new_message.text">
+                <h2 style="color: white;">FORUMS</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="add_discussion()">Submit</button>
+            <div class="col-md-3 forum">
+                Title
+            </div>
+            <div class="col-md-3 forum">
+                Author
+            </div>
+            <div class="col-md-1 forum">
+                Created
+            </div>
+            <div class="col-md-2 forum">
+                Nb Responses
+            </div>
+            <div class="col-md-3 forum">
+                Last Message
             </div>
         </div>
-        <div class="row">
-            <div class="alert alert-success" *ngIf="successMessage">
-                Your post has been created !
+        <div class="row" *ngFor="let discussion of allDiscussions" [routerLink]="['/forum', discussion.id]">
+            <div class="col-md-3 forum">
+                {{discussion.title}}
             </div>
-            <div class="alert alert-danger" *ngIf="errorMessage">
-                {{ errorMessage }}
+            <div class="col-md-3 forum">
+                {{discussion.author_id}}
             </div>
+            <div class="col-md-1 forum">
+                Created
+            </div>
+            <div class="col-md-2 forum">
+                {{discussion.last_message}}
+            </div>
+            <div class="col-md-3 forum">
+                {{discussion.created}}
+            </div>
+        </div>
+
+        <br>
+
+        <div class="jumbotron new-message">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input class="form-control" id="title" type="text" placeholder="Title" [(ngModel)]="new_discussion.title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <input class="form-control" id="message" type="text" placeholder="Message" [(ngModel)]="new_message.text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 offset-md-10"><button type="button" class="btn btn-dark" (click)="add_discussion()">Submit</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-success" *ngIf="successMessage">
+                    Your post has been created !
+                </div>
+                <div class="alert alert-danger" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <div class="content right">
+        <button class="new-discussion" (click)="displayNewDiscussionBox()">Nouvelle discussion</button>
+        <div class="filters">
+            <h3 class="title">Catégories</h3>
+            <div class="categories">
+                <div class="category" *ngFor="let tag of allTags">
+                    <div class="title">{{tag[0]}}</div>
+                    <div class="n-topics">{{tag[1]}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="black-screen" (click)="hideNewDiscussionBox()" id="new_discussion_box_black_screen"></div>
+<div class="new-discussion-box" id="new_discussion_box">
+    <div class="content">
+        <h3 class="title">Nouvelle discussion</h3>
+        <div class="fields">
+            <input class="form-control" id="title" type="text" placeholder="Titre" [(ngModel)]="new_discussion.Name">
+            <input class="form-control" id="message" type="text" placeholder="Message" [(ngModel)]="new_message.Content">
+            <input class="form-control" id="tag" type="text" placeholder="Catégorie" [(ngModel)]="new_discussion.Tags">
+        </div>
+        <div class="button">
+            <button type="button" class="btn btn-dark" (click)="add_discussion()">Ajouter</button>
         </div>
     </div>
 </div>
 
 <logister></logister>
+<error [error]="error"></error>

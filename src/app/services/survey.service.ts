@@ -18,12 +18,26 @@ export class SurveyService {
         data.append("device", survey.device);
         data.append("question1", survey.question1);
         data.append("question2", survey.question2.toString());
-        data.append("question3", survey.question3);
-        data.append("question4", survey.question4);
+        //data.append("question3", survey.question3);
+        if (survey.device === "game") {
+            data.append("question3", null);
+        } else {
+            data.append("question3", survey.question3);
+        }
+        //data.append("question4", survey.question4);
+        if (survey.device === "game") {
+            data.append("question4", null);
+        } else {
+            data.append("question4", survey.question4);
+        }
         data.append("question5", survey.question5.toString());
         data.append("question6", survey.question6.toString());
         data.append("question7", survey.question7.toString());
-        data.append("question8", survey.question8.toString());
+        if (survey.device === "game") {
+            data.append("question8", null);
+        } else {
+            data.append("question8", survey.question8.toString());
+        }
         data.append("question9", survey.question9.toString());
         data.append("question10", survey.question10.toString());
         return this.http

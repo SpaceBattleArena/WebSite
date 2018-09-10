@@ -1,14 +1,47 @@
-div.error-block {
+.error-block .error,
+.error-block .success {
     position: fixed;
     bottom: 0;
-    width: 70%;
-    left: 15%;
-    height: 10vh;
     background-color: red;
     z-index: 100;
+    width: 50%;
+    padding: 10px;
+    margin: 0 25%;
+    display: flex;
 }
 
-div.error-block h2 {
+.error-block .text {
     color: white;
+    width: 100%;
     text-align: center;
+    margin: 0;
+}
+
+.error-block .success {
+    background-color: green;
+}
+
+.error-block button.close {
+    position: fixed;
+    bottom: 33px;
+    color: white;
+    z-index: 3000;
+    opacity: 1;
+    text-shadow: unset;
+    background-color: red;
+    border-radius: 50%;
+    float: unset;
+    font-weight: 100;
+    right: 0;
+    font-size: unset;
+    border: 1px solid white;
+    width: 20px;
+    height: 20px;
+    transform: translateX(50%);
+    padding: 0;
+    text-align: center;
+}
+
+.error-block button.close.success {
+    background-color: green;
 }

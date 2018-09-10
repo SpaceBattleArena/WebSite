@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Article } from '../../models/article';
 import { ArticleService } from '../../services/news.service';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -15,6 +16,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     slug: string;
     private sub: any;
     article: Article = new Article();
+    private error: Error = null;
 
     constructor(private route: ActivatedRoute, private articleService: ArticleService) {
     }
@@ -29,7 +31,7 @@ export class NewsComponent implements OnInit, OnDestroy {
                     this.article = resultArray['results']['data'][0];
                 },
                 error => {
-                    console.log(error);
+                    this.error = new Error("Erreur", error, 3, true);
                 }
             )
     }

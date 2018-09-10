@@ -253,6 +253,10 @@ div.cards-list.show {
     display: block;
 }
 
+div.name-block {
+    cursor: pointer;
+}
+
 div.name-block.close-button-animation {
     position: fixed;
     width: 30%;

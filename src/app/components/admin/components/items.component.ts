@@ -5,6 +5,7 @@ import { Article } from '../../../models/article';
 import { ArticleService } from '../../../services/news.service';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
+import { Error } from '../../../models/error';
 declare var $: any;
 
 @Component({
@@ -31,6 +32,7 @@ export class ItemsComponent implements OnInit {
   /*Variables for Players*/
   allUsers: User[];
   new_user: any = {};
+  private error: Error = null;
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService, private userService: UserService) {
     console.log(this.slug);

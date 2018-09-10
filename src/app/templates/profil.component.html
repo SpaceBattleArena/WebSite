@@ -7,7 +7,7 @@
             <div class="tabs-content w-tab-content">
                 <div class="tab-pane w-tab-pane w--tab-active news_block" style="opacity: 1; transition: opacity 300ms;padding-left: 288px;padding-top:20px;">
                     <h3 class="massive-heading" id="overview">OVERVIEW</h3>
-                    <div class="destination-heading" style="margin-top: -90px;">
+                    <div class="destination-heading" style="margin-top: -90px;z-index: 0;">
                         <div class="orange-divider reversed" data-w-id="08584a36-58d3-66f1-4cb5-adbf018e1c99" style="will-change: transform;transform: translateX(-30px) translateY(0px) translateZ(0px) scaleX(1.3) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
                             <div class="third upper">
                                 <div class="tiny-orange-call-out"></div>
@@ -15,7 +15,10 @@
                         </div>
                         <h4 class="heading-3" style="padding:50px">{{currentUser.Name}}</h4>
                     </div>
-                    <div class="row player-informations">
+                    <div class="row player-informations" style="z-index: 1;">
+                        <div class="col border-right" *ngIf="user_information != null" (click)="displayChangeAvatarBox()" style="cursor:pointer;">
+                            <img src="assets/img/avatar{{user_information.Avatar_id}}.png" alt="avatar">
+                        </div>
                         <div class="col border-right rank">
                             <img src="assets/img/grade-example.png" alt="rank">
                             <p class="small">Rank</p>
@@ -312,7 +315,7 @@
                         </div>
                     </div>
                     <div class="row decks" id="decks" style="display: none">
-                        <ul class="list" *ngIf="decks.lenght > 0; else noDecksBlock">
+                        <ul class="list" *ngIf="decks != []; else noDecksBlock">
                             <li class="card" *ngFor="let deck of decks">
                                 <img class="card-img" src="assets/img/SBA_logo.png" alt="card" />
                                 <p class="type">{{ deck.Name }}</p>
@@ -360,139 +363,16 @@
         <div class="left-side-white left-side-white--news"></div>
     </div>
 </section>
-
-
-<!--<section class="profil">
-    <div class="user-information">
-        <div class="user-image">
-            <img height="150" width="150" src="assets/img/SBA_logo.png" alt="Avatar">
-            <div class="information">
-                <p class="username">{{currentUser.username}}</p>
-                <p class="rank">{{ rank }}</p>
-            </div>
+<div class="change-avatar" id="change_avatar">
+    <h3 class="title">Sélectionnez votre avatar</h3>
+    <div class="avatarList">
+        <div class="avatar" *ngFor="let avatar_id of avatarList" (click)="changeAvatar(avatar_id)">
+            <img *ngIf="user_information.Avatar_id != avatar_id; else selectedAvatar" src="assets/img/avatar{{avatar_id}}.png" alt="avatar" />
+            <ng-template #selectedAvatar><img src="assets/img/avatar{{avatar_id}}.png" alt="avatar" class="select" /></ng-template>
         </div>
     </div>
-    <div class="links">
-        <div class="ring" onclick="display_games()">
-            <p id="games">Game hystory</p>
-        </div>
-        <div class="ring" onclick="display_cards()">
-            <p id="cards">Cards list</p>
-        </div>
-        <div class="ring" onclick="display_items()">
-            <p id="items">Skins list</p>
-        </div>
-        <div class="ring" onclick="display_decks()">
-            <p id="decks">Decks list</p>
-        </div>
-    </div>
-    <div class="profil-content show" id="games-hystory">
-        <h2>Games Hystory</h2>
-        <div class="game win">
-            <p class="result">WIN</p>
-            <div class="game-info">
-                <div class="player-block left">
-                    <p class="user">{{currentUser.username}}</p>
-                    <p class="life-point">10</p>
-                    <p class="action-point">35</p>
-                </div>
-                <p class="vs">VS</p>
-                <div class="player-block right">
-                    <p class="opponent">Opponent</p>
-                    <p class="life-point-opponent">0</p>
-                    <p class="action-point-opponent">36</p>
-                </div>
-            </div>
-            <div class="reward">
-                <p class="rank-point">Rank point<br/>+25</p>
-                <p class="gold">Gold<br/>+367</p>
-            </div>
-        </div>
-        <div class="game loose">
-            <p class="result">LOOSE</p>
-            <div class="game-info">
-                <div class="player-block left">
-                    <p class="user">{{currentUser.username}}</p>
-                    <p class="life-point">0</p>
-                    <p class="action-point">20</p>
-                </div>
-                <p class="vs">VS</p>
-                <div class="player-block right">
-                    <p class="opponent">Opponent</p>
-                    <p class="life-point-opponent">30</p>
-                    <p class="action-point-opponent">21</p>
-                </div>
-            </div>
-            <div class="reward">
-                <p class="rank-point">Rank point<br/>-15</p>
-                <p class="gold">Gold<br/>+103</p>
-            </div>
-        </div>
-        <div class="game win">
-            <p class="result">WIN</p>
-            <div class="game-info">
-                <div class="player-block left">
-                    <p class="user">{{currentUser.username}}</p>
-                    <p class="life-point">10</p>
-                    <p class="action-point">35</p>
-                </div>
-                <p class="vs">VS</p>
-                <div class="player-block right">
-                    <p class="opponent">Opponent</p>
-                    <p class="life-point-opponent">0</p>
-                    <p class="action-point-opponent">36</p>
-                </div>
-            </div>
-            <div class="reward">
-                <p class="rank-point">Rank point<br/>+25</p>
-                <p class="gold">Gold<br/>+367</p>
-            </div>
-        </div>
-    </div>
-    <div class="profil-content" id="cards-list">
-        <h2>Cards List</h2>
-        <ul class="list">
-            <li class="card" *ngFor="let card of cards">
-                <p class="cost">{{ card.Cost }}</p>
-                <p class="name">{{ card.Name }}</p>
-                <img class="card-img" src="assets/img/SBA_logo.png" alt="card" />
-                <p class="type">{{ card.Type }}</p>
-                <p class="hp">{{ card.HP }}</p>
-            </li>
-        </ul>
-    </div>
-    <div class="profil-content" id="skins-list">
-        <h2>Skins List</h2>
-    </div>
-    <div class="profil-content" id="decks-list">
-        <h2>Decks List</h2>
-        <ul class="list">
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-            <li class="deck">
-                <img class="deck-img" src="assets/img/SBA_logo.png" alt="deck" />
-                <p class="name">Name</p>
-            </li>
-        </ul>
-    </div>
-</section>-->
+    <button class="close" (click)="hideChangeAvatarBox()">Fermer</button>
+</div>
 
 <logister></logister>
+<error [error]="error"></error>

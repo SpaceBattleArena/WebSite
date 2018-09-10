@@ -1,3 +1,14 @@
-<div class="error-block">
-    <h2>{{type}} : {{message}}</h2>
+<div class="error-block" *ngIf="error != null">
+    <button class="close" (click)="closeWindow()" *ngIf="error.is_error; else successClose">x</button>
+    <ng-template #successClose>
+        <button class="close success" (click)="closeWindow()">x</button>
+    </ng-template>
+    <div class="error" *ngIf="error.is_error; else successBlock">
+        <p class="text"><i class="icon ion-alert"></i> Erreur - {{error.message}}</p>
+    </div>
+    <ng-template #successBlock>
+        <div class="success">
+            <p class="text"><i class="icon ion-checkmark"></i> Succès - {{error.message}}</p>
+        </div>
+    </ng-template>
 </div>

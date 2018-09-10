@@ -68,7 +68,7 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    getById(id: Number) {
+    getById(id: number) {
         return this.http
             .get(this._postsURL + "user/getById?id=" + id.toString())
             .map((response: Response) => {
@@ -77,15 +77,18 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    update(user: User) {
+    update(user: User, token) {
+        let add_headers = new Headers();
+        add_headers.append('Authorization', token);
         let body = {
-            "id": user.ID,
-            "name": user.Name,
-            "password": user.Password,
-            "mail": user.Email,
-            "is_staff": user.Is_staff
+            "userId": user.ID,
+            "is_staff": user.Is_staff,
+            "avatar": user.Avatar_id
         }
-        return this.http.put(this._postsURL + "user/update", body)
+    
+        let options = new RequestOptions();
+        options.headers = add_headers;
+        return this.http.put(this._postsURL + "user/update", body, options)
             .map((response: Response) => {
                 return response.json();
             })

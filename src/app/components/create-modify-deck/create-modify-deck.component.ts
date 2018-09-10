@@ -9,6 +9,7 @@ import { User } from '../../models/user';
 import { Card } from '../../models/card';
 import { Deck } from '../../models/deck';
 import { Hero } from '../../models/hero';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -60,6 +61,7 @@ export class CreateModifyDeckComponent {
     public collection: number = 0;
     public isDisplayRemove: boolean = false;
     public isDisplayAdd: boolean = false;
+    private error: Error = null;
 
     constructor(
         private userService: UserService,
@@ -81,8 +83,10 @@ export class CreateModifyDeckComponent {
             this.heros = this.herosProvider.getAll();
             // //---------------------------------------
             this.getAllCards();
-            console.log(this.deck);
-        });
+        },
+      error => {
+        this.error = new Error("Erreur", error, 3, true);
+      });
     }
 
     private getCardById(id: Number) {
@@ -145,7 +149,7 @@ export class CreateModifyDeckComponent {
               }
             },
             error => {
-              console.log(error);
+              this.error = new Error("Erreur", error, 3, true);
             }
           );
       }
@@ -366,9 +370,9 @@ export class CreateModifyDeckComponent {
           .subscribe(
             results => {
               if (results === 'ok') {
-                alert('Successfully created');
+                this.error = new Error("Succes", "Deck créé", 3, false);
               } else {
-                alert(results);
+                this.error = new Error("Erreur", "Impossible de créer le deck", 3, true);
               }
             }
           );
@@ -377,9 +381,9 @@ export class CreateModifyDeckComponent {
           .subscribe(
             results => {
               if (results === 'ok') {
-                alert('Successfully modified');
+                this.error = new Error("Succes", "Deck modifié", 3, false);
               } else {
-                alert(results);
+                this.error = new Error("Erreur", "Impossible de modifier le deck", 3, true);
               }
             }
           );
@@ -429,7 +433,6 @@ export class CreateModifyDeckComponent {
             return;
           }
         }
-        alert("Votre deck est complet");
       }
     
       public removeCard(card: Card) {

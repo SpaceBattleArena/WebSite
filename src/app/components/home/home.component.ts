@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { Article } from '../../models/article';
 import { ArticleService } from '../../services/news.service';
+import { Error } from '../../models/error';
 declare var $: any;
 
 @Component({
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
     translateYShip = 0;
     rotateShip = 0;
     pos_screens = 30;
+    private error: Error = null;
 
     constructor(
         private articleService: ArticleService,
@@ -183,7 +185,6 @@ export class HomeComponent implements OnInit {
     }
 
     vr_click() {
-        console.log('click vr');
         $('#vr').addClass("w--tab-active");
         $('#card').removeClass("w--tab-active");
         $('#e-sport').removeClass("w--tab-active");
@@ -191,7 +192,6 @@ export class HomeComponent implements OnInit {
     }
 
     card_click() {
-        console.log('click card');
         $('#vr').addClass("w--tab-active");
         $('#card').removeClass("w--tab-active");
         $('#e-sport').removeClass("w--tab-active");
@@ -199,7 +199,6 @@ export class HomeComponent implements OnInit {
     }
 
     war_click() {
-        console.log('click war');
         $('#vr').addClass("w--tab-active");
         $('#card').removeClass("w--tab-active");
         $('#e-sport').removeClass("w--tab-active");
@@ -207,7 +206,6 @@ export class HomeComponent implements OnInit {
     }
 
     esport_click() {
-        console.log('click esport');
         $('#vr').addClass("w--tab-active");
         $('#card').removeClass("w--tab-active");
         $('#e-sport').removeClass("w--tab-active");
@@ -218,8 +216,8 @@ export class HomeComponent implements OnInit {
         $('body').removeClass("fixed-sn black-skin");
         $('body').css('background-image', "url('../../assets/img/SPACE.jpg')");
         $('body').css('background-color', 'none');
-        this.sleep(1500);
         this.when_loading();
+        this.sleep(1500);
         this.articleService.getAll()
             .subscribe(
                 resultArray => {
@@ -241,19 +239,18 @@ export class HomeComponent implements OnInit {
                         }
                         // this.sleep(1500);
                         // this.when_loading();
-                        console.log(this.ArticlesLimit);
                     }
+                },
+                error => {
+                    this.error = new Error("Erreur", error, 3, true);
                 }
             );
         
         this.sub = this.route
         .queryParams
         .subscribe(params => {
-            console.log(params.state);
             if (params.state != undefined) {
-                console.log('not undefined');
                 if (params.state === "no log") {
-                    console.log('no log');
                     let loginBlock = document.getElementById("login");
                     let registerBlock = document.getElementById("signup");
                     let forgotPasswordBlock = document.getElementById("forgot_password");
@@ -271,6 +268,9 @@ export class HomeComponent implements OnInit {
                     logisterCloseBlock.classList.add("show");
                 }
             }
-        });
+        },
+    error => {
+        this.error = new Error("Erreur", error, 3, true);
+    });
     }
 }

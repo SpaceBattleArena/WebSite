@@ -10,6 +10,7 @@ import { Message } from '../../../models/message';
 import { UserService } from '../../../services/user.service';
 import { ArticleService } from '../../../services/news.service';
 import { ForumService } from '../../../services/forum.service';
+import { Error } from '../../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
   rank_chart : any;
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   count_news = 0;
+  private error: Error = null;
 
   public RankLabels:string[] = ['Roo', '2nd', '1st', 'Cap', 'Maj', 'LtC', 'Col', 'MjG', 'LtG', 'Gen', 'GoA'];
   public RankData:number[] = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -160,8 +162,8 @@ export class DashboardComponent implements OnInit {
           this.count_news = this.allArticles.length;
         }
       );
-    this.allDiscussions = this.forumService.getAllDiscussions();
-    this.allMessages = this.forumService.getAllMessages();
+    //this.allDiscussions = this.forumService.getAllDiscussions();
+    //this.allMessages = this.forumService.getAllMessages();
     this.latest_messages();
     this.created_discussions();
   }

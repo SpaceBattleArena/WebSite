@@ -2,6 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
     public newEmail: string = "";
+    private error: Error = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -45,27 +47,26 @@ export class LoginComponent implements OnInit {
             },
             error => {
                 this.loading = false;
-                console.log("Error :: " + error);
-                alert(error);
+                this.error = new Error("Erreur", error, 3, true);
             }
         );
     }
 
     register() {
         this.loading = true;
+        this.model.last_name = "no use";
         let user_json = JSON.stringify(this.model);
     
         this.userService.registration(user_json)
         .subscribe(
             resultArray => {
-                alert(resultArray["message"]);
+                this.error = new Error("Succes", resultArray["message"], 3, false);
                 this.loading = false;
                 this.router.navigate(['']);
             },
             error => {
                 this.loading = false;
-                console.log("Error :: " + error);
-                alert(error);
+                this.error = new Error("Erreur", error, 3, true);
             }
         );
     }
@@ -75,10 +76,12 @@ export class LoginComponent implements OnInit {
         this.userService.forgotPassword(this.newEmail)
         .subscribe(
             resultArray => {
-                console.log(resultArray);
                 if (resultArray["results"]["status"] === 200) {
-                    alert("Un mail vous à été envoyé");
+                    this.error = new Error("Succes", "Un mail vous à été envoyé", 3, false);
                 }
+            },
+            error => {
+                this.error = new Error("Erreur", error, 3, true);
             }
         );
     }
@@ -119,5 +122,14 @@ export class LoginComponent implements OnInit {
         forgotPasswordBlock.style.display = "none";
         loginLink.classList.remove("active");
         registerLink.classList.add("active");
+    }
+
+    sleep(milliseconds: Number) {
+        let start = new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds) {
+                break;
+            }
+        }
     }
 }

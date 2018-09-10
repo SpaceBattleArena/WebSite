@@ -6,6 +6,7 @@ import { Message } from '../../models/message';
 import { User } from '../../models/user';
 import { ForumService } from '../../services/forum.service';
 import { UserService } from '../../services/user.service';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -15,41 +16,72 @@ import { UserService } from '../../services/user.service';
 })
 
 export class DiscussionComponent implements OnInit, OnDestroy {
-    allDiscussions: Discussion[];
-    messages: Message[];
+    allDiscussions: Discussion[] = [];
+    messages: Message[] = [];
     slug: number;
     private sub: any;
-    discussion: Discussion;
+    discussion: Discussion = null;
     test: any = {};
     currentUser: User;
-    new_message: any = {};
+    new_message: Message = new Message();
+    successMessage: boolean = true;
+    errorMessage: boolean = false;
+    usersList: User[] = [];
+    private error: Error = null;
 
-    constructor(private route: ActivatedRoute, private ForumService: ForumService, private router:Router) {
+    constructor(private route: ActivatedRoute, private forumService: ForumService, private userService: UserService, private router:Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        this.allDiscussions = JSON.parse(localStorage.getItem('discussions'));
-        this.sub = this.route.params.subscribe(params => {
-            this.slug = params['slug'];
-        });
-        this.allDiscussions.forEach(element => {
-            if (element.id == this.slug) {
-                this.discussion = element;
+        this.initForumMessage();
+    }
+
+    private initForumMessage() {
+        this.forumService.getAllDiscussions().subscribe(
+            result => {
+                if (result["status"] != undefined && result["status"] === "200") {
+                    this.allDiscussions = result["topics"];
+                    this.sub = this.route.params.subscribe(params => {
+                        this.slug = params['slug'];
+                        this.allDiscussions.forEach(element => {
+                            if (element.ID == this.slug) {
+                                this.discussion = element;
+                            }
+                        });
+                        if (this.discussion == undefined) {
+                            this.router.navigate(['forum']);
+                        }
+                        this.forumService.getMessageByDiscussionID(this.discussion.ID).subscribe(
+                            result => {
+                                if (result["status"] != undefined && result["status"] === "200") {
+                                    if (result["messages"].length > 0) {
+                                        for (let i = 0; i < result["messages"].length; i += 1) {
+                                            let m_date = new Date(result["messages"][i]["Creation_date"]);
+                                            result["messages"][i]["Creation_date"] = m_date;
+                                        }
+                                        this.messages = result["messages"];
+                                        for (let i = 0; i < this.messages.length; i += 1) {
+                                            this.getUserById(this.messages[i].Author_id, i);
+                                        }
+                                    } else {
+                                        this.messages = null;
+                                    }
+                                } else {
+                                    this.messages = null;
+                                }
+                            },
+                            error => {
+                                this.error = new Error("Erreur", error, 3, true);
+                            }
+                        )
+                    });
+                }
+            },
+            error => {
+                this.error = new Error("Erreur", error, 3, true);
             }
-        });
-        if (this.discussion == undefined) {
-            this.router.navigate(['forum']);
-        }
-        this.messages = this.ForumService.getMessageByDiscussionID(this.discussion.id);
-        // this.ForumService.getMessageByDiscussionID(this.discussion.id).subscribe(
-        //     data => {
-        //         this.messages = data;
-        //     },
-        //     error => {
-        //         alert("An error occured while getting messages");
-        //     }
-        // )
+        );
     }
 
     ngOnDestroy() {
@@ -57,51 +89,43 @@ export class DiscussionComponent implements OnInit, OnDestroy {
     }
 
     post_message() {
-        if (this.new_message.text == undefined || this.new_message.text == null || this.new_message.text == "") {
-            alert("The message is empty");
+        if (this.new_message.Content == undefined || this.new_message.Content == null || this.new_message.Content.length === 0) {
+            this.error = new Error("Erreur", "Un message ne peut pas être vide", 3, true);
             return;
         }
-        this.new_message.id = 0;
-        this.new_message.author_id = this.currentUser.ID;
-        this.new_message.post_date = Date.now();
-        this.new_message.discussion_id = this.discussion.id;
-        if(this.ForumService.createMessage(this.new_message)) {
-            this.discussion.last_message = this.new_message.post_date;
-            this.discussion.nb_response += 1;
-            this.ForumService.updateDiscussion(this.discussion);
-            this.messages = this.ForumService.getMessageByDiscussionID(this.discussion.id)
+        this.new_message.Forum_id = this.discussion.ID;
+        this.forumService.createMessage(this.new_message, this.currentUser["token"]).subscribe(
+            result => {
+                this.error = new Error("Erreur", "Votre message a été posté", 3, false);
+                this.initForumMessage();
+                this.hideNewMessageBox();
+            },
+            error => {
+                this.error = new Error("Erreur", error, 3, true);
+            }
+        )
+    }
+
+    private getUserById(idUser: number, index) {
+        this.userService.getById(idUser).subscribe(
+            resultArray => {
+                resultArray = resultArray["results"]["data"][0];
+                this.messages[index].User = resultArray;
+            }
+        )
+    }
+
+    private displayNewMessageBox() {
+        if (this.currentUser != null) {
+            let newMessageBox = document.getElementById("new_message_box");
+            newMessageBox.classList.add("show");
+        } else {
+            this.error = new Error("Erreur", "Vous devez être connecté pour ajouter un message", 3, true);
         }
-        // this.ForumService.createMessage(this.message).subscribe(
-        //     data => {
-        //         alert("created");
-        //         this.discussion.last_message = this.message.post_date;
-        //         this.discussion.nb_response += 1;
-        //         this.ForumService.updateDiscussion(this.discussion).subscribe(
-        //             data => {
-        //                 console.log("success");
-        //                 console.log(data);
-        //             },
-        //             error => {
-        //                 console.log(error);
-        //             }
-        //         )
-        //         this.ForumService.getMessageByDiscussionID(this.discussion.id).subscribe(
-        //             data => {
-        //                 this.messages = data;
-        //             },
-        //             error => {
-        //                 alert("An error occured while getting messages");
-        //             }
-        //         )
-        //         this.message.id = 0;
-        //         this.message.author_id = null;
-        //         this.message.post_date = null;
-        //         this.message.discussion_id = null;
-        //         this.message.text = "";
-        //     },
-        //     error => {
-        //         alert("An error occured while creating discussion");
-        //     }
-        // )
+    }
+
+    private hideNewMessageBox() {
+        let newMessageBox = document.getElementById("new_message_box");
+        newMessageBox.classList.remove("show");
     }
 }

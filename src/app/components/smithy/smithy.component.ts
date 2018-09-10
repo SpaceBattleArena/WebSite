@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import {CardService} from '../../services/card.service';
 import {Card} from '../../models/card';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -17,6 +18,7 @@ export class SmithyComponent {
     selectedCard: Card;
     successMessage: boolean = false;
     errorMessage: string = '';
+    private error: Error = null;
 
     constructor(private userService: UserService, private cardService: CardService) {
     }
@@ -31,9 +33,9 @@ export class SmithyComponent {
             if (data['results']['status'] == 201) {
                 this.successMessage = true;
             } else if (data['results']['status'] == 403) {
-                this.errorMessage = 'You don\'t have enough part to buy a booster!';
+                this.error = new Error("Erreur", 'You don\'t have enough part to buy a booster!', 3, true);
             } else {
-                this.errorMessage = 'An error occured, please try again later.';
+                this.error = new Error("Erreur", 'An error occured, please try again later.', 3, true);
             }
         });
     }

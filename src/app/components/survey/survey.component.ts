@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { SurveyService } from '../../services/survey.service';
 import { Survey } from '../../models/survey';
+import { Error } from '../../models/error';
 
 @Component({
     moduleId: module.id,
@@ -15,6 +16,9 @@ import { Survey } from '../../models/survey';
 export class SurveyComponent implements OnInit {
     public survey: Survey = new Survey();
     public alert: boolean[];
+    private error: Error = null;
+    private selectedApp: string = "site";
+    private appDisplay = "site";
 
     constructor(
         private route: ActivatedRoute,
@@ -30,16 +34,14 @@ export class SurveyComponent implements OnInit {
         for (let i = 0; i < 10; i += 1) {
             this.alert.push(false);
         }
-        this.survey.device = "web site";
+        this.survey.device = this.selectedApp;
     }
 
     public changedValue(param, value) {
         this.survey[param] = value;
-        console.log(this.survey);
     }
 
     public addOrRemoveValue(value) {
-        console.log(value);
         if (this.survey.question2 === undefined || this.survey.question2 === null) {
             this.survey.question2 = [];
         }
@@ -49,16 +51,13 @@ export class SurveyComponent implements OnInit {
         } else {
             this.survey.question2.push(value);
         }
-        console.log(this.survey.question2);
     }
 
     public changeValueMultiQuestion(index, value) {
         this.survey.question9[index] = value;
-        console.log(this.survey.question9);
     }
 
     public valid() {
-        console.log(this.survey);
         for (let i = 0; i < 10; i += 1) {
             this.alert[i] = false;
         }
@@ -68,10 +67,10 @@ export class SurveyComponent implements OnInit {
         if (this.survey.question2 === undefined || this.survey.question2 === null) {
             this.alert[1] = true;
         }
-        if (this.survey.question3 === undefined || this.survey.question3 === null) {
+        if (this.selectedApp != 'game' && this.survey.question3 === undefined || this.selectedApp != 'game' && this.survey.question3 === null) {
             this.alert[2] = true;
         }
-        if (this.survey.question4 === undefined || this.survey.question4 === null) {
+        if (this.selectedApp != 'game' && this.survey.question4 === undefined || this.selectedApp != 'game' && this.survey.question4 === null) {
             this.alert[3] = true;
         }
         if (this.survey.question5 === undefined || this.survey.question5 === null) {
@@ -83,7 +82,7 @@ export class SurveyComponent implements OnInit {
         if (this.survey.question7 === undefined || this.survey.question7 === null) {
             this.alert[6] = true;
         }
-        if (this.survey.question8 === undefined || this.survey.question8 === null) {
+        if (this.selectedApp != 'game' && this.survey.question8 === undefined || this.selectedApp != 'game' && this.survey.question8 === null) {
             this.alert[7] = true;
         }
         if (this.survey.question9 === undefined || this.survey.question9 === null) {
@@ -97,8 +96,7 @@ export class SurveyComponent implements OnInit {
 
         for (let i = 0; i < this.alert.length; i += 1) {
             if (this.alert[i]) {
-                console.log(this.alert);
-                alert("Merci de renseigner les champs");
+                this.error = new Error("Erreur", "Merci de renseigner les champs", 3, true);
                 return;
             }
         }
@@ -108,6 +106,23 @@ export class SurveyComponent implements OnInit {
                 console.log(results);
             }
         );
-        alert("Merci d'avoir rempli ce formulaire");
+        this.error = new Error("Succes", "Merci d'avoir rempli ce formulaire", 3, false);
+    }
+
+    private changeSelectedApp(name: string) {
+        let selectBlock = document.getElementById("button_"+this.selectedApp);
+        selectBlock.classList.remove("select");
+
+        this.selectedApp = name;
+        selectBlock = document.getElementById("button_"+name);
+        selectBlock.classList.add("select");
+        if (name === "site") {
+            this.appDisplay = "site";
+        } else if (name === "app") {
+            this.appDisplay = "application mobile";
+        } else {
+            this.appDisplay = "jeu vidéo";
+        }
+        this.survey.device = this.selectedApp;
     }
 }

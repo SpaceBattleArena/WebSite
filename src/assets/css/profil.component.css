@@ -541,3 +541,44 @@ h4.heading-3 {
 .arena .next {
     text-align: right;
 }
+
+.change-avatar {
+    display: none;
+}
+
+.change-avatar.show {
+    position: fixed;
+    top: 50%;
+    width: 60%;
+    left: 20%;
+    background-color: white;
+    z-index: 200;
+    transform: translateY(-50%);
+    max-height: 50vh;
+    padding: 10px;
+    display: block;
+}
+
+.change-avatar .avatarList {
+    overflow-y: scroll;
+    height: 30vh;
+    /* display: flex; */
+}
+
+.change-avatar .avatarList .avatar {
+    width: 10vw;
+    display: -webkit-inline-box;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.change-avatar .avatarList .avatar .select {
+    border: 1px solid red;
+}
+
+.change-avatar button.close {
+    width: 100%;
+    background-color: rgba(28, 46, 70, .65);
+    color: white;
+    text-shadow: unset;
+}

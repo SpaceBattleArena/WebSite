@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -10,14 +11,21 @@ import { User } from '../../models/user';
   styleUrls: [ '../../../assets/css/error.component.css' ],
   templateUrl: '../../templates/error.component.html'
 })
-export class ErrorComponent {
+export class ErrorComponent implements OnInit {
     currentUser: User;
     user: User[] = [];
-    type: string = "";
-    message: string = "";
+    @Input() error: Error = null;
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         //this.userService.getById(this.currentUser.id).subscribe(user => { this.user = user; });
+    }
+
+    ngOnInit() {
+
+    }
+
+    private closeWindow() {
+        this.error = null;
     }
 }

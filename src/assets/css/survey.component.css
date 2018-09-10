@@ -190,3 +190,16 @@ div.button {
     margin-top: 20px;
     cursor: pointer;
 }
+
+.buttons div {
+    text-align: center;
+    background-color: grey;
+    margin: 1px;
+    color: white;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.buttons div.select {
+    background-color: #ef480e;
+}

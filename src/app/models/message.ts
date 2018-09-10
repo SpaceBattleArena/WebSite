@@ -1,9 +1,11 @@
+import {User} from './user';
+
 export class Message {
-    id: number;
-    author_id: number;
-    text: Text;
-    post_date: Date;
-    discussion_id: number;
-    edit_date: number;
-    modify_by_id: number; //user ID / If admin -> color message is red
+    ID: number;
+    Author_id: number;
+    Forum_id: number;
+    Content: Text;
+    Creation_date: Date;
+    Modification_date: Date;
+    User: User;
 }

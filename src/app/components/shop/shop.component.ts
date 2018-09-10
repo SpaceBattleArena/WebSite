@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { Card } from '../../models/card';
 import {CardService} from '../../services/card.service';
+import { Error } from '../../models/error';
 
 @Component({
   moduleId: module.id,
@@ -13,7 +14,7 @@ import {CardService} from '../../services/card.service';
 })
 export class ShopComponent {
     currentUser: User;
-    user: User[] = [];
+    user: User = null;
     successMessage: boolean = false;
     errorMessage: string = '';
     public extensions: any[] = [
@@ -29,6 +30,7 @@ export class ShopComponent {
     public namePayment: string = "Name";
     private allCards: Card[];
     public boosterCards: Card[];
+    private error: Error = null;
 
     constructor(private userService: UserService, private cardService: CardService) {
     }
@@ -41,16 +43,18 @@ export class ShopComponent {
               if(resultArray["results"] != undefined) {
                 this.user = resultArray["results"]["data"][0];
               }
+            },
+            error => {
+              this.error = new Error("Erreur", error, 3, true);
             }
           );
         this.cardService.getAll()
           .subscribe(
             res => {
               this.allCards = res;
-              console.log(this.allCards);
             },
             error => {
-              console.log(error);
+              this.error = new Error("Erreur", error, 3, true);
             }
           );
     }
@@ -61,9 +65,9 @@ export class ShopComponent {
             if (data['results']['status'] == 201) {
                     this.successMessage = true;
                 } else if (data['results']['status'] == 403) {
-                    this.errorMessage = 'You don\'t have enough part to buy a booster!';
+                    this.error = new Error("Erreur", 'You don\'t have enough part to buy a booster!', 3, true);
                 } else {
-                    this.errorMessage = 'An error occured, please try again later.';
+                    this.error = new Error("Erreur", 'An error occured, please try again later.', 3, true);
                 }
             });
     }
@@ -156,17 +160,16 @@ export class ShopComponent {
             this.openBooster(res);
           },
           error => {
-            console.log(error);
+            this.error = new Error("Erreur", error, 3, true);
           }
         );
       this.userService.getInformation(this.currentUser["token"])
           .subscribe(
             userInformations => {
               this.user = userInformations["results"]["data"][0];
-              console.log(this.user);
             },
             error => {
-              console.log(error);
+              this.error = new Error("Erreur", error, 3, true);
             }
           );
     }

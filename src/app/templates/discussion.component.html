@@ -1,6 +1,42 @@
 <headerClient></headerClient>
 
-<div class="container">
+<div class="title">
+    <h2 class="text" *ngIf="discussion != null">{{ discussion.Name }}</h2>
+    <div class="add-new-message">
+        <button class="new-message" (click)="displayNewMessageBox()">Ajouter un message</button>
+    </div>
+</div>
+<div class="discussion">
+    <div class="row message" *ngFor="let message of messages; let i = index">
+        <div class="col-1 profil" *ngIf="message.User != null; else anonymousUser">
+            <div class="avatar"><img src="assets/img/avatar{{message.User.Avatar_id}}.png" /></div>
+            <div class="name">{{message.User.Name}}</div>
+        </div>
+        <ng-template #anonymousUser>
+            <div class="col-1 profil">
+                <div class="avatar"><img src="assets/img/avatar0.png" /></div>
+                <div class="name">Anonyme</div>
+            </div>
+        </ng-template>
+        <div class="col-11 content-text">
+            <div class="text">{{message.Content}}</div>
+            <div class="date">Le {{message.Creation_date.getDate()}}/{{message.Creation_date.getMonth()}}/{{message.Creation_date.getFullYear()}}</div>
+        </div>
+    </div>
+</div>
+<div class="new-message-box" id="new_message_box">
+    <div class="content-new-message">
+        <h3 class="title">Ajouter un message</h3>
+        <div class="fields">
+            <input class="form-control" id="message" type="text" placeholder="Message" [(ngModel)]="new_message.Content">
+        </div>
+        <div class="button">
+            <button type="button" class="btn btn-dark" (click)="post_message()">Ajouter</button>
+            <button type="button" class="btn btn-dark" (click)="hideNewMessageBox()">Annuler</button>
+        </div>
+    </div>
+</div>
+<!--<div class="container">
     <div class="row">
         <div class="col-md-12">
             <h2 style="color: white;">{{ discussion.title }}</h2>
@@ -52,6 +88,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <logister></logister>
+<error [error]="error"></error>

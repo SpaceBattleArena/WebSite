@@ -6,32 +6,169 @@ section {
     padding-top: 20px;
 }
 
-.forum h1 {
+.title-text {
     text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    background-color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
-    font-size: 40px;
-    font-variant-caps: small-caps;
-}
-
-.forum .forum-list {
-    text-align: center;
-}
-
-.forum .forum-answer {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: -13px;
+    color: white;
+    font-weight: 400;
 }
 
 .forum {
-    border: 1px solid white;
+    padding: 0 3vw;
+}
+
+.forum .content {
+    margin-top: 20px;
+}
+
+.forum .left {
+    width: 60vw;
+    float: left;
+}
+
+.forum .right {
+    width: 20vw;
+    background-color: white;
+    position: fixed;
+    right: 3vw;
+}
+
+.forum .content .discussion {
+    margin: 10px 0;
+    background-color: white;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.forum .content .discussion .profil .avatar {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.forum .content .discussion .profil .avatar img {
+    width: 100%;
+}
+
+.forum .content .discussion .profil .name {
+    text-align: center;
+    border-top: 1px solid grey;
+    margin-top: 5px;
+}
+
+.forum .content .discussion .preview .title {
+    display: unset;
+    margin-left: 0;
+    color: #ef480e;
+    font-size: large;
+}
+
+.forum .content .discussion .preview .last-message {
+    margin-top: 5px;
+    font-size: small;
+}
+
+.forum .content .discussion .info .n-message {
+    background-image: url(../../assets/img/chat-box.png);
+    height: 40%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    padding-top: 3px;
+}
+
+.forum .content .discussion .info .created {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.forum .content button.new-discussion {
+    width: 70%;
+    margin: 10px 15%;
+    background-color: green;
     color: white;
 }
 
-.new-message {
+.forum .content .filters {
+    padding-bottom: 10px;
+}
+
+.forum .content .filters h3.title {
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: #ef480e;
+    font-size: 1.3vw;
+    margin: 10px 0;
+    border-bottom: 1px solid grey;
+}
+
+.forum .content .filters .categories .category {
+    margin: 5px 0;
+}
+
+.forum .content .filters .categories .category .title {
+    color: black;
+}
+
+.forum .content .filters .categories .category .n-topics {
+    float: right;
+    width: 10%;
+    text-align: center;
+    margin-right: 10px;
+    background-color: grey;
+    border-radius: 50%;
+    color: white;
+}
+
+.new-discussion-box {
+    display: none;
+}
+
+.black-screen {
+    display: none;
+}
+
+.black-screen.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    z-index: 3000;
+}
+
+.new-discussion-box.show {
+    display: block;
+}
+
+.new-discussion-box.show .content {
+    position: fixed;
+    width: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20%;
     background-color: white;
+    padding: 20px;
+    z-index: 3001;
+}
+
+.new-discussion-box.show .content h3.title {
+    text-align: center;
+    display: block;
+    color: orange;
+    font-variant: all-small-caps;
+    font-size: 3vw;
+}
+
+.new-discussion-box.show .content .fields input {
+    padding: 0;
+}
+
+.new-discussion-box.show .content .button button {
+    width: 20%;
+    margin-left: 40%;
 }
